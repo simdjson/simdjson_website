@@ -3,10 +3,34 @@ title = "Software"
 layout = "single-para"
 +++
 
-GitHub
-----------------
 
 We have a [simdjson organization on GitHub](https://github.com/simdjson). 
+
+Quick Start
+---------------
+
+Prerequisites: `g++` or `clang++`.
+
+
+- Pull [simdjson.h](singleheader/simdjson.h) and [simdjson.cpp](singleheader/simdjson.cpp) into a directory, along with the sample file [twitter.json](jsonexamples/twitter.json).
+   ```
+   wget https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.h https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.cpp https://raw.githubusercontent.com/simdjson/simdjson/master/jsonexamples/twitter.json
+   ```
+
+- Create `quickstart.cpp`:
+   ```c++
+   #include "simdjson.h"
+   int main(void) {
+     simdjson::dom::parser parser;
+     simdjson::dom::element tweets 
+       = parser.load("twitter.json");
+     std::cout << tweets["search_metadata"]["count"] 
+       << " results." << std::endl;
+   }
+   ```
+- Compile: `c++ -o quickstart quickstart.cpp simdjson.cpp -std=c++17`
+- Run: `./quickstart`
+
 
 Real-world usage
 ----------------
