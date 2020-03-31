@@ -18,7 +18,6 @@ keywords = "open source, JSON, C++"
 [params.hero]
 herotitle = "Parsing gigabytes of JSON per second"
 herodiscription = "JSON is everywhere on the Internet. Servers spend a *lot* of time parsing it. The simdjson library uses commonly available SIMD instructions and microparallel algorithms to parse JSON 2.5 times faster than anything else out there."
-#heroquote = """>Use Roaring for bitmap compression whenever possible. Do not use other bitmap compression methods ([Wang et al., SIGMOD 2017](http://db.ucsd.edu/wp-content/uploads/2017/03/sidm338-wangA.pdf))"""
 btnblue = "Browse the API"
 btnblueurl = "api/0.3.0/index.html"
 btngreen = "The simdjson library on GitHub"
@@ -26,7 +25,7 @@ btngreenurl = "https://github.com/simdjson/simdjson"
 [params.main]
 contentOneTitle = "Highlights"
 contentTwoTitle = "Features"
-
+PostColumn = "![gigabytes per second](gbps.png)"
 contentOneBody = """
 * **Fast:** Over 2.5x faster than other production-grade JSON parsers.
 * **Easy:** First-class, easy to use API.
@@ -72,3 +71,15 @@ url = "https://groups.google.com/forum/#!forum/the-simdjson-library"
 [[menu.social]]
 name = "Github"
 url = "http://github.com/simdjson/simdjson"
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "github"
+    tabWidth = 4

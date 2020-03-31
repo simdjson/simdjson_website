@@ -10,4 +10,7 @@
 			<p>{{ .Site.Params.main.contentTwoBody | markdownify }}</p>
 		</div>
 	</div>
+	<div  class="wrapper row">
+		<p>{{ .Site.Params.main.PostColumn | markdownify }}</p>
+	</div>
 </section> {{ "<!-- END MAIN CONTENT -->" | safeHTML }}

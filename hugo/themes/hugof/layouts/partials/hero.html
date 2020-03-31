@@ -4,7 +4,9 @@
 	<div class="wrapper">
 		<h1>{{ .Site.Params.hero.herotitle }}</h1>
 		<p>{{ .Site.Params.hero.herodiscription }}</p>
+
 		<a href="{{ .Site.Params.hero.btnblueurl }}" class="button primary">{{ .Site.Params.hero.btnblue }}</a>
 		<a href="{{ .Site.Params.hero.btngreenurl }}" class="button success">{{ .Site.Params.hero.btngreen }}</a>
+
 	</div>
 </section> {{ "<!-- END HERO PANEL -->" | safeHTML }}

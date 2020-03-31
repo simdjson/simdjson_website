@@ -13,12 +13,16 @@ Prerequisites: `g++` or `clang++`.
 
 
 - Pull [simdjson.h](singleheader/simdjson.h) and [simdjson.cpp](singleheader/simdjson.cpp) into a directory, along with the sample file [twitter.json](jsonexamples/twitter.json).
-   ```
+{{< highlight bash "">}}
    wget https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.h https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.cpp https://raw.githubusercontent.com/simdjson/simdjson/master/jsonexamples/twitter.json
+{{< / highlight >}}
+
+   ```
+   
    ```
 
 - Create `quickstart.cpp`:
-   ```c++
+{{< highlight cpp "">}}
    #include "simdjson.h"
    int main(void) {
      simdjson::dom::parser parser;
@@ -27,10 +31,28 @@ Prerequisites: `g++` or `clang++`.
      std::cout << tweets["search_metadata"]["count"] 
        << " results." << std::endl;
    }
-   ```
-- Compile: `c++ -o quickstart quickstart.cpp simdjson.cpp -std=c++17`
-- Run: `./quickstart`
+{{< / highlight >}}
+- Compile: 
+{{< highlight bash "">}}
+   c++ -o quickstart quickstart.cpp simdjson.cpp -std=c++17
+{{< / highlight >}}
 
+``
+- Run: 
+{{< highlight bash "">}}
+   ./quickstart
+{{< / highlight >}}
+
+
+Documentation
+-------------
+
+Usage documentation is available:
+
+* [Basics](https://github.com/simdjson/simdjson/blob/master/doc/basics.md) is an overview of how to use simdjson and its APIs.
+* [Performance](https://github.com/simdjson/simdjson/blob/master/doc/performance.md) shows some more advanced scenarios and how to tune for them.
+* [Implementation Selection](https://github.com/simdjson/simdjson/blob/master/doc/implementation-selection.md) describes runtime CPU detection and
+  how you can work with it.
 
 Real-world usage
 ----------------
