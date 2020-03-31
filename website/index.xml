@@ -37,9 +37,10 @@
       <description>We have a simdjson organization on GitHub.
 Quick Start Prerequisites: g++ or clang++.
   Pull simdjson.h and simdjson.cpp into a directory, along with the sample file twitter.json. wget https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.h https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.cpp https://raw.githubusercontent.com/simdjson/simdjson/master/jsonexamples/twitter.json
-   Create quickstart.cpp: #include &amp;#34;simdjson.h&amp;#34; int main(void) { simdjson::dom::parser parser; simdjson::dom::element tweets = parser.load(&amp;#34;twitter.json&amp;#34;); std::cout &amp;lt;&amp;lt; tweets[&amp;#34;search_metadata&amp;#34;][&amp;#34;count&amp;#34;] &amp;lt;&amp;lt; &amp;#34; results.&amp;#34; &amp;lt;&amp;lt; std::endl; } 
+  Create quickstart.cpp: #include &amp;#34;simdjson.h&amp;#34; int main(void) { simdjson::dom::parser parser; simdjson::dom::element tweets = parser.load(&amp;#34;twitter.json&amp;#34;); std::cout &amp;lt;&amp;lt; tweets[&amp;#34;search_metadata&amp;#34;][&amp;#34;count&amp;#34;] &amp;lt;&amp;lt; &amp;#34; results.&amp;#34; &amp;lt;&amp;lt; std::endl; } 
   Compile: c++ -o quickstart quickstart.cpp simdjson.cpp -std=c++17
-  ``</description>
+  ``
+ Run: .</description>
     </item>
     
     <item>

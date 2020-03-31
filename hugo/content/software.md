@@ -17,10 +17,6 @@ Prerequisites: `g++` or `clang++`.
    wget https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.h https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.cpp https://raw.githubusercontent.com/simdjson/simdjson/master/jsonexamples/twitter.json
 {{< / highlight >}}
 
-   ```
-   
-   ```
-
 - Create `quickstart.cpp`:
 {{< highlight cpp "">}}
    #include "simdjson.h"
