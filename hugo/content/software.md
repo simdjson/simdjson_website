@@ -9,8 +9,7 @@ We have a [simdjson organization on GitHub](https://github.com/simdjson).
 Quick Start
 ---------------
 
-Prerequisites: `g++` or `clang++`.
-
+Prerequisites: `g++` (version 7 or better)  or `clang++`(version 6 or better), and a 64-bit system.
 
 - Pull [simdjson.h](singleheader/simdjson.h) and [simdjson.cpp](singleheader/simdjson.cpp) into a directory, along with the sample file [twitter.json](jsonexamples/twitter.json).
 {{< highlight bash "">}}
