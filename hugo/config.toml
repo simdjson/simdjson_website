@@ -1,0 +1,91 @@
+baseurl = "https://simdjson.org/"
+author = "Daniel Lemire"
+title = "The simdjson library"
+languageCode = "en-us"
+theme = "hugof"
+enableRobotsTXT = true
+SectionPagesMenu = ["main", "social"]
+
+[params.image]
+ImageURL = "simdjsonlogo.png"
+IconURL = "simdjsonlogo.png"
+ImageCredit = "Picture credit: Egor Bogatov"
+
+[params.meta]
+description = "The simdjson library"
+keywords = "open source, JSON, C++"
+
+[params.hero]
+herotitle = "Parsing gigabytes of JSON per second"
+herodiscription = "The simdjson library uses commonly available SIMD instructions and microparallel algorithms to parse JSON 2.5x faster than anything else out there."
+heroquote = """>Use Roaring for bitmap compression whenever possible. Do not use other bitmap compression methods ([Wang et al., SIGMOD 2017](http://db.ucsd.edu/wp-content/uploads/2017/03/sidm338-wangA.pdf))"""
+btnblue = "Grab one of our research papers"
+btnblueurl = "https://arxiv.org/abs/1902.08318"
+btngreen = "The simdjson library on GitHub"
+btngreenurl = "https://github.com/simdjson/simdjson"
+[params.main]
+contentOneTitle = "Highlights"
+contentTwoTitle = "Quick Start"
+
+contentOneBody = """JSON is everywhere on the Internet. Servers spend a *lot* of time parsing it. We need a fresh
+approach. The simdjson library uses commonly available SIMD instructions and microparallel algorithms
+to parse JSON 2.5x faster than anything else out there.
+* **Fast:** Over 2.5x faster than other production-grade JSON parsers.
+* **Easy:** First-class, easy to use API.
+* **Strict:** Full JSON and UTF-8 validation, lossless parsing. Performance with no compromises.
+* **Automatic:** Selects a CPU-tailored parser at runtime. No configuration needed.
+* **Reliable:** From memory allocation to error handling, simdjson's design avoids surprises.
+
+This library is part of the [Awesome Modern C++](https://awesomecpp.com) list.
+ """
+
+contentTwoBody = """
+0. Prerequisites: `g++` or `clang++`.
+1. Pull [simdjson.h](singleheader/simdjson.h) and [simdjson.cpp](singleheader/simdjson.cpp) into a directory, along with the sample file [twitter.json](jsonexamples/twitter.json).
+   ```
+   wget https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.h https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.cpp https://raw.githubusercontent.com/simdjson/simdjson/master/jsonexamples/twitter.json
+   ```
+2. Create `quickstart.cpp`:
+
+   ```c++
+   #include "simdjson.h"
+   int main(void) {
+     simdjson::dom::parser parser;
+     simdjson::dom::element tweets = parser.load("twitter.json");
+     std::cout << tweets["search_metadata"]["count"] << " results." << std::endl;
+   }
+   ```
+3. `c++ -o quickstart quickstart.cpp simdjson.cpp -std=c++17`
+4. `./quickstart`
+   ```
+   100 results.
+   ```"""
+
+
+[params.footer]
+emailtext = "Get in touch"
+email = "lemire@gmail.com"
+[[menu.main]]
+name = "About"
+url = "/about"
+
+[[menu.main]]
+name = "Software"
+url = "/software"
+
+[[menu.main]]
+name = "Publications"
+url = "/publications"
+
+[[menu.main]]
+name = "Talks"
+url = "/talks"
+
+
+[[menu.social]]
+name = "Google Groups"
+url = "https://groups.google.com/forum/#!forum/the-simdjson-library"
+
+[[menu.social]]
+name = "Github"
+url = "http://github.com/simdjson/simdjson"
