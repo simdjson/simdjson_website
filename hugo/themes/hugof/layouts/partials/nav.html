@@ -3,7 +3,8 @@
 <nav class="top-bar nav-desktop " style="background-repeat: no-repeat; background-position:  1% 1%; background-size: contain; background-image: url(/{{ .Site.Params.image.ImageURL }});"><!-- {{ .Site.Params.image.ImageCredit }}-->
 	<div class="wrapper">
 		<div class="top-bar-left" >
-			<a href="{{ .Site.BaseURL }}"><h3 class="site-logo">{{ .Site.Title }}</h3></a>
+			<a href="{{ .Site.BaseURL }}"><h3 class="site-logo">{{ .Site.Title }} </h3></a>
+			
 		</div>
   		<div class="top-bar-right">
         	<ul class="menu horizontal menu-desktop">
@@ -11,7 +12,8 @@
 			{{ range .Site.Menus.main }}
           	<li><a class="nav-item{{if or ($currentNode.IsMenuCurrent "main" .) ($currentNode.HasMenuCurrent "main" .) }} active{{end}}" href="{{.URL}}">{{ .Name}}</a></li>
 			{{end}}
-        	</ul>
-  	  	</div>
+			</ul>
+			</div>
+			<iframe style="float:right" src="https://ghbtns.com/github-btn.html?user=simdjson&repo=simdjson&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
 	</div>
 </nav> {{ "<!-- END NAV BAR DESKTOP -->" | safeHTML }}

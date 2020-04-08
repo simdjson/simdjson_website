@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>The simdjson library</title>
@@ -25,7 +25,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://simdjson.org/publications/</guid>
-      <description>Academic Publications  Geoff Langdale, Daniel Lemire, Parsing Gigabytes of JSON per Second, VLDB Journal 28 (6), 2019.  Online articles  Daniel Lemire, Making Your Code Faster by Taming Branches, InfoQ, March 2020.  Blog posts  Geoff Langdale, Paper: Parsing Gigabytes of JSON per Second, February 2019.  </description>
+      <description> Academic Publications  Geoff Langdale, Daniel Lemire, Parsing Gigabytes of JSON per Second, VLDB Journal 28 (6), 2019.  Online articles  Daniel Lemire, Making Your Code Faster by Taming Branches, InfoQ, March 2020.  Blog posts  Geoff Langdale, Paper: Parsing Gigabytes of JSON per Second, February 2019.  </description>
     </item>
     
     <item>
@@ -36,9 +36,9 @@
       <guid>https://simdjson.org/software/</guid>
       <description>We have a simdjson organization on GitHub.
 Quick Start Prerequisites: g++ (version 7 or better) or clang++(version 6 or better), and a 64-bit system.
-  Pull simdjson.h and simdjson.cpp into a directory, along with the sample file twitter.json. wget https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.h https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.cpp https://raw.githubusercontent.com/simdjson/simdjson/master/jsonexamples/twitter.json
-  Create quickstart.cpp: #include &amp;#34;simdjson.h&amp;#34; int main(void) { simdjson::dom::parser parser; simdjson::dom::element tweets = parser.load(&amp;#34;twitter.json&amp;#34;); std::cout &amp;lt;&amp;lt; tweets[&amp;#34;search_metadata&amp;#34;][&amp;#34;count&amp;#34;] &amp;lt;&amp;lt; &amp;#34; results.&amp;#34; &amp;lt;&amp;lt; std::endl; } 
-  Compile: c++ -o quickstart quickstart.</description>
+ Pull simdjson.h and simdjson.cpp into a directory, along with the sample file twitter.json. wget https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.h https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.cpp https://raw.githubusercontent.com/simdjson/simdjson/master/jsonexamples/twitter.json
+ Create quickstart.cpp: #include &amp;#34;simdjson.h&amp;#34; int main(void) { simdjson::dom::parser parser; simdjson::dom::element tweets = parser.load(&amp;#34;twitter.json&amp;#34;); std::cout &amp;lt;&amp;lt; tweets[&amp;#34;search_metadata&amp;#34;][&amp;#34;count&amp;#34;] &amp;lt;&amp;lt; &amp;#34; results.&amp;#34; &amp;lt;&amp;lt; std::endl; } 
+ Compile: c++ -o quickstart quickstart.</description>
     </item>
     
     <item>
