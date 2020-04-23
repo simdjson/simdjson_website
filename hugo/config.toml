@@ -33,7 +33,7 @@ contentOneBody = """
 * **Automatic:** Selects a CPU-tailored parser at runtime. No configuration needed.
 * **Reliable:** From memory allocation to error handling, simdjson's design avoids surprises.
 
-This library is part of the [Awesome Modern C++](https://awesomecpp.com) list.
+This library is part of the [Awesome Modern C++](https://awesomecpp.com) list and of major linux distributions like [Ubuntu](https://packages.ubuntu.com/source/eoan/simdjson) and [Debian](https://packages.debian.org/unstable/source/simdjson).
  """
 
 contentTwoBody = """

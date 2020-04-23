@@ -34,11 +34,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://simdjson.org/software/</guid>
-      <description>We have a simdjson organization on GitHub.
+      <description>The library is part of major linux distributions like Ubuntu and Debian. It is in Microsoft vpkg. We publish it as single-header library as well as a CMake build from theGitHub repository. We have a simdjson organization on GitHub.
 Quick Start Prerequisites: g++ (version 7 or better) or clang++(version 6 or better), and a 64-bit system.
-  Pull simdjson.h and simdjson.cpp into a directory, along with the sample file twitter.json. wget https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.h https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.cpp https://raw.githubusercontent.com/simdjson/simdjson/master/jsonexamples/twitter.json
-  Create quickstart.cpp: #include &amp;#34;simdjson.h&amp;#34; int main(void) { simdjson::dom::parser parser; simdjson::dom::element tweets = parser.load(&amp;#34;twitter.json&amp;#34;); std::cout &amp;lt;&amp;lt; tweets[&amp;#34;search_metadata&amp;#34;][&amp;#34;count&amp;#34;] &amp;lt;&amp;lt; &amp;#34; results.&amp;#34; &amp;lt;&amp;lt; std::endl; } 
-  Compile: c++ -o quickstart quickstart.</description>
+  Pull simdjson.h and simdjson.cpp into a directory, along with the sample file twitter.</description>
     </item>
     
     <item>
