@@ -8,4 +8,4 @@ Best Voted talk at QCon San Francisco 2019:<br />
 
 
 Performance Summit III (2020):<br />
-[![Performance Summit III (2020)](https://www.youtube.com/embed/p6X8BGSrR9w/0.jpg)](https://www.youtube.com/embed/p6X8BGSrR9w)
+[![Performance Summit III (2020)](https://img.youtube.com/vi/p6X8BGSrR9w/0.jpg)](https://www.youtube.com/embed/p6X8BGSrR9w)
