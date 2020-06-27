@@ -1,0 +1,228 @@
+\hypertarget{classsimdjson_1_1dom_1_1object}{}\doxysection{simdjson\+::dom\+::object Class Reference}
+\label{classsimdjson_1_1dom_1_1object}\index{simdjson::dom::object@{simdjson::dom::object}}
+
+
+J\+S\+ON object.  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator}{iterator}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_a246d37c815e6859566593134696124dd}\label{classsimdjson_1_1dom_1_1object_a246d37c815e6859566593134696124dd}} 
+really\+\_\+inline \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_a246d37c815e6859566593134696124dd}{object}} () noexcept
+\begin{DoxyCompactList}\small\item\em Create a new, invalid object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator}{iterator}} \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_afe127a7e9ec8dab9ec76160525a68a83}{begin}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Return the first key/value pair. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator}{iterator}} \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_a79cf291477bcaa1bf2328411b411587d}{end}} () const noexcept
+\begin{DoxyCompactList}\small\item\em One past the last key/value pair. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_a93ec5c36aae913f266f533b2e02bc873}{size}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get the size of the object (number of keys). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsimdjson_1_1simdjson__result}{simdjson\+\_\+result}}$<$ \mbox{\hyperlink{classsimdjson_1_1dom_1_1element}{element}} $>$ \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_a3db4e3452782dd64f6d49ebd94e1cbc6}{operator\mbox{[}$\,$\mbox{]}}} (const std\+::string\+\_\+view \&key) const noexcept
+\begin{DoxyCompactList}\small\item\em Get the value associated with the given key. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsimdjson_1_1simdjson__result}{simdjson\+\_\+result}}$<$ \mbox{\hyperlink{classsimdjson_1_1dom_1_1element}{element}} $>$ \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_a2691ceae488be203aac2d5ef5b67347f}{operator\mbox{[}$\,$\mbox{]}}} (const char $\ast$key) const noexcept
+\begin{DoxyCompactList}\small\item\em Get the value associated with the given key. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsimdjson_1_1simdjson__result}{simdjson\+\_\+result}}$<$ \mbox{\hyperlink{classsimdjson_1_1dom_1_1element}{element}} $>$ \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_a921c9b136483afee55f89c98060af2a1}{at}} (const std\+::string\+\_\+view \&json\+\_\+pointer) const noexcept
+\begin{DoxyCompactList}\small\item\em Get the value associated with the given J\+S\+ON pointer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsimdjson_1_1simdjson__result}{simdjson\+\_\+result}}$<$ \mbox{\hyperlink{classsimdjson_1_1dom_1_1element}{element}} $>$ \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_a1395691ff97f3a20cddf5c0a39676e69}{at\+\_\+key}} (const std\+::string\+\_\+view \&key) const noexcept
+\begin{DoxyCompactList}\small\item\em Get the value associated with the given key. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsimdjson_1_1simdjson__result}{simdjson\+\_\+result}}$<$ \mbox{\hyperlink{classsimdjson_1_1dom_1_1element}{element}} $>$ \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_ab5f2fb487e105f231801b30933c3ac3b}{at\+\_\+key\+\_\+case\+\_\+insensitive}} (const std\+::string\+\_\+view \&key) const noexcept
+\begin{DoxyCompactList}\small\item\em Get the value associated with the given key in a case-\/insensitive manner. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+J\+S\+ON object. 
+
+Definition at line 20 of file object.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_a921c9b136483afee55f89c98060af2a1}\label{classsimdjson_1_1dom_1_1object_a921c9b136483afee55f89c98060af2a1}} 
+\index{simdjson::dom::object@{simdjson::dom::object}!at@{at}}
+\index{at@{at}!simdjson::dom::object@{simdjson::dom::object}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsimdjson_1_1simdjson__result}{simdjson\+\_\+result}}$<$ \mbox{\hyperlink{classsimdjson_1_1dom_1_1element}{element}} $>$ simdjson\+::dom\+::object\+::at (\begin{DoxyParamCaption}\item[{const std\+::string\+\_\+view \&}]{json\+\_\+pointer }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Get the value associated with the given J\+S\+ON pointer. 
+
+\mbox{\hyperlink{classsimdjson_1_1dom_1_1parser}{dom\+::parser}} parser; object obj = \mbox{\hyperlink{classsimdjson_1_1dom_1_1parser_a16c7d1e28125ef7d5703244483f70984}{parser.\+parse}}(R\char`\"{}(\{ \char`\"{}foo\char`\"{}\+: \{ \char`\"{}a\char`\"{}\+: \mbox{[} 10, 20, 30 \mbox{]} \}\})\char`\"{}\+\_\+padded); obj.\+at(\char`\"{}foo/a/1\char`\"{}) == 20 obj.\+at(\char`\"{}foo\char`\"{})\mbox{[}\char`\"{}a\char`\"{}\mbox{]}.at(1) == 20
+
+\begin{DoxyReturn}{Returns}
+The value associated with the given J\+S\+ON pointer, or\+:
+\begin{DoxyItemize}
+\item N\+O\+\_\+\+S\+U\+C\+H\+\_\+\+F\+I\+E\+LD if a field does not exist in an object
+\item I\+N\+D\+E\+X\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+B\+O\+U\+N\+DS if an array index is larger than an array length
+\item I\+N\+C\+O\+R\+R\+E\+C\+T\+\_\+\+T\+Y\+PE if a non-\/integer is used to access an array
+\item I\+N\+V\+A\+L\+I\+D\+\_\+\+J\+S\+O\+N\+\_\+\+P\+O\+I\+N\+T\+ER if the J\+S\+ON pointer is invalid and cannot be parsed 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+Definition at line 83 of file object.\+h.
+
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_a1395691ff97f3a20cddf5c0a39676e69}\label{classsimdjson_1_1dom_1_1object_a1395691ff97f3a20cddf5c0a39676e69}} 
+\index{simdjson::dom::object@{simdjson::dom::object}!at\_key@{at\_key}}
+\index{at\_key@{at\_key}!simdjson::dom::object@{simdjson::dom::object}}
+\doxysubsubsection{\texorpdfstring{at\_key()}{at\_key()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsimdjson_1_1simdjson__result}{simdjson\+\_\+result}}$<$ \mbox{\hyperlink{classsimdjson_1_1dom_1_1element}{element}} $>$ simdjson\+::dom\+::object\+::at\+\_\+key (\begin{DoxyParamCaption}\item[{const std\+::string\+\_\+view \&}]{key }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Get the value associated with the given key. 
+
+The key will be matched against {\bfseries{unescaped}} J\+S\+ON\+:
+
+\mbox{\hyperlink{classsimdjson_1_1dom_1_1parser}{dom\+::parser}} parser; \mbox{\hyperlink{classsimdjson_1_1dom_1_1parser_a16c7d1e28125ef7d5703244483f70984}{parser.\+parse}}(R\char`\"{}(\{ \char`\"{}a~\newline
+\char`\"{}\+: 1 \})\char`\"{}\+\_\+padded)\mbox{[}\char`\"{}a\textbackslash{}n\char`\"{}\mbox{]}.get$<$uint64\+\_\+t$>$().first == 1 \mbox{\hyperlink{classsimdjson_1_1dom_1_1parser_a16c7d1e28125ef7d5703244483f70984}{parser.\+parse}}(R\char`\"{}(\{ \char`\"{}a~\newline
+\char`\"{}\+: 1 \})\char`\"{}\+\_\+padded)\mbox{[}\char`\"{}a\textbackslash{}\textbackslash{}n\char`\"{}\mbox{]}.get$<$uint64\+\_\+t$>$().error() == N\+O\+\_\+\+S\+U\+C\+H\+\_\+\+F\+I\+E\+LD
+
+This function has linear-\/time complexity\+: the keys are checked one by one.
+
+\begin{DoxyReturn}{Returns}
+The value associated with this field, or\+:
+\begin{DoxyItemize}
+\item N\+O\+\_\+\+S\+U\+C\+H\+\_\+\+F\+I\+E\+LD if the field does not exist in the object 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+Definition at line 120 of file object.\+h.
+
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_ab5f2fb487e105f231801b30933c3ac3b}\label{classsimdjson_1_1dom_1_1object_ab5f2fb487e105f231801b30933c3ac3b}} 
+\index{simdjson::dom::object@{simdjson::dom::object}!at\_key\_case\_insensitive@{at\_key\_case\_insensitive}}
+\index{at\_key\_case\_insensitive@{at\_key\_case\_insensitive}!simdjson::dom::object@{simdjson::dom::object}}
+\doxysubsubsection{\texorpdfstring{at\_key\_case\_insensitive()}{at\_key\_case\_insensitive()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsimdjson_1_1simdjson__result}{simdjson\+\_\+result}}$<$ \mbox{\hyperlink{classsimdjson_1_1dom_1_1element}{element}} $>$ simdjson\+::dom\+::object\+::at\+\_\+key\+\_\+case\+\_\+insensitive (\begin{DoxyParamCaption}\item[{const std\+::string\+\_\+view \&}]{key }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Get the value associated with the given key in a case-\/insensitive manner. 
+
+It is only guaranteed to work over A\+S\+C\+II inputs.
+
+Note\+: The key will be matched against {\bfseries{unescaped}} J\+S\+ON.
+
+This function has linear-\/time complexity\+: the keys are checked one by one.
+
+\begin{DoxyReturn}{Returns}
+The value associated with this field, or\+:
+\begin{DoxyItemize}
+\item N\+O\+\_\+\+S\+U\+C\+H\+\_\+\+F\+I\+E\+LD if the field does not exist in the object 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+Definition at line 132 of file object.\+h.
+
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_afe127a7e9ec8dab9ec76160525a68a83}\label{classsimdjson_1_1dom_1_1object_afe127a7e9ec8dab9ec76160525a68a83}} 
+\index{simdjson::dom::object@{simdjson::dom::object}!begin@{begin}}
+\index{begin@{begin}!simdjson::dom::object@{simdjson::dom::object}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator}{object\+::iterator}} simdjson\+::dom\+::object\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Return the first key/value pair. 
+
+Part of the std\+::iterable interface. 
+
+Definition at line 67 of file object.\+h.
+
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_a79cf291477bcaa1bf2328411b411587d}\label{classsimdjson_1_1dom_1_1object_a79cf291477bcaa1bf2328411b411587d}} 
+\index{simdjson::dom::object@{simdjson::dom::object}!end@{end}}
+\index{end@{end}!simdjson::dom::object@{simdjson::dom::object}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator}{object\+::iterator}} simdjson\+::dom\+::object\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+One past the last key/value pair. 
+
+Part of the std\+::iterable interface. 
+
+Definition at line 70 of file object.\+h.
+
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_a2691ceae488be203aac2d5ef5b67347f}\label{classsimdjson_1_1dom_1_1object_a2691ceae488be203aac2d5ef5b67347f}} 
+\index{simdjson::dom::object@{simdjson::dom::object}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!simdjson::dom::object@{simdjson::dom::object}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsimdjson_1_1simdjson__result}{simdjson\+\_\+result}}$<$ \mbox{\hyperlink{classsimdjson_1_1dom_1_1element}{element}} $>$ simdjson\+::dom\+::object\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const char $\ast$}]{key }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Get the value associated with the given key. 
+
+The key will be matched against {\bfseries{unescaped}} J\+S\+ON\+:
+
+\mbox{\hyperlink{classsimdjson_1_1dom_1_1parser}{dom\+::parser}} parser; \mbox{\hyperlink{classsimdjson_1_1dom_1_1parser_a16c7d1e28125ef7d5703244483f70984}{parser.\+parse}}(R\char`\"{}(\{ \char`\"{}a~\newline
+\char`\"{}\+: 1 \})\char`\"{}\+\_\+padded)\mbox{[}\char`\"{}a\textbackslash{}n\char`\"{}\mbox{]}.get$<$uint64\+\_\+t$>$().first == 1 \mbox{\hyperlink{classsimdjson_1_1dom_1_1parser_a16c7d1e28125ef7d5703244483f70984}{parser.\+parse}}(R\char`\"{}(\{ \char`\"{}a~\newline
+\char`\"{}\+: 1 \})\char`\"{}\+\_\+padded)\mbox{[}\char`\"{}a\textbackslash{}\textbackslash{}n\char`\"{}\mbox{]}.get$<$uint64\+\_\+t$>$().error() == N\+O\+\_\+\+S\+U\+C\+H\+\_\+\+F\+I\+E\+LD
+
+This function has linear-\/time complexity\+: the keys are checked one by one.
+
+\begin{DoxyReturn}{Returns}
+The value associated with this field, or\+:
+\begin{DoxyItemize}
+\item N\+O\+\_\+\+S\+U\+C\+H\+\_\+\+F\+I\+E\+LD if the field does not exist in the object
+\item I\+N\+C\+O\+R\+R\+E\+C\+T\+\_\+\+T\+Y\+PE if this is not an object 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+Definition at line 80 of file object.\+h.
+
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_a3db4e3452782dd64f6d49ebd94e1cbc6}\label{classsimdjson_1_1dom_1_1object_a3db4e3452782dd64f6d49ebd94e1cbc6}} 
+\index{simdjson::dom::object@{simdjson::dom::object}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!simdjson::dom::object@{simdjson::dom::object}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsimdjson_1_1simdjson__result}{simdjson\+\_\+result}}$<$ \mbox{\hyperlink{classsimdjson_1_1dom_1_1element}{element}} $>$ simdjson\+::dom\+::object\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const std\+::string\+\_\+view \&}]{key }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Get the value associated with the given key. 
+
+The key will be matched against {\bfseries{unescaped}} J\+S\+ON\+:
+
+\mbox{\hyperlink{classsimdjson_1_1dom_1_1parser}{dom\+::parser}} parser; \mbox{\hyperlink{classsimdjson_1_1dom_1_1parser_a16c7d1e28125ef7d5703244483f70984}{parser.\+parse}}(R\char`\"{}(\{ \char`\"{}a~\newline
+\char`\"{}\+: 1 \})\char`\"{}\+\_\+padded)\mbox{[}\char`\"{}a\textbackslash{}n\char`\"{}\mbox{]}.get$<$uint64\+\_\+t$>$().first == 1 \mbox{\hyperlink{classsimdjson_1_1dom_1_1parser_a16c7d1e28125ef7d5703244483f70984}{parser.\+parse}}(R\char`\"{}(\{ \char`\"{}a~\newline
+\char`\"{}\+: 1 \})\char`\"{}\+\_\+padded)\mbox{[}\char`\"{}a\textbackslash{}\textbackslash{}n\char`\"{}\mbox{]}.get$<$uint64\+\_\+t$>$().error() == N\+O\+\_\+\+S\+U\+C\+H\+\_\+\+F\+I\+E\+LD
+
+This function has linear-\/time complexity\+: the keys are checked one by one.
+
+\begin{DoxyReturn}{Returns}
+The value associated with this field, or\+:
+\begin{DoxyItemize}
+\item N\+O\+\_\+\+S\+U\+C\+H\+\_\+\+F\+I\+E\+LD if the field does not exist in the object
+\item I\+N\+C\+O\+R\+R\+E\+C\+T\+\_\+\+T\+Y\+PE if this is not an object 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+Definition at line 77 of file object.\+h.
+
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_a93ec5c36aae913f266f533b2e02bc873}\label{classsimdjson_1_1dom_1_1object_a93ec5c36aae913f266f533b2e02bc873}} 
+\index{simdjson::dom::object@{simdjson::dom::object}!size@{size}}
+\index{size@{size}!simdjson::dom::object@{simdjson::dom::object}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily size\+\_\+t simdjson\+::dom\+::object\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Get the size of the object (number of keys). 
+
+It is a saturated value with a maximum of 0x\+F\+F\+F\+F\+FF\+: if the value is 0x\+F\+F\+F\+F\+FF then the size is 0x\+F\+F\+F\+F\+FF or greater. 
+
+Definition at line 73 of file object.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/simdjson/dom/object.\+h\end{DoxyCompactItemize}

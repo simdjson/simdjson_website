@@ -1,0 +1,544 @@
+An overview of what you need to know to use simdjson, with examples.
+
+
+\begin{DoxyItemize}
+\item \href{\#requirements}{\texttt{ Requirements}}
+\item \href{\#including-simdjson}{\texttt{ Including simdjson}}
+\item \href{\#using-simdjson-as-a-cmake-dependency}{\texttt{ Using simdjson as a C\+Make dependency}}
+\item \href{\#the-basics-loading-and-parsing-json-documents}{\texttt{ The Basics\+: Loading and Parsing J\+S\+ON Documents}}
+\item \href{\#using-the-parsed-json}{\texttt{ Using the Parsed J\+S\+ON}}
+\item \href{\#c++11-support-and-string_view}{\texttt{ C++11 Support and string\+\_\+view}}
+\item \href{\#c++17-support}{\texttt{ C++17 Support}}
+\item \href{\#minifying-json-strings-without-parsing}{\texttt{ Minifying J\+S\+ON strings without parsing}}
+\item \href{\#utf-8-validation-alone}{\texttt{ U\+T\+F-\/8 validation (alone)}}
+\item \href{\#json-pointer}{\texttt{ J\+S\+ON Pointer}}
+\item \href{\#error-handling}{\texttt{ Error Handling}}
+\begin{DoxyItemize}
+\item \href{\#error-handling-example}{\texttt{ Error Handling Example}}
+\item \href{\#exceptions}{\texttt{ Exceptions}}
+\end{DoxyItemize}
+\item \href{\#tree-walking-and-json-element-types}{\texttt{ Tree Walking and J\+S\+ON Element Types}}
+\item \href{\#newline-delimited-json-ndjson-and-json-lines}{\texttt{ Newline-\/\+Delimited J\+S\+ON (ndjson) and J\+S\+ON lines}}
+\item \href{\#thread-safety}{\texttt{ Thread Safety}}
+\end{DoxyItemize}\hypertarget{md_doc_basics_autotoc_md0}{}\doxysection{Requirements}\label{md_doc_basics_autotoc_md0}
+
+\begin{DoxyItemize}
+\item A recent compiler (L\+L\+VM clang6 or better, G\+NU G\+CC 7 or better) on a 64-\/bit (A\+RM or x64 Intel/\+A\+MD) P\+O\+S\+IX systems such as mac\+OS, free\+B\+SD or Linux. We require that the compiler supports the C++11 standard or better.
+\item Visual Studio 2017 or better under 64-\/bit Windows. Users should target a 64-\/bit build (x64) instead of a 32-\/bit build (x86). We support the L\+L\+VM clang compiler under Visual Studio (clangcl) as well as as the regular Visual Studio compiler.
+\end{DoxyItemize}\hypertarget{md_doc_basics_autotoc_md1}{}\doxysection{Including simdjson}\label{md_doc_basics_autotoc_md1}
+To include simdjson, copy \href{/singleheader/simdjson.h}{\texttt{ simdjson.\+h}} and \href{/singleheader/simdjson.cpp}{\texttt{ simdjson.\+cpp}} into your project. Then include it in your project with\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{\#include "simdjson.h"}
+\DoxyCodeLine{using namespace simdjson; // optional}
+\end{DoxyCode}
+
+
+You can compile with\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{c++ myproject.cpp simdjson.cpp}
+\end{DoxyCode}
+
+
+Note\+:
+\begin{DoxyItemize}
+\item Users on mac\+OS and other platforms were default compilers do not provide C++11 compliant by default should request it with the appropriate flag (e.\+g., {\ttfamily c++ myproject.\+cpp simdjson.\+cpp}).
+\item Visual Studio users should compile with the {\ttfamily \+\_\+\+C\+R\+T\+\_\+\+S\+E\+C\+U\+R\+E\+\_\+\+N\+O\+\_\+\+W\+A\+R\+N\+I\+N\+GS} flag to avoid warnings with respect to our use of standard C functions such as {\ttfamily fopen}.
+\end{DoxyItemize}\hypertarget{md_doc_basics_autotoc_md2}{}\doxysection{Using simdjson as a C\+Make dependency}\label{md_doc_basics_autotoc_md2}
+You can include the simdjson repository as a folder in your C\+Make project. In the parent {\ttfamily C\+Make\+Lists.\+txt}, include the following lines\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{set(SIMDJSON\_JUST\_LIBRARY ON CACHE STRING "Build just the library, nothing else." FORCE)}
+\DoxyCodeLine{add\_subdirectory(simdjson EXCLUDE\_FROM\_ALL)}
+\end{DoxyCode}
+
+
+Elsewhere in your project, you can declare dependencies on simdjson with lines such as these\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{add\_executable(myprogram myprogram.cpp)}
+\DoxyCodeLine{target\_link\_libraries(myprogram simdjson)}
+\end{DoxyCode}
+
+
+See \href{https://github.com/simdjson/cmakedemo}{\texttt{ our C\+Make demonstration}}.\hypertarget{md_doc_basics_autotoc_md3}{}\doxysection{The Basics\+: Loading and Parsing J\+S\+O\+N Documents}\label{md_doc_basics_autotoc_md3}
+The simdjson library offers a simple D\+OM tree A\+PI, which you can access by creating a {\ttfamily dom\+::parser} and calling the {\ttfamily load()} method\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{dom::parser parser;}
+\DoxyCodeLine{dom::element doc = parser.load(filename); // load and parse a file}
+\end{DoxyCode}
+
+
+Or by creating a padded string (for efficiency reasons, simdjson requires a string with S\+I\+M\+D\+J\+S\+O\+N\+\_\+\+P\+A\+D\+D\+I\+NG bytes at the end) and calling {\ttfamily parse()}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{dom::parser parser;}
+\DoxyCodeLine{dom::element doc = parser.parse("[1,2,3]"\_padded); // parse a string}
+\end{DoxyCode}
+
+
+The parsed document resulting from the {\ttfamily parser.\+load} and {\ttfamily parser.\+parse} calls depends on the {\ttfamily parser} instance. Thus the {\ttfamily parser} instance must remain in scope. Furthermore, you must have at most one parsed document in play per {\ttfamily parser} instance.
+
+During the{\ttfamily load} or {\ttfamily parse} calls, neither the input file nor the input string are ever modified. After calling {\ttfamily load} or {\ttfamily parse}, the source (either a file or a string) can be safely discarded. All of the J\+S\+ON data is stored in the {\ttfamily parser} instance. The parsed document is also immutable in simdjson\+: you do not modify it by accessing it.
+
+For best performance, a {\ttfamily parser} instance should be reused over several files\+: otherwise you will needlessly reallocate memory, an expensive process. It is also possible to avoid entirely memory allocations during parsing when using simdjson. See our performance notes for details.\hypertarget{md_doc_basics_autotoc_md4}{}\doxysection{Using the Parsed J\+S\+ON}\label{md_doc_basics_autotoc_md4}
+Once you have an element, you can navigate it with idiomatic C++ iterators, operators and casts.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Extracting Values (with exceptions)\+:}} You can cast a J\+S\+ON element to a native type\+: {\ttfamily double(element)} or {\ttfamily double x = json\+\_\+element}. This works for double, uint64\+\_\+t, int64\+\_\+t, bool, dom\+::object and dom\+::array. An exception is thrown if the cast is not possible.
+\item {\bfseries{Extracting Values (without expceptions)\+:}} You can use a variant usage of {\ttfamily get()} with error codes to avoid exceptions. You first declare the variable of the appropriate type ({\ttfamily double}, {\ttfamily uint64\+\_\+t}, {\ttfamily int64\+\_\+t}, {\ttfamily bool}, {\ttfamily dom\+::object} and {\ttfamily dom\+::array}) and pass it by reference to {\ttfamily get()} which gives you back an error code\+: e.\+g., 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{c++\}}
+\DoxyCodeLine{ simdjson::error\_code error;}
+\DoxyCodeLine{ simdjson::padded\_string numberstring = "1.2"\_padded; // our JSON input ("1.2")}
+\DoxyCodeLine{ simdjson::dom::parser parser;}
+\DoxyCodeLine{ double value; // variable where we store the value to be parsed}
+\DoxyCodeLine{ error = parser.parse(numberstring).get(value);}
+\DoxyCodeLine{ if (error) \{ std::cerr << error << std::endl; return EXIT\_FAILURE; \}}
+\DoxyCodeLine{ std::cout << "I parsed " << value << " from " << numberstring.data() << std::endl;}
+\end{DoxyCode}
+
+\item {\bfseries{Field Access\+:}} To get the value of the \char`\"{}foo\char`\"{} field in an object, use {\ttfamily object\mbox{[}\char`\"{}foo\char`\"{}\mbox{]}}.
+\item {\bfseries{Array Iteration\+:}} To iterate through an array, use {\ttfamily for (auto value \+: array) \{ ... \}}. If you know the type of the value, you can cast it right there, too! {\ttfamily for (double value \+: array) \{ ... \}}
+\item {\bfseries{Object Iteration\+:}} You can iterate through an object\textquotesingle{}s fields, too\+: {\ttfamily for (auto \mbox{[}key, value\mbox{]} \+: object)}
+\item {\bfseries{Array Index\+:}} To get at an array value by index, use the at() method\+: {\ttfamily array.\+at(0)} gets the first element. \begin{quote}
+Note that array\mbox{[}0\mbox{]} does not compile, because implementing \mbox{[}\mbox{]} gives the impression indexing is a O(1) operation, which it is not presently in simdjson. Instead, you should iterate over the elements using a for-\/loop, as in our examples. \end{quote}
+
+\item {\bfseries{Array and Object size}} Given an array or an object, you can get its size (number of elements or keys) with the {\ttfamily size()} method.
+\item {\bfseries{Checking an Element Type\+:}} You can check an element\textquotesingle{}s type with {\ttfamily element.\+type()}. It returns an {\ttfamily element\+\_\+type}.
+\end{DoxyItemize}
+
+Here are some examples of all of the above\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{auto cars\_json = R"( [}
+\DoxyCodeLine{  \{ "make": "Toyota", "model": "Camry",  "year": 2018, "tire\_pressure": [ 40.1, 39.9, 37.7, 40.4 ] \},}
+\DoxyCodeLine{  \{ "make": "Kia",    "model": "Soul",   "year": 2012, "tire\_pressure": [ 30.1, 31.0, 28.6, 28.7 ] \},}
+\DoxyCodeLine{  \{ "make": "Toyota", "model": "Tercel", "year": 1999, "tire\_pressure": [ 29.8, 30.0, 30.2, 30.5 ] \}}
+\DoxyCodeLine{] )"\_padded;}
+\DoxyCodeLine{dom::parser parser;}
+\DoxyCodeLine{}
+\DoxyCodeLine{// Iterating through an array of objects}
+\DoxyCodeLine{for (dom::object car : parser.parse(cars\_json)) \{}
+\DoxyCodeLine{  // Accessing a field by name}
+\DoxyCodeLine{  cout << "Make/Model: " << car["make"] << "/" << car["model"] << endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{  // Casting a JSON element to an integer}
+\DoxyCodeLine{  uint64\_t year = car["year"];}
+\DoxyCodeLine{  cout << "-\/ This car is " << 2020 -\/ year << "years old." << endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{  // Iterating through an array of floats}
+\DoxyCodeLine{  double total\_tire\_pressure = 0;}
+\DoxyCodeLine{  for (double tire\_pressure : car["tire\_pressure"]) \{}
+\DoxyCodeLine{    total\_tire\_pressure += tire\_pressure;}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{  cout << "-\/ Average tire pressure: " << (total\_tire\_pressure / 4) << endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{  // Writing out all the information about the car}
+\DoxyCodeLine{  for (auto field : car) \{}
+\DoxyCodeLine{    cout << "-\/ " << field.key << ": " << field.value << endl;}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+
+
+Here is a different example illustrating the same ideas\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{C++\}}
+\DoxyCodeLine{auto abstract\_json = R"( [}
+\DoxyCodeLine{    \{  "12345" : \{"a":12.34, "b":56.78, "c": 9998877\}   \},}
+\DoxyCodeLine{    \{  "12545" : \{"a":11.44, "b":12.78, "c": 11111111\}  \}}
+\DoxyCodeLine{  ] )"\_padded;}
+\DoxyCodeLine{dom::parser parser;}
+\DoxyCodeLine{}
+\DoxyCodeLine{// Parse and iterate through an array of objects}
+\DoxyCodeLine{for (dom::object obj : parser.parse(abstract\_json)) \{}
+\DoxyCodeLine{    for(const auto\& key\_value : obj) \{}
+\DoxyCodeLine{      cout << "key: " << key\_value.key << " : ";}
+\DoxyCodeLine{      dom::object innerobj = key\_value.value;}
+\DoxyCodeLine{      cout << "a: " << double(innerobj["a"]) << ", ";}
+\DoxyCodeLine{      cout << "b: " << double(innerobj["b"]) << ", ";}
+\DoxyCodeLine{      cout << "c: " << int64\_t(innerobj["c"]) << endl;}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+
+
+And another one\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{C++\}}
+\DoxyCodeLine{ auto abstract\_json = R"(}
+\DoxyCodeLine{   \{  "str" : \{ "123" : \{"abc" : 3.14 \} \} \} )"\_padded;}
+\DoxyCodeLine{ dom::parser parser;}
+\DoxyCodeLine{ double v = parser.parse(abstract\_json)["str"]["123"]["abc"];}
+\DoxyCodeLine{ cout << "number: " << v << endl;}
+\end{DoxyCode}
+\hypertarget{md_doc_basics_autotoc_md5}{}\doxysection{C++11 Support and string\+\_\+view}\label{md_doc_basics_autotoc_md5}
+The simdjson library builds on compilers supporting the \href{https://en.wikipedia.org/wiki/C\%2B\%2B11}{\texttt{ C++11 standard}}. It is also a strict requirement\+: we have no plan to support older C++ compilers.
+
+We represent parsed strings in simdjson using the {\ttfamily std\+::string\+\_\+view} class. It avoids the need to copy the data, as would be necessary with the {\ttfamily std\+::string} class. It also avoids the pitfalls of null-\/terminated C strings.
+
+The {\ttfamily std\+::string\+\_\+view} class has become standard as part of C++17 but it is not always available on compilers which only supports C++11. When we detect that {\ttfamily string\+\_\+view} is natively available, we define the macro {\ttfamily S\+I\+M\+D\+J\+S\+O\+N\+\_\+\+H\+A\+S\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+V\+I\+EW}.
+
+When we detect that it is unavailable, we use \href{https://github.com/martinmoene/string-view-lite}{\texttt{ string-\/view-\/lite}} as a substitute. In such cases, we use the type alias {\ttfamily using string\+\_\+view = nonstd\+::string\+\_\+view;} to ~\newline
+ offer the same A\+PI, irrespective of the compiler and standard library. The macro {\ttfamily S\+I\+M\+D\+J\+S\+O\+N\+\_\+\+H\+A\+S\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+V\+I\+EW} will be {\itshape undefined} to indicate that we emulate {\ttfamily string\+\_\+view}.\hypertarget{md_doc_basics_autotoc_md6}{}\doxysection{C++17 Support}\label{md_doc_basics_autotoc_md6}
+While the simdjson library can be used in any project using C++ 11 and above, field iteration has special support C++ 17\textquotesingle{}s destructuring syntax. For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{padded\_string json = R"(  \{ "foo": 1, "bar": 2 \}  )"\_padded;}
+\DoxyCodeLine{dom::parser parser;}
+\DoxyCodeLine{dom::object object;}
+\DoxyCodeLine{auto error = parser.parse(json).get(object);}
+\DoxyCodeLine{if (error) \{ cerr << error << endl; return; \}}
+\DoxyCodeLine{for (auto [key, value] : object) \{}
+\DoxyCodeLine{  cout << key << " = " << value << endl;}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+
+
+For comparison, here is the C++ 11 version of the same code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{// C++ 11 version for comparison}
+\DoxyCodeLine{padded\_string json = R"(  \{ "foo": 1, "bar": 2 \}  )"\_padded;}
+\DoxyCodeLine{dom::parser parser;}
+\DoxyCodeLine{dom::object object;}
+\DoxyCodeLine{auto error = parser.parse(json).get(object);}
+\DoxyCodeLine{if (!error) \{ cerr << error << endl; return; \}}
+\DoxyCodeLine{for (dom::key\_value\_pair field : object) \{}
+\DoxyCodeLine{  cout << field.key << " = " << field.value << endl;}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+\hypertarget{md_doc_basics_autotoc_md7}{}\doxysection{Minifying J\+S\+O\+N strings without parsing}\label{md_doc_basics_autotoc_md7}
+In some cases, you may have valid J\+S\+ON strings that you do not wish to parse but that you wish to minify. That is, you wish to remove all unnecessary spaces. We have a fast function for this purpose ({\ttfamily minify}). This function does not validate your content, and it does not parse it. Instead, it assumes that your string is valid U\+T\+F-\/8. It is much faster than parsing the string and re-\/serializing it in minified form. Usage is relatively simple. You must pass an input pointer with a length parameter, as well as an output pointer and an output length parameter (by reference). The output length parameter is not read, but written to. The output pointer should point to a valid memory region that is slightly overallocated (by {\ttfamily simdjson\+::\+S\+I\+M\+D\+J\+S\+O\+N\+\_\+\+P\+A\+D\+D\+I\+NG}) compared to the original string length. The input pointer and input length are read, but not written to.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{C++\}}
+\DoxyCodeLine{ // Starts with a valid JSON document as a string.}
+\DoxyCodeLine{ // It does not have to be null-\/terminated.}
+\DoxyCodeLine{ const char * some\_string = "[ 1, 2, 3, 4] ";}
+\DoxyCodeLine{ size\_t length = strlen(some\_string);}
+\DoxyCodeLine{ // Create a buffer to receive the minified string. Make sure that there is enough room,}
+\DoxyCodeLine{ // including some padding (simdjson::SIMDJSON\_PADDING).}
+\DoxyCodeLine{ std::unique\_ptr<char[]> buffer\{new(std::nothrow) char[length + simdjson::SIMDJSON\_PADDING]\};}
+\DoxyCodeLine{ size\_t new\_length\{\}; // It will receive the minified length.}
+\DoxyCodeLine{ auto error = simdjson::minify(some\_string, length, buffer.get(), new\_length);}
+\DoxyCodeLine{ // The buffer variable now has "[1,2,3,4]" and new\_length has value 9.}
+\end{DoxyCode}
+
+
+Though it does not validate the J\+S\+ON input, it will detect when the document ends with an unterminated string. E.\+g., it would refuse to minify the string {\ttfamily "this string is not terminated} because of the missing final quote.\hypertarget{md_doc_basics_autotoc_md8}{}\doxysection{U\+T\+F-\/8 validation (alone)}\label{md_doc_basics_autotoc_md8}
+The simdjson library has fast functions to validate U\+T\+F-\/8 strings. They are many times faster than most functions commonly found in libraries. You can use our fast functions, even if you do not care about J\+S\+ON.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{C++\}}
+\DoxyCodeLine{ const char * some\_string = "[ 1, 2, 3, 4] ";}
+\DoxyCodeLine{ size\_t length = strlen(some\_string);}
+\DoxyCodeLine{ bool is\_ok = simdjson::validate\_utf8(some\_string, length);}
+\end{DoxyCode}
+
+
+The U\+T\+F-\/8 validation function merely checks that the input is valid U\+T\+F-\/8\+: it works with strings in general, not just J\+S\+ON strings.
+
+Your input string does not need any padding. Any string will do. The {\ttfamily validate\+\_\+utf8} function does not do any memory allocation on the heap, and it does not throw exceptions.\hypertarget{md_doc_basics_autotoc_md9}{}\doxysection{J\+S\+O\+N Pointer}\label{md_doc_basics_autotoc_md9}
+The simdjson library also supports \href{https://tools.ietf.org/html/rfc6901}{\texttt{ J\+S\+ON pointer}} through the at() method, letting you reach further down into the document in a single call\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{auto cars\_json = R"( [}
+\DoxyCodeLine{  \{ "make": "Toyota", "model": "Camry",  "year": 2018, "tire\_pressure": [ 40.1, 39.9, 37.7, 40.4 ] \},}
+\DoxyCodeLine{  \{ "make": "Kia",    "model": "Soul",   "year": 2012, "tire\_pressure": [ 30.1, 31.0, 28.6, 28.7 ] \},}
+\DoxyCodeLine{  \{ "make": "Toyota", "model": "Tercel", "year": 1999, "tire\_pressure": [ 29.8, 30.0, 30.2, 30.5 ] \}}
+\DoxyCodeLine{] )"\_padded;}
+\DoxyCodeLine{dom::parser parser;}
+\DoxyCodeLine{dom::element cars = parser.parse(cars\_json);}
+\DoxyCodeLine{cout << cars.at("0/tire\_pressure/1") << endl; // Prints 39.9}
+\end{DoxyCode}
+\hypertarget{md_doc_basics_autotoc_md10}{}\doxysection{Error Handling}\label{md_doc_basics_autotoc_md10}
+All simdjson A\+P\+Is that can fail return {\ttfamily simdjson\+\_\+result$<$T$>$}, which is a $<$value, error\+\_\+code$>$ pair. You can retrieve the value with .get(), like so\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{dom::element doc;}
+\DoxyCodeLine{auto error = parser.parse(json).get(doc);}
+\DoxyCodeLine{if (error) \{ cerr << error << endl; exit(1); \}}
+\end{DoxyCode}
+
+
+When you use the code this way, it is your responsibility to check for error before using the result\+: if there is an error, the result value will not be valid and using it will caused undefined behavior.
+
+We can write a \char`\"{}quick start\char`\"{} example where we attempt to parse a file and access some data, without triggering exceptions\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{C++\}}
+\DoxyCodeLine{\#include "simdjson.h"}
+\DoxyCodeLine{}
+\DoxyCodeLine{int main(void) \{}
+\DoxyCodeLine{  simdjson::dom::parser parser;}
+\DoxyCodeLine{}
+\DoxyCodeLine{  simdjson::dom::element tweets;}
+\DoxyCodeLine{  auto error = parser.load("twitter.json").get(tweets);}
+\DoxyCodeLine{  if (error) \{ std::cerr << error << std::endl; return EXIT\_FAILURE; \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  simdjson::dom::element res;}
+\DoxyCodeLine{  if ((error = tweets["search\_metadata"]["count"].get(res))) \{}
+\DoxyCodeLine{    std::cerr << "could not access keys" << std::endl;}
+\DoxyCodeLine{    return EXIT\_FAILURE;}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{  std::cout << res << " results." << std::endl;}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+\hypertarget{md_doc_basics_autotoc_md11}{}\doxysubsection{Error Handling Example}\label{md_doc_basics_autotoc_md11}
+This is how the example in \char`\"{}\+Using the Parsed J\+S\+O\+N\char`\"{} could be written using only error code checking\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{auto cars\_json = R"( [}
+\DoxyCodeLine{  \{ "make": "Toyota", "model": "Camry",  "year": 2018, "tire\_pressure": [ 40.1, 39.9, 37.7, 40.4 ] \},}
+\DoxyCodeLine{  \{ "make": "Kia",    "model": "Soul",   "year": 2012, "tire\_pressure": [ 30.1, 31.0, 28.6, 28.7 ] \},}
+\DoxyCodeLine{  \{ "make": "Toyota", "model": "Tercel", "year": 1999, "tire\_pressure": [ 29.8, 30.0, 30.2, 30.5 ] \}}
+\DoxyCodeLine{] )"\_padded;}
+\DoxyCodeLine{dom::parser parser;}
+\DoxyCodeLine{dom::array cars;}
+\DoxyCodeLine{auto error = parser.parse(cars\_json).get(cars);}
+\DoxyCodeLine{if (error) \{ cerr << error << endl; exit(1); \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{// Iterating through an array of objects}
+\DoxyCodeLine{for (dom::element car\_element : cars) \{}
+\DoxyCodeLine{    dom::object car;}
+\DoxyCodeLine{    if ((error = car\_element.get(car))) \{ cerr << error << endl; exit(1); \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    // Accessing a field by name}
+\DoxyCodeLine{    std::string\_view make, model;}
+\DoxyCodeLine{    if ((error = car["make"].get(make))) \{ cerr << error << endl; exit(1); \}}
+\DoxyCodeLine{    if ((error = car["model"].get(model))) \{ cerr << error << endl; exit(1); \}}
+\DoxyCodeLine{    cout << "Make/Model: " << make << "/" << model << endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    // Casting a JSON element to an integer}
+\DoxyCodeLine{    uint64\_t year;}
+\DoxyCodeLine{    if ((error = car["year"].get(year))) \{ cerr << error << endl; exit(1); \}}
+\DoxyCodeLine{    cout << "-\/ This car is " << 2020 -\/ year << "years old." << endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    // Iterating through an array of floats}
+\DoxyCodeLine{    double total\_tire\_pressure = 0;}
+\DoxyCodeLine{    dom::array tire\_pressure\_array;}
+\DoxyCodeLine{    if ((error = car["tire\_pressure"].get(tire\_pressure\_array))) \{ cerr << error << endl; exit(1); \}}
+\DoxyCodeLine{    for (dom::element tire\_pressure\_element : tire\_pressure\_array) \{}
+\DoxyCodeLine{        double tire\_pressure;}
+\DoxyCodeLine{        if ((error = tire\_pressure\_element.get(tire\_pressure))) \{ cerr << error << endl; exit(1); \}}
+\DoxyCodeLine{        total\_tire\_pressure += tire\_pressure;}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    cout << "-\/ Average tire pressure: " << (total\_tire\_pressure / 4) << endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    // Writing out all the information about the car}
+\DoxyCodeLine{    for (auto field : car) \{}
+\DoxyCodeLine{        cout << "-\/ " << field.key << ": " << field.value << endl;}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+
+
+Here is another example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{C++\}}
+\DoxyCodeLine{auto abstract\_json = R"( [}
+\DoxyCodeLine{    \{  "12345" : \{"a":12.34, "b":56.78, "c": 9998877\}   \},}
+\DoxyCodeLine{    \{  "12545" : \{"a":11.44, "b":12.78, "c": 11111111\}  \}}
+\DoxyCodeLine{  ] )"\_padded;}
+\DoxyCodeLine{dom::parser parser;}
+\DoxyCodeLine{dom::array array;}
+\DoxyCodeLine{auto error = parser.parse(abstract\_json).get(array);}
+\DoxyCodeLine{if (error) \{ cerr << error << endl; exit(1); \}}
+\DoxyCodeLine{// Iterate through an array of objects}
+\DoxyCodeLine{for (dom::element elem : array) \{}
+\DoxyCodeLine{    dom::object obj;}
+\DoxyCodeLine{    if ((error = elem.get(obj))) \{ cerr << error << endl; exit(1); \}}
+\DoxyCodeLine{    for (auto \& key\_value : obj) \{}
+\DoxyCodeLine{        cout << "key: " << key\_value.key << " : ";}
+\DoxyCodeLine{        dom::object innerobj;}
+\DoxyCodeLine{        if ((error = key\_value.value.get(innerobj))) \{ cerr << error << endl; exit(1); \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{        double va, vb;}
+\DoxyCodeLine{        if ((error = innerobj["a"].get(va))) \{ cerr << error << endl; exit(1); \}}
+\DoxyCodeLine{        cout << "a: " << va << ", ";}
+\DoxyCodeLine{        if ((error = innerobj["b"].get(vc))) \{ cerr << error << endl; exit(1); \}}
+\DoxyCodeLine{        cout << "b: " << vb << ", ";}
+\DoxyCodeLine{}
+\DoxyCodeLine{        int64\_t vc;}
+\DoxyCodeLine{        if ((error = innerobj["c"].get(vc))) \{ cerr << error << endl; exit(1); \}}
+\DoxyCodeLine{        cout << "c: " << vc << endl;}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+
+
+And another one\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{C++\}}
+\DoxyCodeLine{ auto abstract\_json = R"(}
+\DoxyCodeLine{   \{  "str" : \{ "123" : \{"abc" : 3.14 \} \} \} )"\_padded;}
+\DoxyCodeLine{ dom::parser parser;}
+\DoxyCodeLine{ double v;}
+\DoxyCodeLine{ auto error = parser.parse(abstract\_json)["str"]["123"]["abc"].get(v);}
+\DoxyCodeLine{ if (error) \{ cerr << error << endl; exit(1); \}}
+\DoxyCodeLine{ cout << "number: " << v << endl;}
+\end{DoxyCode}
+
+
+Notice how we can string several operations ({\ttfamily parser.\+parse(abstract\+\_\+json)\mbox{[}\char`\"{}str\char`\"{}\mbox{]}\mbox{[}\char`\"{}123\char`\"{}\mbox{]}\mbox{[}\char`\"{}abc\char`\"{}\mbox{]}.get(v)}) and only check for the error once, a strategy we call {\itshape error chaining}.
+
+The next two functions will take as input a J\+S\+ON document containing an array with a single element, either a string or a number. They return true upon success.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{C++\}}
+\DoxyCodeLine{simdjson::dom::parser parser\{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{bool parse\_double(const char *j, double \&d) \{}
+\DoxyCodeLine{  auto error = parser.parse(j, std::strlen(j))}
+\DoxyCodeLine{        .at(0)}
+\DoxyCodeLine{        .get(d, error);}
+\DoxyCodeLine{  if (error) \{ return false; \}}
+\DoxyCodeLine{  return true;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{bool parse\_string(const char *j, std::string \&s) \{}
+\DoxyCodeLine{  std::string\_view answer;}
+\DoxyCodeLine{  auto error = parser.parse(j,strlen(j))}
+\DoxyCodeLine{        .at(0)}
+\DoxyCodeLine{        .get(answer, error);}
+\DoxyCodeLine{  if (error) \{ return false; \}}
+\DoxyCodeLine{  s.assign(answer.data(), answer.size());}
+\DoxyCodeLine{  return true;}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+\hypertarget{md_doc_basics_autotoc_md12}{}\doxysubsection{Exceptions}\label{md_doc_basics_autotoc_md12}
+Users more comfortable with an exception flow may choose to directly cast the {\ttfamily simdjson\+\_\+result$<$T$>$} to the desired type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{dom::element doc = parser.parse(json); // Throws an exception if there was an error!}
+\end{DoxyCode}
+
+
+When used this way, a {\ttfamily simdjson\+\_\+error} exception will be thrown if an error occurs, preventing the program from continuing if there was an error.\hypertarget{md_doc_basics_autotoc_md13}{}\doxysection{Tree Walking and J\+S\+O\+N Element Types}\label{md_doc_basics_autotoc_md13}
+Sometimes you don\textquotesingle{}t necessarily have a document with a known type, and are trying to generically inspect or walk over J\+S\+ON elements. To do that, you can use iterators and the type() method. For example, here\textquotesingle{}s a quick and dirty recursive function that verbosely prints the J\+S\+ON document as J\+S\+ON ($\ast$ ignoring nuances like trailing commas and escaping strings, for brevity\textquotesingle{}s sake)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{void print\_json(dom::element element) \{}
+\DoxyCodeLine{  switch (element.type()) \{}
+\DoxyCodeLine{    case dom::element\_type::ARRAY:}
+\DoxyCodeLine{      cout << "[";}
+\DoxyCodeLine{      for (dom::element child : dom::array(element)) \{}
+\DoxyCodeLine{        print\_json(child);}
+\DoxyCodeLine{        cout << ",";}
+\DoxyCodeLine{      \}}
+\DoxyCodeLine{      cout << "]";}
+\DoxyCodeLine{      break;}
+\DoxyCodeLine{    case dom::element\_type::OBJECT:}
+\DoxyCodeLine{      cout << "\{";}
+\DoxyCodeLine{      for (dom::key\_value\_pair field : dom::object(element)) \{}
+\DoxyCodeLine{        cout << "\(\backslash\)"" << field.key << "\(\backslash\)": ";}
+\DoxyCodeLine{        print\_json(field.value);}
+\DoxyCodeLine{      \}}
+\DoxyCodeLine{      cout << "\}";}
+\DoxyCodeLine{      break;}
+\DoxyCodeLine{    case dom::element\_type::INT64:}
+\DoxyCodeLine{      cout << int64\_t(element) << endl;}
+\DoxyCodeLine{      break;}
+\DoxyCodeLine{    case dom::element\_type::UINT64:}
+\DoxyCodeLine{      cout << uint64\_t(element) << endl;}
+\DoxyCodeLine{      break;}
+\DoxyCodeLine{    case dom::element\_type::DOUBLE:}
+\DoxyCodeLine{      cout << double(element) << endl;}
+\DoxyCodeLine{      break;}
+\DoxyCodeLine{    case dom::element\_type::STRING:}
+\DoxyCodeLine{      cout << std::string\_view(element) << endl;}
+\DoxyCodeLine{      break;}
+\DoxyCodeLine{    case dom::element\_type::BOOL:}
+\DoxyCodeLine{      cout << bool(element) << endl;}
+\DoxyCodeLine{      break;}
+\DoxyCodeLine{    case dom::element\_type::NULL\_VALUE:}
+\DoxyCodeLine{      cout << "null" << endl;}
+\DoxyCodeLine{      break;}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{void basics\_treewalk\_1() \{}
+\DoxyCodeLine{  dom::parser parser;}
+\DoxyCodeLine{  print\_json(parser.load("twitter.json"));}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+\hypertarget{md_doc_basics_autotoc_md14}{}\doxysection{Newline-\/\+Delimited J\+S\+O\+N (ndjson) and J\+S\+O\+N lines}\label{md_doc_basics_autotoc_md14}
+The simdjson library also support multithreaded J\+S\+ON streaming through a large file containing many smaller J\+S\+ON documents in either \href{http://ndjson.org}{\texttt{ ndjson}} or \href{http://jsonlines.org}{\texttt{ J\+S\+ON lines}} format. If your J\+S\+ON documents all contain arrays or objects, we even support direct file concatenation without whitespace. The concatenated file has no size restrictions (including larger than 4GB), though each individual document must be no larger than 4 GB.
+
+Here is a simple example, given \char`\"{}x.\+json\char`\"{} with this content\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{ "foo": 1 \}}
+\DoxyCodeLine{\{ "foo": 2 \}}
+\DoxyCodeLine{\{ "foo": 3 \}}
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{dom::parser parser;}
+\DoxyCodeLine{dom::document\_stream docs = parser.load\_many(filename);}
+\DoxyCodeLine{for (dom::element doc : docs) \{}
+\DoxyCodeLine{  cout << doc["foo"] << endl;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{// Prints 1 2 3}
+\end{DoxyCode}
+
+
+In-\/memory ndjson strings can be parsed as well, with {\ttfamily parser.\+parse\+\_\+many(string)}.
+
+Both {\ttfamily load\+\_\+many} and {\ttfamily parse\+\_\+many} take an optional parameter {\ttfamily size\+\_\+t batch\+\_\+size} which defines the window processing size. It is set by default to a large value ({\ttfamily 1000000} corresponding to 1 MB). None of your J\+S\+ON documents should exceed this window size, or else you will get the error {\ttfamily simdjson\+::\+C\+A\+P\+A\+C\+I\+TY}. You cannot set this window size larger than 4 GB\+: you will get the error {\ttfamily simdjson\+::\+C\+A\+P\+A\+C\+I\+TY}. The smaller the window size is, the less memory the function will use. Setting the window size too small (e.\+g., less than 100 kB) may also impact performance negatively. Leaving it to 1 MB is expected to be a good choice, unless you have some larger documents.
+
+See parse\+\_\+many.md for detailed information and design.\hypertarget{md_doc_basics_autotoc_md15}{}\doxysection{Thread Safety}\label{md_doc_basics_autotoc_md15}
+We built simdjson with thread safety in mind.
+
+The simdjson library is single-\/threaded except for \`{}parse\+\_\+many\`{} which may use secondary threads under its control when the library is compiled with thread support.
+
+We recommend using one {\ttfamily dom\+::parser} object per thread in which case the library is thread-\/safe. It is unsafe to reuse a {\ttfamily dom\+::parser} object between different threads. The parsed results ({\ttfamily dom\+::document}, {\ttfamily dom\+::element}, {\ttfamily array}, {\ttfamily object}) depend on the {\ttfamily dom\+::parser}, etc. therefore it is also potentially unsafe to use the result of the parsing between different threads.
+
+The C\+PU detection, which runs the first time parsing is attempted and switches to the fastest parser for your C\+PU, is transparent and thread-\/safe.\hypertarget{md_doc_basics_autotoc_md16}{}\doxysection{Backwards Compatibility}\label{md_doc_basics_autotoc_md16}
+The only header file supported by simdjson is {\ttfamily simdjson.\+h}. Older versions of simdjson published a number of other include files such as {\ttfamily document.\+h} or {\ttfamily \mbox{\hyperlink{parsedjson_8h_source}{Parsed\+Json.\+h}}} alongside {\ttfamily simdjson.\+h}; these headers may be moved or removed in future versions. 

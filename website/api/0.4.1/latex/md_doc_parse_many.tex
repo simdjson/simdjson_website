@@ -1,0 +1,67 @@
+An interface providing features to work with files or streams containing multiple J\+S\+ON documents. As fast and convenient as possible.\hypertarget{md_doc_parse_many_autotoc_md39}{}\doxysection{Contents}\label{md_doc_parse_many_autotoc_md39}
+
+\begin{DoxyItemize}
+\item \href{\#motivations}{\texttt{ Motivations}}
+\item \href{\#performance}{\texttt{ Performance}}
+\item \href{\#how-it-works}{\texttt{ How it works}}
+\item \href{\#support}{\texttt{ Support}}
+\item \href{\#api}{\texttt{ A\+PI}}
+\item \href{\#use-cases}{\texttt{ Use cases}}
+\end{DoxyItemize}\hypertarget{md_doc_parse_many_autotoc_md40}{}\doxysection{Motivations}\label{md_doc_parse_many_autotoc_md40}
+The main motivation for this piece of software is to achieve maximum speed and offer a better quality of life in parsing files containing multiple J\+S\+ON documents.
+
+The Java\+Script Object Notation (J\+S\+ON) \href{https://tools.ietf.org/html/rfc7159}{\texttt{ R\+F\+C7159}} is a very handy serialization format. However, when serializing a large sequence of values as an array, or a possibly indeterminate-\/length or never-\/ ending sequence of values, J\+S\+ON becomes difficult to work with.
+
+Consider a sequence of one million values, each possibly one kilobyte when encoded -- roughly one gigabyte. It is often desirable to process such a dataset incrementally without having to first read all of it before beginning to produce results.\hypertarget{md_doc_parse_many_autotoc_md41}{}\doxysection{Performance}\label{md_doc_parse_many_autotoc_md41}
+Here is a chart comparing the speed of the different alternatives to parse a multiline J\+S\+ON. The simdjson library provides a threaded and non-\/threaded parse\+\_\+many() implementation. As the figure below shows, if you can, use threads, but if you can\textquotesingle{}t, it\textquotesingle{}s still pretty fast! \href{/doc/Multiline_JSON_Parse_Competition.png}{\texttt{ }}\hypertarget{md_doc_parse_many_autotoc_md42}{}\doxysection{How it works}\label{md_doc_parse_many_autotoc_md42}
+\hypertarget{md_doc_parse_many_autotoc_md43}{}\doxysubsection{Context}\label{md_doc_parse_many_autotoc_md43}
+The parsing in simdjson is divided into 2 stages. First, in stage 1, we parse the document and find all the structural indexes ({\ttfamily \{}, {\ttfamily \}}, {\ttfamily \mbox{]}}, {\ttfamily \mbox{[}}, {\ttfamily ,}, {\ttfamily "}, ...) and validate U\+T\+F8. Then, in stage 2, we go through the document again and build the tape using structural indexes found during stage 1. Although stage 1 finds the structural indexes, it has no knowledge of the structure of the document nor does it know whether it parsed a valid document, multiple documents, or even if the document is complete.
+
+Prior to parse\+\_\+many, most people who had to parse a multiline J\+S\+ON file would proceed by reading the file line by line, using a utility function like {\ttfamily std\+::getline} or equivalent, and would then use the {\ttfamily parse} on each of those lines. From a performance point of view, this process is highly inefficient, in that it requires a lot of unnecessary memory allocation and makes use of the {\ttfamily getline} function, which is fundamentally slow, slower than the act of parsing with simdjson \href{https://lemire.me/blog/2019/06/18/how-fast-is-getline-in-c/}{\texttt{ (more on this here)}}.
+
+Unlike the popular parser Rapid\+Json, our D\+OM does not require the buffer once the parsing job is completed, the D\+OM and the buffer are completely independent. The drawback of this architecture is that we need to allocate some additional memory to store our Parsed\+Json data, for every document inside a given file. Memory allocation can be slow and become a bottleneck, therefore, we want to minimize it as much as possible.\hypertarget{md_doc_parse_many_autotoc_md44}{}\doxysubsection{Design}\label{md_doc_parse_many_autotoc_md44}
+To achieve a minimum amount of allocations, we opted for a design where we create only one parser object and therefore allocate its memory once, and then recycle it for every document in a given file. But, knowing that they often have largely varying size, we need to make sure that we allocate enough memory so that all the documents can fit. This value is what we call the batch size. As of right now, we need to manually specify a value for this batch size, it has to be at least as big as the biggest document in your file, but not too big so that it submerges the cached memory. The bigger the batch size, the fewer we need to make allocations. We found that 1MB is somewhat a sweet spot for now.
+
+
+\begin{DoxyEnumerate}
+\item When the user calls {\ttfamily parse\+\_\+many}, we return a {\ttfamily document\+\_\+stream} which the user can iterate over to receive parsed documents.
+\item We call stage 1 on the first batch\+\_\+size bytes of J\+S\+ON in the buffer, detecting structural indexes for all documents in that batch.
+\item We call stage 2 on the indexes, reading tokens until we reach the end of a valid document (i.\+e. a single array, object, string, boolean, number or null).
+\item Each time the user calls {\ttfamily ++} to read the next document, we call stage 2 to parse the next document where we left off.
+\item When we reach the end of the batch, we call stage 1 on the next batch, starting from the end of the last document, and go to step 3.
+\end{DoxyEnumerate}\hypertarget{md_doc_parse_many_autotoc_md45}{}\doxysubsection{Threads}\label{md_doc_parse_many_autotoc_md45}
+But how can we make use of threads if they are available? We found a pretty cool algorithm that allows us to quickly identify the position of the last J\+S\+ON document in a given batch. Knowing exactly where the end of the batch is, we no longer need for stage 2 to finish in order to load a new batch. We already know where to start the next batch. Therefore, we can run stage 1 on the next batch concurrently while the main thread is going through stage 2. Running stage 1 in a different thread can, in best cases, remove almost entirely its cost and replaces it by the overhead of a thread, which is orders of magnitude cheaper. Ain\textquotesingle{}t that awesome!
+
+Thread support is only active if thread supported is detected in which case the macro S\+I\+M\+D\+J\+S\+O\+N\+\_\+\+T\+H\+R\+E\+A\+D\+S\+\_\+\+E\+N\+A\+B\+L\+ED is set. Otherwise the library runs in single-\/thread mode.
+
+A {\ttfamily document\+\_\+stream} instance uses at most two threads\+: there is a main thread and a worker thread. You should expect the main thread to be fully occupied while the worker thread is partially busy (e.\+g., 80\% of the time).\hypertarget{md_doc_parse_many_autotoc_md46}{}\doxysection{Support}\label{md_doc_parse_many_autotoc_md46}
+Since we want to offer flexibility and not restrict ourselves to a specific file format, we support any file that contains any amount of valid J\+S\+ON document, {\bfseries{separated by one or more character that is considered whitespace}} by the J\+S\+ON spec. Anything that is not whitespace will be parsed as a J\+S\+ON document and could lead to failure.
+
+Whitespace Characters\+:
+\begin{DoxyItemize}
+\item {\bfseries{Space}}
+\item {\bfseries{Linefeed}}
+\item {\bfseries{Carriage return}}
+\item {\bfseries{Horizontal tab}}
+\item {\bfseries{Nothing}}
+\end{DoxyItemize}
+
+Some official formats $\ast$$\ast$(non-\/exhaustive list)$\ast$$\ast$\+:
+\begin{DoxyItemize}
+\item \href{http://ndjson.org/}{\texttt{ Newline-\/\+Delimited J\+S\+ON (N\+D\+J\+S\+ON)}}
+\item \href{http://jsonlines.org/}{\texttt{ J\+S\+ON lines (J\+S\+O\+NL)}}
+\item \href{https://tools.ietf.org/html/rfc7464}{\texttt{ Record separator-\/delimited J\+S\+ON (R\+FC 7464)}} $<$-\/ Not supported by Json\+Stream!
+\item \href{https://en.wikipedia.org/wiki/JSON_streaming}{\texttt{ More on Wikipedia...}}
+\end{DoxyItemize}\hypertarget{md_doc_parse_many_autotoc_md47}{}\doxysection{A\+PI}\label{md_doc_parse_many_autotoc_md47}
+See \href{basics.md\#newline-delimited-json-ndjson-and-json-lines}{\texttt{ basics.\+md}} for an overview of the A\+PI.\hypertarget{md_doc_parse_many_autotoc_md48}{}\doxysection{Use cases}\label{md_doc_parse_many_autotoc_md48}
+From \href{http://jsonlines.org/examples/}{\texttt{ jsonlines.\+org}}\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Better than C\+SV}} \`{}\`{}\`{}json \mbox{[}\char`\"{}\+Name\char`\"{}, \char`\"{}\+Session\char`\"{}, \char`\"{}\+Score\char`\"{}, \char`\"{}\+Completed\char`\"{}\mbox{]} \mbox{[}\char`\"{}\+Gilbert\char`\"{}, \char`\"{}2013\char`\"{}, 24, true\mbox{]} \mbox{[}\char`\"{}\+Alexa\char`\"{}, \char`\"{}2013\char`\"{}, 29, true\mbox{]} \mbox{[}\char`\"{}\+May\char`\"{}, \char`\"{}2012\+B\char`\"{}, 14, false\mbox{]} \mbox{[}\char`\"{}\+Deloise\char`\"{}, \char`\"{}2012\+A\char`\"{}, 19, true\mbox{]} \`{}\`{}\`{} C\+SV seems so easy that many programmers have written code to generate it themselves, and almost every implementation is different. Handling broken C\+SV files is a common and frustrating task. C\+SV has no standard encoding, no standard column separator and multiple character escaping standards. String is the only type supported for cell values, so some programs attempt to guess the correct types.
+
+J\+S\+ON Lines handles tabular data cleanly and without ambiguity. Cells may use the standard J\+S\+ON types.
+
+The biggest missing piece is an import/export filter for popular spreadsheet programs so that non-\/programmers can use this format.
+\item {\bfseries{Easy Nested Data}} \`{}\`{}\`{}json \{\char`\"{}name\char`\"{}\+: \char`\"{}\+Gilbert\char`\"{}, \char`\"{}wins\char`\"{}\+: \mbox{[}\mbox{[}\char`\"{}straight\char`\"{}, \char`\"{}7♣\char`\"{}\mbox{]}, \mbox{[}\char`\"{}one pair\char`\"{}, \char`\"{}10♥\char`\"{}\mbox{]}\mbox{]}\} \{\char`\"{}name\char`\"{}\+: \char`\"{}\+Alexa\char`\"{}, \char`\"{}wins\char`\"{}\+: \mbox{[}\mbox{[}\char`\"{}two pair\char`\"{}, \char`\"{}4♠\char`\"{}\mbox{]}, \mbox{[}\char`\"{}two pair\char`\"{}, \char`\"{}9♠\char`\"{}\mbox{]}\mbox{]}\} \{\char`\"{}name\char`\"{}\+: \char`\"{}\+May\char`\"{}, \char`\"{}wins\char`\"{}\+: \mbox{[}\mbox{]}\} \{\char`\"{}name\char`\"{}\+: \char`\"{}\+Deloise\char`\"{}, \char`\"{}wins\char`\"{}\+: \mbox{[}\mbox{[}\char`\"{}three of a kind\char`\"{}, \char`\"{}5♣\char`\"{}\mbox{]}\mbox{]}\} \`{}\`{}` J\+S\+ON Lines' biggest strength is in handling lots of similar nested data structures. One .jsonl file is easier to work with than a directory full of X\+ML files. 
+\end{DoxyItemize}

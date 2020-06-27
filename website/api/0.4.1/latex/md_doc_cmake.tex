@@ -1,0 +1,18 @@
+One can use simdjson as a C\+Make dependency. You can include the simdjson repository as a folder in your project. In the parent {\ttfamily C\+Make\+Lists.\+txt} include the following lines\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{set(SIMDJSON\_JUST\_LIBRARY ON CACHE STRING "Build just the library, nothing else." FORCE)}
+\DoxyCodeLine{add\_subdirectory(simdjson EXCLUDE\_FROM\_ALL)}
+\end{DoxyCode}
+
+
+Elsewhere in your project, if you have a binary file that depends on the simdjson library, you can tell C\+Make about it with lines such as these\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{add\_executable(myprogram myprogram.cpp)}
+\DoxyCodeLine{}
+\DoxyCodeLine{target\_link\_libraries(myprogram simdjson)}
+\end{DoxyCode}
+ 

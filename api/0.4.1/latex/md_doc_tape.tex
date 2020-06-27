@@ -1,0 +1,129 @@
+We parse a J\+S\+ON document to a tape. A tape is an array of 64-\/bit values. Each node encountered in the J\+S\+ON document is written to the tape using one or more 64-\/bit tape elements; the layout of the tape is in \char`\"{}document order\char`\"{}\+: elements are stored as they are encountered in the J\+S\+ON document.
+
+Throughout, little endian encoding is assumed. The tape is indexed starting at 0 (the first element is at index 0).\hypertarget{md_doc_tape_autotoc_md57}{}\doxysection{Example}\label{md_doc_tape_autotoc_md57}
+It is sometimes useful to start with an example. Consider the following J\+S\+ON document\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    "Image": \{}
+\DoxyCodeLine{        "Width": 800,}
+\DoxyCodeLine{        "Height": 600,}
+\DoxyCodeLine{        "Title": "View from 15th Floor",}
+\DoxyCodeLine{        "Thumbnail": \{}
+\DoxyCodeLine{            "Url": "http://www.example.com/image/481989943",}
+\DoxyCodeLine{            "Height": 125,}
+\DoxyCodeLine{            "Width": 100}
+\DoxyCodeLine{        \},}
+\DoxyCodeLine{        "Animated": false,}
+\DoxyCodeLine{        "IDs": [116, 943, 234, 38793]}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+
+
+The following is a dump of the content of the tape, with the first number of each line representing the index of a tape element.\hypertarget{md_doc_tape_autotoc_md58}{}\doxysubsection{The Tape}\label{md_doc_tape_autotoc_md58}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ index }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ element (64 bit word)  }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ index }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ element (64 bit word)  }\\\cline{1-2}
+\endhead
+0 &r // pointing to 38 (right after last node)  \\\cline{1-2}
+1 &\{ // pointing to next tape location 38 (first node after the scope)  \\\cline{1-2}
+2 &string \char`\"{}\+Image\char`\"{}  \\\cline{1-2}
+3 &\{ // pointing to next tape location 37 (first node after the scope)  \\\cline{1-2}
+4 &string \char`\"{}\+Width\char`\"{}  \\\cline{1-2}
+5 &integer 800  \\\cline{1-2}
+7 &string \char`\"{}\+Height\char`\"{}  \\\cline{1-2}
+8 &integer 600  \\\cline{1-2}
+10 &string \char`\"{}\+Title\char`\"{}  \\\cline{1-2}
+11 &string \char`\"{}\+View from 15th Floor\char`\"{}  \\\cline{1-2}
+12 &string \char`\"{}\+Thumbnail\char`\"{}  \\\cline{1-2}
+13 &\{ // pointing to next tape location 23 (first node after the scope)  \\\cline{1-2}
+14 &string \char`\"{}\+Url\char`\"{}  \\\cline{1-2}
+15 &string \char`\"{}http\+://www.\+example.\+com/image/481989943\char`\"{}  \\\cline{1-2}
+16 &string \char`\"{}\+Height\char`\"{}  \\\cline{1-2}
+17 &integer 125  \\\cline{1-2}
+19 &string \char`\"{}\+Width\char`\"{}  \\\cline{1-2}
+20 &integer 100  \\\cline{1-2}
+22 &\} // pointing to previous tape location 13 (start of the scope)  \\\cline{1-2}
+23 &string \char`\"{}\+Animated\char`\"{}  \\\cline{1-2}
+24 &false  \\\cline{1-2}
+25 &string \char`\"{}\+I\+Ds\char`\"{}  \\\cline{1-2}
+26 &\mbox{[} // pointing to next tape location 36 (first node after the scope)  \\\cline{1-2}
+27 &integer 116  \\\cline{1-2}
+29 &integer 943  \\\cline{1-2}
+31 &integer 234  \\\cline{1-2}
+33 &integer 38793  \\\cline{1-2}
+35 &\mbox{]} // pointing to previous tape location 26 (start of the scope)  \\\cline{1-2}
+36 &\} // pointing to previous tape location 3 (start of the scope)  \\\cline{1-2}
+37 &\} // pointing to previous tape location 1 (start of the scope)  \\\cline{1-2}
+38 &r // pointing to 0 (start root)  \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_doc_tape_autotoc_md59}{}\doxysection{General formal of the tape elements}\label{md_doc_tape_autotoc_md59}
+Most tape elements are written as `(\textquotesingle{}c' $<$$<$ 56) + x{\ttfamily where}\textquotesingle{}c\textquotesingle{}` is some A\+S\+C\+II character determining the type of the element (out of \textquotesingle{}t', \textquotesingle{}f\textquotesingle{}, \textquotesingle{}n\textquotesingle{}, \textquotesingle{}l\textquotesingle{}, \textquotesingle{}u\textquotesingle{}, \textquotesingle{}d\textquotesingle{}, \textquotesingle{}\char`\"{}\textquotesingle{}, \textquotesingle{}\{\textquotesingle{}, \textquotesingle{}\}\textquotesingle{}, \textquotesingle{}\mbox{[}\textquotesingle{}, \textquotesingle{}\mbox{]}\textquotesingle{} ,\textquotesingle{}r\textquotesingle{}) and where {\ttfamily x} is a 56-\/bit value called the payload. The payload is normally interpreted as an unsigned 56-\/bit integer. Note that 56-\/bit integers can be quite large.
+
+Performance consideration\+: We believe that accessing the tape in regular units of 64 bits is more important for performance than saving memory.\hypertarget{md_doc_tape_autotoc_md60}{}\doxysection{Simple J\+S\+O\+N values}\label{md_doc_tape_autotoc_md60}
+Simple J\+S\+ON nodes are represented with one tape element\+:
+
+
+\begin{DoxyItemize}
+\item null is represented as the 64-\/bit value `(\textquotesingle{}n' $<$$<$ 56){\ttfamily where}\textquotesingle{}n\textquotesingle{}{\ttfamily is the 8-\/bit code point values (in A\+S\+C\+II) corresponding to the letter}\textquotesingle{}n\textquotesingle{}{\ttfamily .}
+\item {\ttfamily true is represented as the 64-\/bit value}(\textquotesingle{}t\textquotesingle{} $<$$<$ 56){\ttfamily .}
+\item {\ttfamily false is represented as the 64-\/bit value}(\textquotesingle{}f\textquotesingle{} $<$$<$ 56)\`{}.
+\end{DoxyItemize}\hypertarget{md_doc_tape_autotoc_md61}{}\doxysection{Integer and Double values}\label{md_doc_tape_autotoc_md61}
+Integer values are represented as two 64-\/bit tape elements\+:
+\begin{DoxyItemize}
+\item The 64-\/bit value `(\textquotesingle{}l' $<$$<$ 56){\ttfamily followed by the 64-\/bit integer value literally. Integer values are assumed to be signed 64-\/bit values, using two\textquotesingle{}s complement notation.}
+\item {\ttfamily The 64-\/bit value}(\textquotesingle{}u\textquotesingle{} $<$$<$ 56)\`{} followed by the 64-\/bit integer value literally. Integer values are assumed to be unsigned 64-\/bit values.
+\end{DoxyItemize}
+
+Float values are represented as two 64-\/bit tape elements\+:
+\begin{DoxyItemize}
+\item The 64-\/bit value `(\textquotesingle{}d' $<$$<$ 56)\`{} followed by the 64-\/bit double value literally in standard I\+E\+EE 754 notation.
+\end{DoxyItemize}
+
+Performance consideration\+: We store numbers of the main tape because we believe that locality of reference is helpful for performance.\hypertarget{md_doc_tape_autotoc_md62}{}\doxysection{Root node}\label{md_doc_tape_autotoc_md62}
+Each J\+S\+ON document will have two special 64-\/bit tape elements representing a root node, one at the beginning and one at the end.
+
+
+\begin{DoxyItemize}
+\item The first 64-\/bit tape element contains the value `(\textquotesingle{}r' $<$$<$ 56) + x{\ttfamily where}x{\ttfamily is the location on the tape of the last root element.}
+\item {\ttfamily The last 64-\/bit tape element contains the value}(\textquotesingle{}r\textquotesingle{} $<$$<$ 56)\`{}.
+\end{DoxyItemize}
+
+All of the parsed document is located between these two 64-\/bit tape elements.
+
+Hint\+: We can read the first tape element to determine the length of the tape.\hypertarget{md_doc_tape_autotoc_md63}{}\doxysection{Strings}\label{md_doc_tape_autotoc_md63}
+We prefix the string data itself by a 32-\/bit header to be interpreted as a 32-\/bit integer. It indicates the length of the string. The actual string data starts at an offset of 4 bytes.
+
+We store string values using U\+T\+F-\/8 encoding with null termination on a separate tape. A string value is represented on the main tape as the 64-\/bit tape element `('"\textquotesingle{} $<$$<$ 56) + x{\ttfamily where the payload}x\`{} is the location on the string tape of the null-\/terminated string.\hypertarget{md_doc_tape_autotoc_md64}{}\doxysection{Arrays}\label{md_doc_tape_autotoc_md64}
+J\+S\+ON arrays are represented using two 64-\/bit tape elements.
+
+
+\begin{DoxyItemize}
+\item The first 64-\/bit tape element contains the value `('\mbox{[}\textquotesingle{} $<$$<$ 56) + x{\ttfamily where the payload}x{\ttfamily is 1 + the index of the second 64-\/bit tape element on the tape.}
+\item {\ttfamily The second 64-\/bit tape element contains the value}(\textquotesingle{}\mbox{]}\textquotesingle{} $<$$<$ 56) + x{\ttfamily where the payload}x\`{} contains the index of the first 64-\/bit tape element on the tape.
+\end{DoxyItemize}
+
+All the content of the array is located between these two tape elements, including arrays and objects.
+
+Performance consideration\+: We can skip the content of an array entirely by accessing the first 64-\/bit tape element, reading the payload and moving to the corresponding index on the tape.\hypertarget{md_doc_tape_autotoc_md65}{}\doxysection{Objects}\label{md_doc_tape_autotoc_md65}
+J\+S\+ON objects are represented using two 64-\/bit tape elements.
+
+
+\begin{DoxyItemize}
+\item The first 64-\/bit tape element contains the value `('\{\textquotesingle{} $<$$<$ 56) + x{\ttfamily where the payload}x{\ttfamily is 1 + the index of the second 64-\/bit tape element on the tape.}
+\item {\ttfamily The second 64-\/bit tape element contains the value}(\textquotesingle{}\}\textquotesingle{} $<$$<$ 56) + x{\ttfamily where the payload}x\`{} contains the index of the first 64-\/bit tape element on the tape.
+\end{DoxyItemize}
+
+In-\/between these two tape elements, we alternate between key (which must be strings) and values. A value could be an object or an array.
+
+All the content of the object is located between these two tape elements, including arrays and objects.
+
+Performance consideration\+: We can skip the content of an object entirely by accessing the first 64-\/bit tape element, reading the payload and moving to the corresponding index on the tape. 

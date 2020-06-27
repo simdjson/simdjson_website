@@ -1,0 +1,114 @@
+\hypertarget{classsimdjson_1_1dom_1_1object_1_1iterator}{}\doxysection{simdjson\+::dom\+::object\+::iterator Class Reference}
+\label{classsimdjson_1_1dom_1_1object_1_1iterator}\index{simdjson::dom::object::iterator@{simdjson::dom::object::iterator}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_1_1iterator_a688f6c7f451602bb3385a93252c0828a}\label{classsimdjson_1_1dom_1_1object_1_1iterator_a688f6c7f451602bb3385a93252c0828a}} 
+const \mbox{\hyperlink{classsimdjson_1_1dom_1_1key__value__pair}{key\+\_\+value\+\_\+pair}} \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator_a688f6c7f451602bb3385a93252c0828a}{operator$\ast$}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get the actual key/value pair. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator}{iterator}} \& \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator_aa26738ad08b7de3be4621a75863118ab}{operator++}} () noexcept
+\begin{DoxyCompactList}\small\item\em Get the next key/value pair. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator_a1da5ce328cc2609432be961736c6e810}{operator!=}} (const \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator}{iterator}} \&other) const noexcept
+\begin{DoxyCompactList}\small\item\em Check if these key value pairs come from the same place in the J\+S\+ON. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_1_1iterator_a951609ca7a164b499ff19adbe2de7983}\label{classsimdjson_1_1dom_1_1object_1_1iterator_a951609ca7a164b499ff19adbe2de7983}} 
+std\+::string\+\_\+view \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator_a951609ca7a164b499ff19adbe2de7983}{key}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get the key of this key/value pair. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator_a5ad1b60fd5df56d9fdb8bce1e08de88f}{key\+\_\+length}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get the length (in bytes) of the key in this key/value pair. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator_a607b953ba53fe9855b3472100580ea83}{key\+\_\+equals}} (const std\+::string\+\_\+view \&o) const noexcept
+\begin{DoxyCompactList}\small\item\em Returns true if the key in this key/value pair is equal to the provided string\+\_\+view. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator_a8b538c7e89929ac91d1b6dbf2d82b49d}{key\+\_\+equals\+\_\+case\+\_\+insensitive}} (const std\+::string\+\_\+view \&o) const noexcept
+\begin{DoxyCompactList}\small\item\em Returns true if the key in this key/value pair is equal to the provided string\+\_\+view in a case-\/insensitive manner. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_1_1iterator_a54a99dcf9c422d5c24f3c570b6d9b6e4}\label{classsimdjson_1_1dom_1_1object_1_1iterator_a54a99dcf9c422d5c24f3c570b6d9b6e4}} 
+const char $\ast$ \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator_a54a99dcf9c422d5c24f3c570b6d9b6e4}{key\+\_\+c\+\_\+str}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get the key of this key/value pair. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_1_1iterator_a2049ae539dca6999cc33300d212a5014}\label{classsimdjson_1_1dom_1_1object_1_1iterator_a2049ae539dca6999cc33300d212a5014}} 
+\mbox{\hyperlink{classsimdjson_1_1dom_1_1element}{element}} \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator_a2049ae539dca6999cc33300d212a5014}{value}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get the value of this key/value pair. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 25 of file object.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_1_1iterator_a607b953ba53fe9855b3472100580ea83}\label{classsimdjson_1_1dom_1_1object_1_1iterator_a607b953ba53fe9855b3472100580ea83}} 
+\index{simdjson::dom::object::iterator@{simdjson::dom::object::iterator}!key\_equals@{key\_equals}}
+\index{key\_equals@{key\_equals}!simdjson::dom::object::iterator@{simdjson::dom::object::iterator}}
+\doxysubsubsection{\texorpdfstring{key\_equals()}{key\_equals()}}
+{\footnotesize\ttfamily bool simdjson\+::dom\+::object\+::iterator\+::key\+\_\+equals (\begin{DoxyParamCaption}\item[{const std\+::string\+\_\+view \&}]{o }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Returns true if the key in this key/value pair is equal to the provided string\+\_\+view. 
+
+Design notes\+: Instead of constructing a string\+\_\+view and then comparing it with a user-\/provided strings, it is probably more performant to have dedicated functions taking as a parameter the string we want to compare against and return true when they are equal.
+
+That avoids the creation of a temporary std\+::string\+\_\+view. Though it is possible for the compiler to avoid entirely any overhead due to string\+\_\+view, relying too much on compiler magic is problematic\+: compiler magic sometimes fail, and then what do you do? Also, enticing users to rely on high-\/performance function is probably better on the long run. 
+
+Definition at line 183 of file object.\+h.
+
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_1_1iterator_a8b538c7e89929ac91d1b6dbf2d82b49d}\label{classsimdjson_1_1dom_1_1object_1_1iterator_a8b538c7e89929ac91d1b6dbf2d82b49d}} 
+\index{simdjson::dom::object::iterator@{simdjson::dom::object::iterator}!key\_equals\_case\_insensitive@{key\_equals\_case\_insensitive}}
+\index{key\_equals\_case\_insensitive@{key\_equals\_case\_insensitive}!simdjson::dom::object::iterator@{simdjson::dom::object::iterator}}
+\doxysubsubsection{\texorpdfstring{key\_equals\_case\_insensitive()}{key\_equals\_case\_insensitive()}}
+{\footnotesize\ttfamily bool simdjson\+::dom\+::object\+::iterator\+::key\+\_\+equals\+\_\+case\+\_\+insensitive (\begin{DoxyParamCaption}\item[{const std\+::string\+\_\+view \&}]{o }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Returns true if the key in this key/value pair is equal to the provided string\+\_\+view in a case-\/insensitive manner. 
+
+Case comparisons may only be handled correctly for A\+S\+C\+II strings. 
+
+Definition at line 194 of file object.\+h.
+
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_1_1iterator_a5ad1b60fd5df56d9fdb8bce1e08de88f}\label{classsimdjson_1_1dom_1_1object_1_1iterator_a5ad1b60fd5df56d9fdb8bce1e08de88f}} 
+\index{simdjson::dom::object::iterator@{simdjson::dom::object::iterator}!key\_length@{key\_length}}
+\index{key\_length@{key\_length}!simdjson::dom::object::iterator@{simdjson::dom::object::iterator}}
+\doxysubsubsection{\texorpdfstring{key\_length()}{key\_length()}}
+{\footnotesize\ttfamily uint32\+\_\+t simdjson\+::dom\+::object\+::iterator\+::key\+\_\+length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Get the length (in bytes) of the key in this key/value pair. 
+
+You should expect this function to be faster than \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator_a951609ca7a164b499ff19adbe2de7983}{key()}}.\mbox{\hyperlink{classsimdjson_1_1dom_1_1object_a93ec5c36aae913f266f533b2e02bc873}{size()}}. 
+
+Definition at line 160 of file object.\+h.
+
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_1_1iterator_a1da5ce328cc2609432be961736c6e810}\label{classsimdjson_1_1dom_1_1object_1_1iterator_a1da5ce328cc2609432be961736c6e810}} 
+\index{simdjson::dom::object::iterator@{simdjson::dom::object::iterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!simdjson::dom::object::iterator@{simdjson::dom::object::iterator}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool simdjson\+::dom\+::object\+::iterator\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator}{iterator}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Check if these key value pairs come from the same place in the J\+S\+ON. 
+
+Part of the std\+::iterator interface. 
+
+Definition at line 149 of file object.\+h.
+
+\mbox{\Hypertarget{classsimdjson_1_1dom_1_1object_1_1iterator_aa26738ad08b7de3be4621a75863118ab}\label{classsimdjson_1_1dom_1_1object_1_1iterator_aa26738ad08b7de3be4621a75863118ab}} 
+\index{simdjson::dom::object::iterator@{simdjson::dom::object::iterator}!operator++@{operator++}}
+\index{operator++@{operator++}!simdjson::dom::object::iterator@{simdjson::dom::object::iterator}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsimdjson_1_1dom_1_1object_1_1iterator}{object\+::iterator}} \& simdjson\+::dom\+::object\+::iterator\+::operator++ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Get the next key/value pair. 
+
+Part of the std\+::iterator interface. 
+
+Definition at line 152 of file object.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/simdjson/dom/object.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,233 @@
+\hypertarget{structsimdjson_1_1padded__string}{}\doxysection{simdjson\+::padded\+\_\+string Struct Reference}
+\label{structsimdjson_1_1padded__string}\index{simdjson::padded\_string@{simdjson::padded\_string}}
+
+
+String with extra allocation for ease of use with parser\+::parse()  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structsimdjson_1_1padded__string_a8e10a3a5a46a4d58459b052975b0bf66}\label{structsimdjson_1_1padded__string_a8e10a3a5a46a4d58459b052975b0bf66}} 
+\mbox{\hyperlink{structsimdjson_1_1padded__string_a8e10a3a5a46a4d58459b052975b0bf66}{padded\+\_\+string}} () noexcept
+\begin{DoxyCompactList}\small\item\em Create a new, empty padded string. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsimdjson_1_1padded__string_ac06ec74c78934565cdf50df163d35476}{padded\+\_\+string}} (size\+\_\+t \mbox{\hyperlink{structsimdjson_1_1padded__string_a863fded7b347718299190ad3f501d38c}{length}}) noexcept
+\begin{DoxyCompactList}\small\item\em Create a new padded string buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsimdjson_1_1padded__string_a1b15f9345c0215e7548df1aa0105de98}{padded\+\_\+string}} (const char $\ast$\mbox{\hyperlink{structsimdjson_1_1padded__string_a7e5e167d213e4fe8c88c3e997fa1d39b}{data}}, size\+\_\+t \mbox{\hyperlink{structsimdjson_1_1padded__string_a863fded7b347718299190ad3f501d38c}{length}}) noexcept
+\begin{DoxyCompactList}\small\item\em Create a new padded string by copying the given input. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsimdjson_1_1padded__string_a44fb0f219f05528e606f79dab7c32482}{padded\+\_\+string}} (const std\+::string \&str\+\_\+) noexcept
+\begin{DoxyCompactList}\small\item\em Create a new padded string by copying the given input. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsimdjson_1_1padded__string_a6199f5bf259fcac114addeef569cf5a5}{padded\+\_\+string}} (std\+::string\+\_\+view sv\+\_\+) noexcept
+\begin{DoxyCompactList}\small\item\em Create a new padded string by copying the given input. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsimdjson_1_1padded__string_a952eaf7ff8ddf252d9c00a693978a4da}{padded\+\_\+string}} (\mbox{\hyperlink{structsimdjson_1_1padded__string}{padded\+\_\+string}} \&\&o) noexcept
+\begin{DoxyCompactList}\small\item\em Move one padded string into another. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsimdjson_1_1padded__string}{padded\+\_\+string}} \& \mbox{\hyperlink{structsimdjson_1_1padded__string_aa43b3a8e0df4edcf960f04441dd9b930}{operator=}} (\mbox{\hyperlink{structsimdjson_1_1padded__string}{padded\+\_\+string}} \&\&o) noexcept
+\begin{DoxyCompactList}\small\item\em Move one padded string into another. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structsimdjson_1_1padded__string_a34caaf522743a93b12c44b72c3de8925}\label{structsimdjson_1_1padded__string_a34caaf522743a93b12c44b72c3de8925}} 
+void {\bfseries swap} (\mbox{\hyperlink{structsimdjson_1_1padded__string}{padded\+\_\+string}} \&o) noexcept
+\item 
+size\+\_\+t \mbox{\hyperlink{structsimdjson_1_1padded__string_a07d50795f042119ab848c37cb8911db4}{size}} () const noexcept
+\begin{DoxyCompactList}\small\item\em The length of the string. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{structsimdjson_1_1padded__string_a863fded7b347718299190ad3f501d38c}{length}} () const noexcept
+\begin{DoxyCompactList}\small\item\em The length of the string. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structsimdjson_1_1padded__string_a7e5e167d213e4fe8c88c3e997fa1d39b}\label{structsimdjson_1_1padded__string_a7e5e167d213e4fe8c88c3e997fa1d39b}} 
+const char $\ast$ \mbox{\hyperlink{structsimdjson_1_1padded__string_a7e5e167d213e4fe8c88c3e997fa1d39b}{data}} () const noexcept
+\begin{DoxyCompactList}\small\item\em The string data. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structsimdjson_1_1padded__string_ab1f36c02f5df7f299afa26722de4e636}\label{structsimdjson_1_1padded__string_ab1f36c02f5df7f299afa26722de4e636}} 
+char $\ast$ \mbox{\hyperlink{structsimdjson_1_1padded__string_ab1f36c02f5df7f299afa26722de4e636}{data}} () noexcept
+\begin{DoxyCompactList}\small\item\em The string data. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structsimdjson_1_1padded__string_a4bf80c11155b8067a87bd76762bee23b}\label{structsimdjson_1_1padded__string_a4bf80c11155b8067a87bd76762bee23b}} 
+\mbox{\hyperlink{structsimdjson_1_1padded__string_a4bf80c11155b8067a87bd76762bee23b}{operator std\+::string\+\_\+view}} () const
+\begin{DoxyCompactList}\small\item\em Create a std\+::string\+\_\+view with the same content. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{structsimdjson_1_1simdjson__result}{simdjson\+\_\+result}}$<$ \mbox{\hyperlink{structsimdjson_1_1padded__string}{padded\+\_\+string}} $>$ \mbox{\hyperlink{structsimdjson_1_1padded__string_a7e5ba0bca3ee860c69c2b2a29cc0fb0c}{load}} (const std\+::string \&path) noexcept
+\begin{DoxyCompactList}\small\item\em Load this padded string from a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+String with extra allocation for ease of use with parser\+::parse() 
+
+This is a move-\/only class, it cannot be copied. 
+
+Definition at line 20 of file padded\+\_\+string.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structsimdjson_1_1padded__string_ac06ec74c78934565cdf50df163d35476}\label{structsimdjson_1_1padded__string_ac06ec74c78934565cdf50df163d35476}} 
+\index{simdjson::padded\_string@{simdjson::padded\_string}!padded\_string@{padded\_string}}
+\index{padded\_string@{padded\_string}!simdjson::padded\_string@{simdjson::padded\_string}}
+\doxysubsubsection{\texorpdfstring{padded\_string()}{padded\_string()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily simdjson\+::padded\+\_\+string\+::padded\+\_\+string (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
+
+
+
+Create a new padded string buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em length} & the size of the string. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 38 of file padded\+\_\+string.\+h.
+
+\mbox{\Hypertarget{structsimdjson_1_1padded__string_a1b15f9345c0215e7548df1aa0105de98}\label{structsimdjson_1_1padded__string_a1b15f9345c0215e7548df1aa0105de98}} 
+\index{simdjson::padded\_string@{simdjson::padded\_string}!padded\_string@{padded\_string}}
+\index{padded\_string@{padded\_string}!simdjson::padded\_string@{simdjson::padded\_string}}
+\doxysubsubsection{\texorpdfstring{padded\_string()}{padded\_string()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily simdjson\+::padded\+\_\+string\+::padded\+\_\+string (\begin{DoxyParamCaption}\item[{const char $\ast$}]{data,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
+
+
+
+Create a new padded string by copying the given input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & the buffer to copy \\
+\hline
+{\em length} & the number of bytes to copy \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 43 of file padded\+\_\+string.\+h.
+
+\mbox{\Hypertarget{structsimdjson_1_1padded__string_a44fb0f219f05528e606f79dab7c32482}\label{structsimdjson_1_1padded__string_a44fb0f219f05528e606f79dab7c32482}} 
+\index{simdjson::padded\_string@{simdjson::padded\_string}!padded\_string@{padded\_string}}
+\index{padded\_string@{padded\_string}!simdjson::padded\_string@{simdjson::padded\_string}}
+\doxysubsubsection{\texorpdfstring{padded\_string()}{padded\_string()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily simdjson\+::padded\+\_\+string\+::padded\+\_\+string (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Create a new padded string by copying the given input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str\+\_\+} & the string to copy \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 51 of file padded\+\_\+string.\+h.
+
+\mbox{\Hypertarget{structsimdjson_1_1padded__string_a6199f5bf259fcac114addeef569cf5a5}\label{structsimdjson_1_1padded__string_a6199f5bf259fcac114addeef569cf5a5}} 
+\index{simdjson::padded\_string@{simdjson::padded\_string}!padded\_string@{padded\_string}}
+\index{padded\_string@{padded\_string}!simdjson::padded\_string@{simdjson::padded\_string}}
+\doxysubsubsection{\texorpdfstring{padded\_string()}{padded\_string()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily simdjson\+::padded\+\_\+string\+::padded\+\_\+string (\begin{DoxyParamCaption}\item[{std\+::string\+\_\+view}]{sv\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Create a new padded string by copying the given input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sv\+\_\+} & the string to copy \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 59 of file padded\+\_\+string.\+h.
+
+\mbox{\Hypertarget{structsimdjson_1_1padded__string_a952eaf7ff8ddf252d9c00a693978a4da}\label{structsimdjson_1_1padded__string_a952eaf7ff8ddf252d9c00a693978a4da}} 
+\index{simdjson::padded\_string@{simdjson::padded\_string}!padded\_string@{padded\_string}}
+\index{padded\_string@{padded\_string}!simdjson::padded\_string@{simdjson::padded\_string}}
+\doxysubsubsection{\texorpdfstring{padded\_string()}{padded\_string()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily simdjson\+::padded\+\_\+string\+::padded\+\_\+string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsimdjson_1_1padded__string}{padded\+\_\+string}} \&\&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Move one padded string into another. 
+
+The original padded string will be reduced to zero capacity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & the string to move. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 66 of file padded\+\_\+string.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structsimdjson_1_1padded__string_a863fded7b347718299190ad3f501d38c}\label{structsimdjson_1_1padded__string_a863fded7b347718299190ad3f501d38c}} 
+\index{simdjson::padded\_string@{simdjson::padded\_string}!length@{length}}
+\index{length@{length}!simdjson::padded\_string@{simdjson::padded\_string}}
+\doxysubsubsection{\texorpdfstring{length()}{length()}}
+{\footnotesize\ttfamily size\+\_\+t simdjson\+::padded\+\_\+string\+::length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+The length of the string. 
+
+Does not include padding. 
+
+Definition at line 95 of file padded\+\_\+string.\+h.
+
+\mbox{\Hypertarget{structsimdjson_1_1padded__string_a7e5ba0bca3ee860c69c2b2a29cc0fb0c}\label{structsimdjson_1_1padded__string_a7e5ba0bca3ee860c69c2b2a29cc0fb0c}} 
+\index{simdjson::padded\_string@{simdjson::padded\_string}!load@{load}}
+\index{load@{load}!simdjson::padded\_string@{simdjson::padded\_string}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsimdjson_1_1simdjson__result}{simdjson\+\_\+result}}$<$ \mbox{\hyperlink{structsimdjson_1_1padded__string}{padded\+\_\+string}} $>$ simdjson\+::padded\+\_\+string\+::load (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+Load this padded string from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & the path to the file. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 103 of file padded\+\_\+string.\+h.
+
+\mbox{\Hypertarget{structsimdjson_1_1padded__string_aa43b3a8e0df4edcf960f04441dd9b930}\label{structsimdjson_1_1padded__string_aa43b3a8e0df4edcf960f04441dd9b930}} 
+\index{simdjson::padded\_string@{simdjson::padded\_string}!operator=@{operator=}}
+\index{operator=@{operator=}!simdjson::padded\_string@{simdjson::padded\_string}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsimdjson_1_1padded__string}{padded\+\_\+string}} \& simdjson\+::padded\+\_\+string\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsimdjson_1_1padded__string}{padded\+\_\+string}} \&\&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Move one padded string into another. 
+
+The original padded string will be reduced to zero capacity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & the string to move. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 71 of file padded\+\_\+string.\+h.
+
+\mbox{\Hypertarget{structsimdjson_1_1padded__string_a07d50795f042119ab848c37cb8911db4}\label{structsimdjson_1_1padded__string_a07d50795f042119ab848c37cb8911db4}} 
+\index{simdjson::padded\_string@{simdjson::padded\_string}!size@{size}}
+\index{size@{size}!simdjson::padded\_string@{simdjson::padded\_string}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily size\+\_\+t simdjson\+::padded\+\_\+string\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+The length of the string. 
+
+Does not include padding. 
+
+Definition at line 93 of file padded\+\_\+string.\+h.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/simdjson/padded\+\_\+string.\+h\end{DoxyCompactItemize}
