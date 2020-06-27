@@ -32,7 +32,6 @@ Prerequisites: `g++` (version 7 or better)  or `clang++`(version 6 or better), a
    c++ -o quickstart quickstart.cpp simdjson.cpp -std=c++17
 {{< / highlight >}}
 
-``
 - Run: 
 {{< highlight bash "">}}
    ./quickstart

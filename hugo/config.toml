@@ -17,7 +17,7 @@ keywords = "open source, JSON, C++"
 
 [params.hero]
 herotitle = "Parsing gigabytes of JSON per second"
-herodiscription = "JSON is everywhere on the Internet. Servers spend a <strong>lot</strong> of time parsing it. The simdjson library uses commonly available SIMD instructions and microparallel algorithms to parse JSON 2.5 times faster than anything else out there. "
+herodiscription = "JSON is everywhere on the Internet. Servers spend a <strong>lot</strong> of time parsing it. The simdjson library uses commonly available SIMD instructions and microparallel algorithms to parse JSON several times faster than anything else out there. "
 btnblue = "Browse the API"
 btnblueurl = "https://simdjson.org/api/0.4.1/index.html"
 btngreen = "The simdjson library on GitHub"
