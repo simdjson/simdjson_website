@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Simdjson benchmarks</title>
-	<script src="plot.js"></script>
+	<script src="plot.js?v=2"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
@@ -46,7 +46,7 @@
 			jsons.push(load_json("benchmark_results/" + files[i] + ".py.json"));
 		}
 
-		var myArray = commit_data_array(jsons, files);
+		var myArray = commit_data_array_date(jsons, files);
 
         for (var i=0; i<myArray.length; i++) {
            document.write("<tr>");
@@ -54,6 +54,9 @@
              if((j == 0) && (i > 0)) {
                var u = "https://github.com/simdjson/simdjson/commit/";
                document.write("<td><a href=\""+u+myArray[i][j]+"\">"+myArray[i][j]+"</a></td>");
+              } else if((j==4) && (i>0)) {
+               var t = new Date(myArray[i][j]*1000); 
+               document.write("<td>"+t.toLocaleDateString("en-US")+" "+t.toLocaleTimeString("en-US")+"</td>");
               } else {
                document.write("<td>"+myArray[i][j]+"</td>");
              }

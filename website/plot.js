@@ -32,6 +32,25 @@ function get_commits(jsons) {
 function date_data_array(jsons) {
 	
 }
+function commit_data_array_date(jsons, benchnames) {
+	var arr = [["Commit"]];
+	for(bn of benchnames) {
+		arr[0].push(bn);
+	}
+    arr[0].push("Date");
+	for(cd of get_commits(jsons)) {
+        c = cd[1];
+		row = [c];
+		for(let i = 0; i < jsons.length; i++) {
+			if(jsons[i][c].speed != null) row[i + 1] = jsons[i][c].speed;
+			else row[i + 1] = 0;
+		}
+        row.push(cd[0]);
+		arr.push(row);
+	}
+
+	return arr;
+}
 
 function commit_data_array(jsons, benchnames) {
 	var arr = [["Commit"]];
