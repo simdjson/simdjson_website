@@ -1374,7 +1374,7 @@ abbr {
   cursor: help;
   border-bottom: 1px dotted #0a0a0a; }
 
-code-disabled {
+codedisabled {
   font-family: Consolas, "Liberation Mono", Courier, monospace;
   font-weight: normal;
   color: #0a0a0a;
