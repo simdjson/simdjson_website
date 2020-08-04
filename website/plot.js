@@ -14,11 +14,19 @@ function keysrt(a,b) {
 }
 function get_commits(jsons) {
 	commits_arr = [];
+    seen = []
 	for(j of jsons) {
 		for(c in j) {
-			if(commits_arr.indexOf(c) == -1) commits_arr.push([j[c].date,c]);
+            var ke = [j[c].date,c]
+			if(seen.indexOf(c) == -1) {
+                 commits_arr.push(ke);
+                 seen.push(c)
+            }
 		}
 	}
+    commits_arr.reverse();
+    return commits_arr;
+/*
     commits_arr.sort(keysrt);
     answer = [commits_arr[0]];
     for (var i = 1; i < commits_arr.length; i++) {
@@ -27,7 +35,7 @@ function get_commits(jsons) {
       }
     }
 	return answer;
-}
+*/}
 
 function date_data_array(jsons) {
 	

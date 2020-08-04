@@ -3,13 +3,13 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Simdjson benchmarks</title>
-	<script src="plot.js?v=3"></script>
+	<script src="plot.js?v=12"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
 	<div id="chart" style="width: 1080px; height: 720px"></div>
 	<script>
-		var files = ["parse_canada", "parse_twitter", "parse_gsoc-2018"];
+		var files = ["parse_twitter"]; ///["parse_canada", "parse_twitter", "parse_gsoc-2018"];
 	 	var jsons = [];
 
 		for(let i = 0; i < files.length; i++) {
