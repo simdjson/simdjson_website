@@ -3,7 +3,7 @@ title = "Software"
 layout = "single-para"
 +++
 
- The library is part of major linux distributions like [Ubuntu](https://packages.ubuntu.com/source/eoan/simdjson) and [Debian](https://packages.debian.org/unstable/source/simdjson). It is in [Microsoft vpkg](https://github.com/microsoft/vcpkg/). We publish it as single-header library as well as a CMake build from the[ GitHub repository](https://github.com/simdjson/simdjson).
+ The library is part of major linux distributions like [Ubuntu](https://packages.ubuntu.com/source/eoan/simdjson) and [Debian](https://packages.debian.org/unstable/source/simdjson). It is in [Microsoft vpkg](https://github.com/simdjson/simdjson/wiki/vcpkg). It is available as an [MSYS2 package](https://github.com/simdjson/simdjson/wiki/MSYS2). We publish it as single-header library as well as a CMake build from the[ GitHub repository](https://github.com/simdjson/simdjson).
 We have a [simdjson organization on GitHub](https://github.com/simdjson). 
 
 Quick Start
@@ -54,6 +54,7 @@ Real-world usage
 - [Microsoft FishStore](https://github.com/microsoft/FishStore)
 - [Yandex ClickHouse](https://github.com/yandex/ClickHouse)
 - [Clang Build Analyzer](https://github.com/aras-p/ClangBuildAnalyzer)
+- [Shopify HeapProfiler](https://github.com/Shopify/heap-profiler)
 
 If you are planning to use simdjson in a product, please work from one of our releases.
 
@@ -69,6 +70,7 @@ We distinguish between "bindings" (which just wrap the C++ code) and a port to a
 - [SimdJsonSharp](https://github.com/EgorBo/SimdJsonSharp): C# version for .NET Core (bindings and full port).
 - [simdjson_nodejs](https://github.com/luizperes/simdjson_nodejs): Node.js bindings for the simdjson project.
 - [simdjson_php](https://github.com/crazyxman/simdjson_php): PHP bindings for the simdjson project.
+- [fast_jsonparser](https://github.com/anilmaurya/fast_jsonparser): Ruby bindings for the simdjson project.
 - [simdjson_ruby](https://github.com/saka1/simdjson_ruby): Ruby bindings for the simdjson project.
 - [simdjson-go](https://github.com/minio/simdjson-go): Go port using Golang assembly.
 - [rcppsimdjson](https://github.com/eddelbuettel/rcppsimdjson): R bindings.
