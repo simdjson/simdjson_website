@@ -14,32 +14,15 @@ function keysrt(a,b) {
 }
 function get_commits(jsons) {
 	commits_arr = [];
-    seen = []
-	for(j of jsons) {
-		for(c in j) {
-            var ke = [j[c].date,c]
-			if(seen.indexOf(c) == -1) {
-                 commits_arr.push(ke);
-                 seen.push(c)
-            }
-		}
+    var j = jsons[0];
+	for(c in j) {
+      var ke = [j[c].date,c]
+      commits_arr.push(ke);
 	}
     commits_arr.reverse();
     return commits_arr;
-/*
-    commits_arr.sort(keysrt);
-    answer = [commits_arr[0]];
-    for (var i = 1; i < commits_arr.length; i++) {
-      if(commits_arr[i][1] != answer[answer.length - 1][1]) {
-        answer.push(commits_arr[i]);
-      }
-    }
-	return answer;
-*/}
-
-function date_data_array(jsons) {
-	
 }
+
 function commit_data_array_date(jsons, benchnames) {
 	var arr = [["Commit"]];
 	for(bn of benchnames) {
