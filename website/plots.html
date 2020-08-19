@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="icon" href="/simdjsonlogo.png">
+        <link rel="stylesheet" href="https://simdjson.org/css/foundation.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="https://simdjson.org/css/styles.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="https://simdjson.org/css/syntax.css" type="text/css" media="screen">
+	<title>Some simdjson benchmarks</title>
+	<script src="plot.js?v=15"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+	<section class="main-content">
+    <div id="chart" style="width: 1080px; height: 720px"></div>
+	<script>
+		var files = ["parse_twitter"]; ///["parse_canada", "parse_twitter", "parse_gsoc-2018"];
+	 	var jsons = [];
+
+		for(let i = 0; i < files.length; i++) {
+			jsons.push(load_json("benchmark_results/" + files[i] + ".py.json"));
+		}
+
+		google.charts.load('current', {packages: ['corechart']});
+		google.charts.setOnLoadCallback(drawCommits);
+
+		function drawCommits() {
+			var data = new google.visualization.arrayToDataTable(commit_data_array(jsons, files));
+			var options = {
+				title: "The simdjson parsing performance per commit",
+				hAxis: {title: "Commit", 
+                        direction:-1,
+                        slantedText:true,
+                        slantedTextAngle:90},
+				vAxis: {title: "Speed (GB/s)"}
+			};
+			var chart = new google.visualization.LineChart(document.getElementById('chart'));
+			chart.draw(data, options);
+		}
+	</script>
+    <p>Hardware: AMD Rome processor.</p>
+    <p>Software: Ubuntu 20.10 (GNU GCC9)</p>
+	<table border="1">
+
+<script language="javascript" type="text/javascript">
+<!--
+		var files = ["parse_canada", "parse_twitter", "parse_gsoc-2018"];
+	 	var jsons = [];
+	
+		for(let i = 0; i < files.length; i++) {
+			jsons.push(load_json("benchmark_results/" + files[i] + ".py.json"));
+		}
+
+		var myArray = commit_data_array_date(jsons, files);
+
+        for (var i=0; i<myArray.length; i++) {
+           document.write("<tr>");
+           for (var j=0; j<myArray[i].length; j++) {
+             if((j == 0) && (i > 0)) {
+               var u = "https://github.com/simdjson/simdjson/commit/";
+               document.write("<td><a href=\""+u+myArray[i][j]+"\">"+myArray[i][j]+"</a></td>");
+              } else if((j==4) && (i>0)) {
+               var t = new Date(myArray[i][j]*1000); 
+               document.write("<td>"+t.toLocaleDateString("en-US")+" "+t.toLocaleTimeString("en-US")+"</td>");
+              } else {
+               document.write("<td>"+myArray[i][j]+"</td>");
+             }
+           }
+           document.write("</tr>");
+        }
+
+//-->
+</script>
+
+</table>
+
+<ol>
+<li><a href="benchmark_results/parse_canada.py.json">canada results</a></li>
+<li><a href="benchmark_results/parse_twitter.py.json">twitter results</a></li>
+<li><a href="benchmark_results/parse_gsoc-2018.py.json">gsoc results</a></li>
+</ol>
+
+</section>
+</body>
+</html>
