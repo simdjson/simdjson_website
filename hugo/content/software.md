@@ -3,8 +3,9 @@ title = "Software"
 layout = "single-para"
 +++
 
- The library is part of major linux distributions like [Ubuntu](https://packages.ubuntu.com/source/eoan/simdjson) and [Debian](https://packages.debian.org/unstable/source/simdjson). It is in [Microsoft vpkg](https://github.com/simdjson/simdjson/wiki/vcpkg). It is available as an [MSYS2 package](https://github.com/simdjson/simdjson/wiki/MSYS2). We publish it as single-header library as well as a CMake build from the[ GitHub repository](https://github.com/simdjson/simdjson).
+ The library is part of major linux distributions like [Ubuntu](https://packages.ubuntu.com/source/eoan/simdjson) and [Debian](https://packages.debian.org/unstable/source/simdjson) and as a FreeBSD package. It is in [Microsoft vpkg](https://github.com/simdjson/simdjson/wiki/vcpkg). It is available as an [MSYS2 package](https://github.com/simdjson/simdjson/wiki/MSYS2), from [brew](https://formulae.brew.sh/formula/simdjson) and from conan. We publish it as single-header library as well as a CMake build from the[GitHub repository](https://github.com/simdjson/simdjson).
 We have a [simdjson organization on GitHub](https://github.com/simdjson). 
+
 
 Quick Start
 ---------------

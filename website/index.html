@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
 	<head>
-	<meta name="generator" content="Hugo 0.39" />
+	<meta name="generator" content="Hugo 0.68.3" />
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,9 +76,9 @@
 <section class="hero-panel">
 	<div class="wrapper">
 		<h1>Parsing gigabytes of JSON per second</h1>
-		<p>JSON is everywhere on the Internet. Servers spend a <strong>lot</strong> of time parsing it. The simdjson library uses commonly available SIMD instructions and microparallel algorithms to parse JSON several times faster than anything else out there.</p>
+		<p>JSON is everywhere on the Internet. Servers spend a <!-- raw HTML omitted -->lot<!-- raw HTML omitted --> of time parsing it. The simdjson library uses commonly available SIMD instructions and microparallel algorithms to parse JSON several times faster than anything else out there.</p>
 
-		<a href="https://simdjson.org/api/0.4.1/index.html" class="button primary">Browse the API</a>
+		<a href="https://simdjson.org/api/0.5.0/index.html" class="button primary">Browse the API</a>
 		<a href="https://github.com/simdjson/simdjson" class="button secondary">The simdjson library on GitHub</a>
 
 	</div>
@@ -96,9 +96,9 @@
 <li><strong>Strict:</strong> Full JSON and UTF-8 validation, lossless parsing. Performance with no compromises.</li>
 <li><strong>Automatic:</strong> Selects a CPU-tailored parser at runtime. No configuration needed.</li>
 <li><strong>Reliable:</strong> From memory allocation to error handling, simdjson&rsquo;s design avoids surprises.</li>
+<li><strong>Widely used:</strong> Used by <a href="https://github.com/ClickHouse/ClickHouse">Yandex</a>, <a href="https://github.com/microsoft/FishStore">Microsoft</a> and <a href="https://github.com/Shopify/heap-profiler">Shopify</a>. A dozen of ports and bindings have been published in Python, R, Ruby, PHP, C#, Rust, Swift, Go, etc.</li>
 </ul>
-
-<p>This library is part of the <a href="https://awesomecpp.com">Awesome Modern C++</a> list and of major linux distributions like <a href="https://packages.ubuntu.com/source/eoan/simdjson">Ubuntu</a> and <a href="https://packages.debian.org/unstable/source/simdjson">Debian</a>.</p>
+<p>This library is part of the <a href="https://awesomecpp.com">Awesome Modern C++</a>.</p>
 		</div>
 		<div class="small-12 medium-6 column content-two">
 			<h1>Features</h1>
@@ -106,13 +106,13 @@
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#newline-delimited-json-ndjson-and-json-lines"><strong>Multithreaded processing</strong></a>  of gigantic Newline-Delimited JSON (ndjson) and related formats</li>
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#json-pointer"><strong>JSON Pointer</strong></a> support so that you can query your document at high speed</li>
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#error-handling"><strong>Support both conventional error handling (exceptions) as well as an error-code approach</strong></a>: you can compile your C++ code with or without exception support.</li>
-<li><a href="https://github.com/simdjson/simdjson/blob/master/doc/implementation-selection.methods"><strong>Runtime dispatch</strong></a>: the library automatically detects the features supported by the processor. The library runs on all 64-bit systems, but it automagically benefits from advanced processors.</li>
+<li><a href="https://github.com/simdjson/simdjson/blob/master/doc/implementation-selection.md"><strong>Runtime dispatch</strong></a>: the library automatically detects the features supported by the processor. The library runs on all 64-bit systems, but it automagically benefits from advanced processors.</li>
 </ul>
-</p>
+<p>It is Found on <a href="https://packages.ubuntu.com/source/eoan/simdjson">Ubuntu</a> and <a href="https://packages.debian.org/unstable/source/simdjson">Debian</a>, FreeBSD, <a href="https://github.com/simdjson/simdjson/wiki/MSYS2">MSYS2</a>, brew, conan and <a href="https://github.com/simdjson/simdjson/wiki/vcpkg">vcpkg</a>.</p>
 		</div>
 	</div>
 	<div  class="wrapper row">
-		<p><img src="gbps.png" alt="gigabytes per second on a skylake processor, GNU GCC 9" /></p>
+		<p><img src="gbps.png" alt="gigabytes per second on a skylake processor, GNU GCC 9"></p>
 	</div>
 </section> <!-- END MAIN CONTENT -->
 

@@ -40,14 +40,16 @@ or larger files (e.g., 3MB).
 [All our experiments are reproducible](https://github.com/simdjson/simdjson_experiments_vldb2019).
 
 
-Funding
--------
+#### Funding
 
 The work is supported by the Natural Sciences and Engineering Research Council of Canada under grant number RGPIN-2017-03910.
 
-License
--------
+#### License
 
 This code is made available under the Apache License 2.0.
 
+Some of our command-line tools use the cxxopts library: it is under the liberal (business-friendly) MIT license.
+
 Under Windows, we build some tools using the windows/dirent_portable.h file (which is outside our library code): it is under the liberal (business-friendly) MIT license.
+
+For some benchmarking tasks, we use Google Benchmark. It is under the Apache License 2.0.
