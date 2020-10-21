@@ -4,7 +4,7 @@ layout = "single-para"
 +++
 
  The library is part of major linux distributions like [Ubuntu](https://packages.ubuntu.com/source/eoan/simdjson) and [Debian](https://packages.debian.org/unstable/source/simdjson) and as a FreeBSD package. It is in [Microsoft vpkg](https://github.com/simdjson/simdjson/wiki/vcpkg). It is available as an [MSYS2 package](https://github.com/simdjson/simdjson/wiki/MSYS2), from [brew](https://formulae.brew.sh/formula/simdjson) and from conan. We publish it as single-header library as well as a CMake build from the[GitHub repository](https://github.com/simdjson/simdjson).
-We have a [simdjson organization on GitHub](https://github.com/simdjson). 
+We have a [simdjson organization on GitHub](https://github.com/simdjson).
 
 
 Quick Start
@@ -22,18 +22,18 @@ Prerequisites: `g++` (version 7 or better)  or `clang++`(version 6 or better), a
    #include "simdjson.h"
    int main(void) {
      simdjson::dom::parser parser;
-     simdjson::dom::element tweets 
+     simdjson::dom::element tweets
        = parser.load("twitter.json");
-     std::cout << tweets["search_metadata"]["count"] 
+     std::cout << tweets["search_metadata"]["count"]
        << " results." << std::endl;
    }
 {{< / highlight >}}
-- Compile: 
+- Compile:
 {{< highlight bash "">}}
    c++ -o quickstart quickstart.cpp simdjson.cpp -std=c++17
 {{< / highlight >}}
 
-- Run: 
+- Run:
 {{< highlight bash "">}}
    ./quickstart
 {{< / highlight >}}
@@ -76,3 +76,4 @@ We distinguish between "bindings" (which just wrap the C++ code) and a port to a
 - [simdjson_ruby](https://github.com/saka1/simdjson_ruby): Ruby bindings for the simdjson project.
 - [simdjson-go](https://github.com/minio/simdjson-go): Go port using Golang assembly.
 - [rcppsimdjson](https://github.com/eddelbuettel/rcppsimdjson): R bindings.
+- [simdjson_erlang](https://github.com/ChomperT/simdjson_erlang): erlang bindings.
