@@ -19,7 +19,7 @@ keywords = "open source, JSON, C++"
 herotitle = "Parsing gigabytes of JSON per second"
 herodiscription = "JSON is everywhere on the Internet. Servers spend a <strong>lot</strong> of time parsing it. The simdjson library uses commonly available SIMD instructions and microparallel algorithms to parse JSON several times faster than anything else out there. "
 btnblue = "Browse the API"
-btnblueurl = "https://simdjson.org/api/0.5.0/index.html"
+btnblueurl = "https://simdjson.org/api/0.6.0/index.html"
 btngreen = "The simdjson library on GitHub"
 btngreenurl = "https://github.com/simdjson/simdjson"
 [params.main]
@@ -27,18 +27,21 @@ contentOneTitle = "Highlights"
 contentTwoTitle = "Features"
 PostColumn = "![gigabytes per second on a skylake processor, GNU GCC 9](gbps.png)"
 contentOneBody = """
-* **Fast:** Over 2.5x faster than other production-grade JSON parsers.
-* **Easy:** First-class, easy-to-use API.
+* **Fast:** Over 2.5x  faster than RapidJSON and 25x faster than JSON for Modern C++.
+* **Record-Breaking Features:** Minify JSON at 6 GB/s, validate UTF-8 strings at 13 GB/s.
+* **Easy:** First-class, easy to use and carefully documented APIs.
+* **Beyond DOM:** Try the new On Demand API for twice the speed (>4GB/s).
 * **Strict:** Full JSON and UTF-8 validation, lossless parsing. Performance with no compromises.
 * **Automatic:** Selects a CPU-tailored parser at runtime. No configuration needed.
 * **Reliable:** From memory allocation to error handling, simdjson's design avoids surprises.
+* **Peer Reviewed:** Our research appears in venues like VLDB Journal, Software: Practice and Experience.
 * **Widely used:** Used by [Yandex](https://github.com/ClickHouse/ClickHouse), [Microsoft](https://github.com/microsoft/FishStore) and [Shopify](https://github.com/Shopify/heap-profiler). A dozen of ports and bindings have been published in Python, R, Ruby, PHP, C#, Rust, Swift, Go, etc.
 
 This library is part of the [Awesome Modern C++](https://awesomecpp.com).
  """
 
 contentTwoBody = """
-* [**Multithreaded processing**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#newline-delimited-json-ndjson-and-json-lines)  of gigantic Newline-Delimited JSON (ndjson) and related formats
+* [**Multithreaded processing**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#newline-delimited-json-ndjson-and-json-lines)  of gigantic Newline-Delimited JSON (ndjson) and related formats at 3.5 GB/s
 * [**JSON Pointer**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#json-pointer) support so that you can query your document at high speed
 * [**Support both conventional error handling (exceptions) as well as an error-code approach**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#error-handling): you can compile your C++ code with or without exception support.
 * [**Runtime dispatch**](https://github.com/simdjson/simdjson/blob/master/doc/implementation-selection.md): the library automatically detects the features supported by the processor. The library runs on all 64-bit systems, but it automagically benefits from advanced processors.

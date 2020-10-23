@@ -12,6 +12,8 @@ It takes advantage of modern microarchitectures, parallelizing with SIMD vector
 instructions, reducing branch misprediction, and reducing data dependency to take advantage of each
 CPU's multiple execution cores.
 
+You may use simdjson for more than just parsing JSON. It offers functions to
+minify JSON documents at 6 GB/s or  validate UTF-8 strings at 13 GB/s.
 
 On a Skylake processor, the parsing speeds (in GB/s) of various processors on the twitter.json file are as follows, using again GNU GCC 9 (with the -O3 flag). The popular JSON for Modern C++ library is particularly slow: it obviously trades parsing speed for other desirable features.
 
@@ -38,6 +40,10 @@ or larger files (e.g., 3MB).
 
 
 [All our experiments are reproducible](https://github.com/simdjson/simdjson_experiments_vldb2019).
+
+
+You can go beyond 4 GB/s with our new [On Demand API](https://github.com/simdjson/simdjson/blob/master/doc/ondemand.md).
+For NDJSON files, we can exceed 3 GB/s with [our  multithreaded parsing functions](https://github.com/simdjson/simdjson/blob/master/doc/parse_many.md).
 
 
 #### Funding
