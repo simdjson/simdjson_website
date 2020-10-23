@@ -76,7 +76,7 @@
 <section class="hero-panel">
 	<div class="wrapper">
 		<h1>Parsing gigabytes of JSON per second</h1>
-		<p>JSON is everywhere on the Internet. Servers spend a <!-- raw HTML omitted -->lot<!-- raw HTML omitted --> of time parsing it. The simdjson library uses commonly available SIMD instructions and microparallel algorithms to parse JSON several times faster than anything else out there.</p>
+		<p>JSON is everywhere on the Internet. Servers spend a <!-- raw HTML omitted -->lot<!-- raw HTML omitted --> of time parsing it. The simdjson library uses commonly available SIMD instructions and microparallel algorithms to break speed records.</p>
 
 		<a href="https://simdjson.org/api/0.6.0/index.html" class="button primary">Browse the API</a>
 		<a href="https://github.com/simdjson/simdjson" class="button secondary">The simdjson library on GitHub</a>
@@ -92,9 +92,7 @@
 			<h1>Highlights</h1>
 			<p><ul>
 <li><strong>Fast:</strong> Over 2.5x  faster than RapidJSON and 25x faster than JSON for Modern C++.</li>
-<li><strong>Record-Breaking Features:</strong> Minify JSON at 6 GB/s, validate UTF-8 strings at 13 GB/s.</li>
 <li><strong>Easy:</strong> First-class, easy to use and carefully documented APIs.</li>
-<li><strong>Beyond DOM:</strong> Try the new On Demand API for twice the speed (&gt;4GB/s).</li>
 <li><strong>Strict:</strong> Full JSON and UTF-8 validation, lossless parsing. Performance with no compromises.</li>
 <li><strong>Automatic:</strong> Selects a CPU-tailored parser at runtime. No configuration needed.</li>
 <li><strong>Reliable:</strong> From memory allocation to error handling, simdjson&rsquo;s design avoids surprises.</li>
@@ -106,6 +104,9 @@
 		<div class="small-12 medium-6 column content-two">
 			<h1>Features</h1>
 			<p><ul>
+<li><a href="https://github.com/simdjson/simdjson/blob/master/doc/ondemand.md"><strong>On Demand API</strong></a> to reach massive speeds (4 GB/s). We think it is a better way to parse JSON documents.</li>
+<li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#minifying-json-strings-without-parsing"><strong>Minify JSON</strong></a>   at 6 GB/s</li>
+<li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#utf-8-validation-alone"><strong>Standalone UTF8 Validation</strong></a> at 13 GB/s</li>
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#newline-delimited-json-ndjson-and-json-lines"><strong>Multithreaded processing</strong></a>  of gigantic Newline-Delimited JSON (ndjson) and related formats at 3.5 GB/s</li>
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#json-pointer"><strong>JSON Pointer</strong></a> support so that you can query your document at high speed</li>
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#error-handling"><strong>Support both conventional error handling (exceptions) as well as an error-code approach</strong></a>: you can compile your C++ code with or without exception support.</li>
