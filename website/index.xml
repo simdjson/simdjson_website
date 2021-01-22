@@ -35,7 +35,7 @@
       
       <guid>https://simdjson.org/software/</guid>
       <description>The library is part of major linux distributions like Ubuntu and Debian and as a FreeBSD package. It is in Microsoft vpkg. It is available as an MSYS2 package, from brew and from conan. We publish it as single-header library as well as a CMake build from theGitHub repository. We have a simdjson organization on GitHub.
-Quick Start Prerequisites: g++ (version 7 or better) or clang++(version 6 or better), and a 64-bit system (e.</description>
+Quick Start (DOM API) Prerequisites: g++ (version 7 or better) or clang++(version 6 or better), and a 64-bit system (e.</description>
     </item>
     
     <item>

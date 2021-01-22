@@ -78,7 +78,7 @@
 		<h1>Parsing gigabytes of JSON per second</h1>
 		<p>JSON is everywhere on the Internet. Servers spend a <!-- raw HTML omitted -->lot<!-- raw HTML omitted --> of time parsing it. The simdjson library uses commonly available SIMD instructions and microparallel algorithms to break speed records.</p>
 
-		<a href="https://simdjson.org/api/0.7.0/index.html" class="button primary">Browse the API</a>
+		<a href="https://simdjson.org/api/0.8.0/index.html" class="button primary">Browse the API</a>
 		<a href="https://github.com/simdjson/simdjson" class="button secondary">The simdjson library on GitHub</a>
 
 	</div>
@@ -106,7 +106,7 @@
 			<p><ul>
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/ondemand.md"><strong>On Demand API</strong></a> to reach massive speeds (4 GB/s). We think it is a better way to parse JSON documents.</li>
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#minifying-json-strings-without-parsing"><strong>Minify JSON</strong></a>   at 6 GB/s</li>
-<li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#utf-8-validation-alone"><strong>Standalone UTF8 Validation</strong></a> at 13 GB/s</li>
+<li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#utf-8-validation-alone"><strong>Standalone UTF8 Validation</strong></a> at 30 GB/s</li>
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#newline-delimited-json-ndjson-and-json-lines"><strong>Multithreaded processing</strong></a>  of gigantic Newline-Delimited JSON (ndjson) and related formats at 3.5 GB/s</li>
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#json-pointer"><strong>JSON Pointer</strong></a> support so that you can query your document at high speed</li>
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#error-handling"><strong>Support both conventional error handling (exceptions) as well as an error-code approach</strong></a>: you can compile your C++ code with or without exception support.</li>
@@ -116,7 +116,8 @@
 		</div>
 	</div>
 	<div  class="wrapper row">
-		<p><img src="gbps.png" alt="gigabytes per second on a skylake processor, GNU GCC 9"></p>
+		<p><img src="gbps.png" alt="gigabytes per second on a skylake processor, GNU GCC 9">
+<img src="ondemand.png" alt="gigabytes per second on a skylake processor, GNU GCC 9"></p>
 	</div>
 </section> <!-- END MAIN CONTENT -->
 

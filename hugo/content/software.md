@@ -7,7 +7,7 @@ layout = "single-para"
 We have a [simdjson organization on GitHub](https://github.com/simdjson).
 
 
-Quick Start
+Quick Start (DOM API)
 ---------------
 
 Prerequisites: `g++` (version 7 or better)  or `clang++`(version 6 or better), and a 64-bit system (e.g., linux, Windows, FreeBSD, macOS).
@@ -37,6 +37,42 @@ Prerequisites: `g++` (version 7 or better)  or `clang++`(version 6 or better), a
 {{< highlight bash "">}}
    ./quickstart
 {{< / highlight >}}
+
+Quick Start (On Demand: Faster!)
+---------------
+
+The new On Demand JSON parser is just as easy, but much faster due to just-in-time parsing. 
+
+1.  Pull `simdjson.h` and `simdjson.cpp` from our singleheader directory into a directory of your choice, along with the sample file twitter.json from our jsonexamples repository..
+{{< highlight bash "">}}
+   wget https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.h https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.cpp https://raw.githubusercontent.com/simdjson/simdjson/master/jsonexamples/twitter.json
+{{< / highlight >}}
+2. Create `quickstart.cpp`:
+
+{{< highlight cpp "">}}
+   #include "simdjson.h"
+   using namespace simdjson;
+   int main(void) {
+      ondemand::parser parser;
+      padded_string json = padded_string::load("twitter.json");
+      ondemand::document tweets = parser.iterate(json);
+      std::cout << uint64_t(tweets["search_metadata"]["count"]) << " results." << std::endl;
+   }
+
+{{< / highlight >}}
+- Compile:
+{{< highlight bash "">}}
+   c++ -o quickstart quickstart.cpp simdjson.cpp -std=c++17
+{{< / highlight >}}
+
+- Run:
+{{< highlight bash "">}}
+   ./quickstart
+{{< / highlight >}}
+
+You will notice that the code here is  similar to the main Quick Start code (and
+indeed, it does the same thing). However, if you compare the performance, you should find On
+Demand typically much faster.
 
 
 Documentation
