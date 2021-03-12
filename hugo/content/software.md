@@ -7,41 +7,11 @@ layout = "single-para"
 We have a [simdjson organization on GitHub](https://github.com/simdjson).
 
 
-Quick Start (DOM API)
----------------
+### Quick Start
 
 Prerequisites: `g++` (version 7 or better)  or `clang++`(version 6 or better), and a 64-bit system (e.g., linux, Windows, FreeBSD, macOS).
 
-- Pull `simdjson.h` and `simdjson.cpp` from our singleheader directory into a directory of your choice, along with the sample file twitter.json from our jsonexamples repository..
-{{< highlight bash "">}}
-   wget https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.h https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.cpp https://raw.githubusercontent.com/simdjson/simdjson/master/jsonexamples/twitter.json
-{{< / highlight >}}
 
-- Create `quickstart.cpp`:
-{{< highlight cpp "">}}
-   #include "simdjson.h"
-   int main(void) {
-     simdjson::dom::parser parser;
-     simdjson::dom::element tweets
-       = parser.load("twitter.json");
-     std::cout << tweets["search_metadata"]["count"]
-       << " results." << std::endl;
-   }
-{{< / highlight >}}
-- Compile:
-{{< highlight bash "">}}
-   c++ -o quickstart quickstart.cpp simdjson.cpp -std=c++17
-{{< / highlight >}}
-
-- Run:
-{{< highlight bash "">}}
-   ./quickstart
-{{< / highlight >}}
-
-Quick Start (On Demand: Faster!)
----------------
-
-The new On Demand JSON parser is just as easy, but much faster due to just-in-time parsing. 
 
 1.  Pull `simdjson.h` and `simdjson.cpp` from our singleheader directory into a directory of your choice, along with the sample file twitter.json from our jsonexamples repository..
 {{< highlight bash "">}}
@@ -70,13 +40,8 @@ The new On Demand JSON parser is just as easy, but much faster due to just-in-ti
    ./quickstart
 {{< / highlight >}}
 
-You will notice that the code here is  similar to the main Quick Start code (and
-indeed, it does the same thing). However, if you compare the performance, you should find On
-Demand typically much faster.
 
-
-Documentation
--------------
+### Documentation
 
 Usage documentation is available:
 
@@ -85,8 +50,7 @@ Usage documentation is available:
 * [Implementation Selection](https://github.com/simdjson/simdjson/blob/master/doc/implementation-selection.md) describes runtime CPU detection and
   how you can work with it.
 
-Real-world usage
-----------------
+###  Real-world usage
 
 - [Microsoft FishStore](https://github.com/microsoft/FishStore)
 - [Yandex ClickHouse](https://github.com/yandex/ClickHouse)
@@ -95,8 +59,7 @@ Real-world usage
 
 If you are planning to use simdjson in a product, please work from one of our releases.
 
-Bindings and Ports of simdjson
-------------------------------
+###  Bindings and Ports of simdjson
 
 We distinguish between "bindings" (which just wrap the C++ code) and a port to another programming language (which reimplements everything).
 

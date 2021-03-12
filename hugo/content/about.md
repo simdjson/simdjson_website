@@ -3,9 +3,7 @@
 layout = "single-para"
 +++
 
-
-The simdjson library uses three-quarters less instructions than state-of-the-art parser RapidJSON and
-fifty percent less than sajson. To our knowledge, simdjson is the first fully-validating JSON parser
+To our knowledge, simdjson is the first fully-validating JSON parser
 to run at gigabytes per second on commodity processors. It can parse millions of JSON documents
 per second on a single core.
 It takes advantage of modern microarchitectures, parallelizing with SIMD vector
@@ -14,36 +12,10 @@ CPU's multiple execution cores.
 
 You may use simdjson for more than just parsing JSON. It offers functions to
 minify JSON documents at 6 GB/s or  validate UTF-8 strings at 13 GB/s.
-
-On a Skylake processor, the parsing speeds (in GB/s) of various processors on the twitter.json file are as follows, using again GNU GCC 9 (with the -O3 flag). The popular JSON for Modern C++ library is particularly slow: it obviously trades parsing speed for other desirable features.
-
-| parser                                | GB/s |
-| ------------------------------------- | ---- |
-| simdjson                              | 2.5  |
-| RapidJSON UTF8-validation             | 0.29 |
-| RapidJSON UTF8-valid., exact numbers  | 0.28 |
-| RapidJSON insitu, UTF8-validation     | 0.41 |
-| RapidJSON insitu, UTF8-valid., exact  | 0.39 |
-| sajson (insitu, dynamic)              | 0.62 |
-| sajson (insitu, static)               | 0.88 |
-| dropbox                               | 0.13 |
-| fastjson                              | 0.27 |
-| gason                                 | 0.59 |
-| ultrajson                             | 0.34 |
-| jsmn                                  | 0.25 |
-| cJSON                                 | 0.31 |
-| JSON for Modern C++ (nlohmann/json)   | 0.11 |
-
-
 The simdjson library offers high speed whether it processes tiny files (e.g., 300 bytes)
 or larger files (e.g., 3MB). 
 
-
-[All our experiments are reproducible](https://github.com/simdjson/simdjson_experiments_vldb2019).
-
-
-You can go beyond 4 GB/s with our new [On Demand API](https://github.com/simdjson/simdjson/blob/master/doc/ondemand.md).
-For NDJSON files, we can exceed 3 GB/s with [our  multithreaded parsing functions](https://github.com/simdjson/simdjson/blob/master/doc/parse_many.md).
+For Newline-Delimited JSON files, we can exceed 3 GB/s with [our  multithreaded parsing functions](https://github.com/simdjson/simdjson/blob/master/doc/parse_many.md).
 
 
 #### Funding

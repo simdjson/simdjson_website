@@ -25,9 +25,9 @@ btngreenurl = "https://github.com/simdjson/simdjson"
 [params.main]
 contentOneTitle = "Highlights"
 contentTwoTitle = "Features"
-PostColumn = "![gigabytes per second on a skylake processor, GNU GCC 9](gbps.png)\n ![gigabytes per second on a skylake processor, GNU GCC 9](ondemand.png)"
+PostColumn = "![gigabytes per second on a skylake processor, GNU GCC](rome.png)"
 contentOneBody = """
-* **Fast:** Over 2.5x  faster than RapidJSON and 25x faster than JSON for Modern C++.
+* **Fast:** Over 4x  faster than RapidJSON and 25x faster than JSON for Modern C++.
 * **Easy:** First-class, easy to use and carefully documented APIs.
 * **Strict:** Full JSON and UTF-8 validation, lossless parsing. Performance with no compromises.
 * **Automatic:** Selects a CPU-tailored parser at runtime. No configuration needed.
