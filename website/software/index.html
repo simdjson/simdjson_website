@@ -91,36 +91,8 @@
 								<h1>Software</h1>
 								<p> <p>The library is part of major linux distributions like <a href="https://packages.ubuntu.com/source/eoan/simdjson">Ubuntu</a> and <a href="https://packages.debian.org/unstable/source/simdjson">Debian</a> and as a FreeBSD package. It is in <a href="https://github.com/simdjson/simdjson/wiki/vcpkg">Microsoft vpkg</a>. It is available as an <a href="https://github.com/simdjson/simdjson/wiki/MSYS2">MSYS2 package</a>, from <a href="https://formulae.brew.sh/formula/simdjson">brew</a> and from conan. We publish it as single-header library as well as a CMake build from the<a href="https://github.com/simdjson/simdjson">GitHub repository</a>.
 We have a <a href="https://github.com/simdjson">simdjson organization on GitHub</a>.</p>
-<h2 id="quick-start-dom-api">Quick Start (DOM API)</h2>
+<h3 id="quick-start">Quick Start</h3>
 <p>Prerequisites: <code>g++</code> (version 7 or better)  or <code>clang++</code>(version 6 or better), and a 64-bit system (e.g., linux, Windows, FreeBSD, macOS).</p>
-<ul>
-<li>
-<p>Pull <code>simdjson.h</code> and <code>simdjson.cpp</code> from our singleheader directory into a directory of your choice, along with the sample file twitter.json from our jsonexamples repository..
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   wget https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.h https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.cpp https://raw.githubusercontent.com/simdjson/simdjson/master/jsonexamples/twitter.json</code></pre></div></p>
-</li>
-<li>
-<p>Create <code>quickstart.cpp</code>:
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">   <span style="color:#999;font-weight:bold;font-style:italic">#include</span> <span style="color:#999;font-weight:bold;font-style:italic">&#34;simdjson.h&#34;</span><span style="color:#999;font-weight:bold;font-style:italic">
-</span><span style="color:#999;font-weight:bold;font-style:italic"></span>   <span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">main</span>(<span style="color:#458;font-weight:bold">void</span>) {
-     simdjson<span style="color:#000;font-weight:bold">::</span>dom<span style="color:#000;font-weight:bold">::</span>parser parser;
-     simdjson<span style="color:#000;font-weight:bold">::</span>dom<span style="color:#000;font-weight:bold">::</span>element tweets
-       <span style="color:#000;font-weight:bold">=</span> parser.load(<span style="color:#d14">&#34;twitter.json&#34;</span>);
-     std<span style="color:#000;font-weight:bold">::</span>cout <span style="color:#000;font-weight:bold">&lt;&lt;</span> tweets[<span style="color:#d14">&#34;search_metadata&#34;</span>][<span style="color:#d14">&#34;count&#34;</span>]
-       <span style="color:#000;font-weight:bold">&lt;&lt;</span> <span style="color:#d14">&#34; results.&#34;</span> <span style="color:#000;font-weight:bold">&lt;&lt;</span> std<span style="color:#000;font-weight:bold">::</span>endl;
-   }
-</code></pre></div></p>
-</li>
-<li>
-<p>Compile:
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   c++ -o quickstart quickstart.cpp simdjson.cpp -std<span style="color:#000;font-weight:bold">=</span>c++17</code></pre></div></p>
-</li>
-<li>
-<p>Run:
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   ./quickstart</code></pre></div></p>
-</li>
-</ul>
-<h2 id="quick-start-on-demand-faster">Quick Start (On Demand: Faster!)</h2>
-<p>The new On Demand JSON parser is just as easy, but much faster due to just-in-time parsing.</p>
 <ol>
 <li>Pull <code>simdjson.h</code> and <code>simdjson.cpp</code> from our singleheader directory into a directory of your choice, along with the sample file twitter.json from our jsonexamples repository..
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   wget https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.h https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.cpp https://raw.githubusercontent.com/simdjson/simdjson/master/jsonexamples/twitter.json</code></pre></div></li>
@@ -145,10 +117,7 @@ We have a <a href="https://github.com/simdjson">simdjson organization on GitHub<
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   ./quickstart</code></pre></div></p>
 </li>
 </ul>
-<p>You will notice that the code here is  similar to the main Quick Start code (and
-indeed, it does the same thing). However, if you compare the performance, you should find On
-Demand typically much faster.</p>
-<h2 id="documentation">Documentation</h2>
+<h3 id="documentation">Documentation</h3>
 <p>Usage documentation is available:</p>
 <ul>
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md">Basics</a> is an overview of how to use simdjson and its APIs.</li>
@@ -156,7 +125,7 @@ Demand typically much faster.</p>
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/implementation-selection.md">Implementation Selection</a> describes runtime CPU detection and
 how you can work with it.</li>
 </ul>
-<h2 id="real-world-usage">Real-world usage</h2>
+<h3 id="real-world-usage">Real-world usage</h3>
 <ul>
 <li><a href="https://github.com/microsoft/FishStore">Microsoft FishStore</a></li>
 <li><a href="https://github.com/yandex/ClickHouse">Yandex ClickHouse</a></li>
@@ -164,12 +133,13 @@ how you can work with it.</li>
 <li><a href="https://github.com/Shopify/heap-profiler">Shopify HeapProfiler</a></li>
 </ul>
 <p>If you are planning to use simdjson in a product, please work from one of our releases.</p>
-<h2 id="bindings-and-ports-of-simdjson">Bindings and Ports of simdjson</h2>
+<h3 id="bindings-and-ports-of-simdjson">Bindings and Ports of simdjson</h3>
 <p>We distinguish between &ldquo;bindings&rdquo; (which just wrap the C++ code) and a port to another programming language (which reimplements everything).</p>
 <ul>
 <li><a href="https://github.com/michaeleisel/zippyjson">ZippyJSON</a>: Swift bindings for the simdjson project.</li>
 <li><a href="https://github.com/gerrymanoim/libpy_simdjson/">libpy_simdjson</a>: high-speed Python bindings for simdjson using <a href="https://github.com/quantopian/libpy">libpy</a>.</li>
 <li><a href="https://github.com/TkTech/pysimdjson">pysimdjson</a>: Python bindings for the simdjson project.</li>
+<li><a href="https://github.com/TeskaLabs/cysimdjson">cysimdjson</a>: high-speed Python bindings for the simdjson project.</li>
 <li><a href="https://github.com/simd-lite/simd-json">simdjson-rs</a>: Rust port.</li>
 <li><a href="https://github.com/SunDoge/simdjson-rust">simdjson-rust</a>: Rust wrapper (bindings).</li>
 <li><a href="https://github.com/EgorBo/SimdJsonSharp">SimdJsonSharp</a>: C# version for .NET Core (bindings and full port).</li>

@@ -89,87 +89,17 @@
 						<div class="wrapper row">
 							<div class="small-12 medium-12 column content-one">
 								<h1></h1>
-								<p> <p>The simdjson library uses three-quarters less instructions than state-of-the-art parser RapidJSON and
-fifty percent less than sajson. To our knowledge, simdjson is the first fully-validating JSON parser
+								<p> <p>To our knowledge, simdjson is the first fully-validating JSON parser
 to run at gigabytes per second on commodity processors. It can parse millions of JSON documents
 per second on a single core.
 It takes advantage of modern microarchitectures, parallelizing with SIMD vector
 instructions, reducing branch misprediction, and reducing data dependency to take advantage of each
 CPU&rsquo;s multiple execution cores.</p>
 <p>You may use simdjson for more than just parsing JSON. It offers functions to
-minify JSON documents at 6 GB/s or  validate UTF-8 strings at 13 GB/s.</p>
-<p>On a Skylake processor, the parsing speeds (in GB/s) of various processors on the twitter.json file are as follows, using again GNU GCC 9 (with the -O3 flag). The popular JSON for Modern C++ library is particularly slow: it obviously trades parsing speed for other desirable features.</p>
-<table>
-<thead>
-<tr>
-<th>parser</th>
-<th>GB/s</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>simdjson</td>
-<td>2.5</td>
-</tr>
-<tr>
-<td>RapidJSON UTF8-validation</td>
-<td>0.29</td>
-</tr>
-<tr>
-<td>RapidJSON UTF8-valid., exact numbers</td>
-<td>0.28</td>
-</tr>
-<tr>
-<td>RapidJSON insitu, UTF8-validation</td>
-<td>0.41</td>
-</tr>
-<tr>
-<td>RapidJSON insitu, UTF8-valid., exact</td>
-<td>0.39</td>
-</tr>
-<tr>
-<td>sajson (insitu, dynamic)</td>
-<td>0.62</td>
-</tr>
-<tr>
-<td>sajson (insitu, static)</td>
-<td>0.88</td>
-</tr>
-<tr>
-<td>dropbox</td>
-<td>0.13</td>
-</tr>
-<tr>
-<td>fastjson</td>
-<td>0.27</td>
-</tr>
-<tr>
-<td>gason</td>
-<td>0.59</td>
-</tr>
-<tr>
-<td>ultrajson</td>
-<td>0.34</td>
-</tr>
-<tr>
-<td>jsmn</td>
-<td>0.25</td>
-</tr>
-<tr>
-<td>cJSON</td>
-<td>0.31</td>
-</tr>
-<tr>
-<td>JSON for Modern C++ (nlohmann/json)</td>
-<td>0.11</td>
-</tr>
-</tbody>
-</table>
-<p>The simdjson library offers high speed whether it processes tiny files (e.g., 300 bytes)
+minify JSON documents at 6 GB/s or  validate UTF-8 strings at 13 GB/s.
+The simdjson library offers high speed whether it processes tiny files (e.g., 300 bytes)
 or larger files (e.g., 3MB).</p>
-<p><a href="https://github.com/simdjson/simdjson_experiments_vldb2019">All our experiments are reproducible</a>.</p>
-<p>You can go beyond 4 GB/s with our new <a href="https://github.com/simdjson/simdjson/blob/master/doc/ondemand.md">On Demand API</a>.
-For NDJSON files, we can exceed 3 GB/s with <a href="https://github.com/simdjson/simdjson/blob/master/doc/parse_many.md">our  multithreaded parsing functions</a>.</p>
+<p>For Newline-Delimited JSON files, we can exceed 3 GB/s with <a href="https://github.com/simdjson/simdjson/blob/master/doc/parse_many.md">our  multithreaded parsing functions</a>.</p>
 <h4 id="funding">Funding</h4>
 <p>The work is supported by the Natural Sciences and Engineering Research Council of Canada under grant number RGPIN-2017-03910.</p>
 <h4 id="license">License</h4>
