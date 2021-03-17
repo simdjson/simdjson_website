@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logotiny.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">simdjson
-   &#160;<span id="projectnumber">0.7.0</span>
+   &#160;<span id="projectnumber">0.8.0</span>
    </div>
    <div id="projectbrief">Ridiculously Fast JSON</div>
   </td>
@@ -132,7 +132,7 @@ $(function() {
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;simdjson_really_inline object_iterator object::begin() noexcept {</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="comment">// Expanded version of SIMDJSON_ASSUME( iter.at_field_start() || !iter.is_open() )</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  SIMDJSON_ASSUME( (iter._json_iter-&gt;token.index == iter._start_index + 1) || (iter._json_iter-&gt;_depth &lt; iter._depth) );</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  SIMDJSON_ASSUME( (iter._json_iter-&gt;token.index == iter._start_position + 1) || (iter._json_iter-&gt;_depth &lt; iter._depth) );</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">return</span> iter;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;simdjson_really_inline object_iterator object::end() noexcept {</div>
@@ -185,8 +185,8 @@ $(function() {
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;} <span class="comment">// namespace simdjson</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructsimdjson_1_1simdjson__result_html_aff7145b2d591b35bc0208cb778122748"><div class="ttname"><a href="structsimdjson_1_1simdjson__result.html#aff7145b2d591b35bc0208cb778122748">simdjson::simdjson_result::error</a></div><div class="ttdeci">simdjson_really_inline error_code error() const noexcept</div><div class="ttdoc">The error.</div><div class="ttdef"><b>Definition:</b> <a href="error-inl_8h_source.html#l00125">error-inl.h:125</a></div></div>
-<div class="ttc" id="astructsimdjson_1_1simdjson__result_html"><div class="ttname"><a href="structsimdjson_1_1simdjson__result.html">simdjson::simdjson_result</a></div><div class="ttdoc">The result of a simdjson operation that could fail.</div><div class="ttdef"><b>Definition:</b> <a href="error_8h_source.html#l00183">error.h:183</a></div></div>
+<div class="ttc" id="astructsimdjson_1_1simdjson__result_html_aff7145b2d591b35bc0208cb778122748"><div class="ttname"><a href="structsimdjson_1_1simdjson__result.html#aff7145b2d591b35bc0208cb778122748">simdjson::simdjson_result::error</a></div><div class="ttdeci">simdjson_really_inline error_code error() const noexcept</div><div class="ttdoc">The error.</div><div class="ttdef"><b>Definition:</b> <a href="error-inl_8h_source.html#l00135">error-inl.h:135</a></div></div>
+<div class="ttc" id="astructsimdjson_1_1simdjson__result_html"><div class="ttname"><a href="structsimdjson_1_1simdjson__result.html">simdjson::simdjson_result</a></div><div class="ttdoc">The result of a simdjson operation that could fail.</div><div class="ttdef"><b>Definition:</b> <a href="error_8h_source.html#l00195">error.h:195</a></div></div>
 <div class="ttc" id="aclasssimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1value_html"><div class="ttname"><a href="classsimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1value.html">simdjson::SIMDJSON_IMPLEMENTATION::ondemand::value</a></div><div class="ttdoc">An ephemeral JSON value returned during iteration.</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00016">value.h:16</a></div></div>
 <div class="ttc" id="aclasssimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1object_html_a9b6bbf06d20e4e7d0692644f1b3bb5bc"><div class="ttname"><a href="classsimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1object.html#a9b6bbf06d20e4e7d0692644f1b3bb5bc">simdjson::SIMDJSON_IMPLEMENTATION::ondemand::object::find_field</a></div><div class="ttdeci">simdjson_really_inline simdjson_result&lt; value &gt; find_field(std::string_view key) &amp;noexcept</div><div class="ttdoc">Look up a field by name on an object (order-sensitive).</div><div class="ttdef"><b>Definition:</b> <a href="generic_2ondemand_2object-inl_8h_source.html#l00023">object-inl.h:23</a></div></div>
 <div class="ttc" id="aclasssimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1object_html_af3bc324a43ce68aed4d096d4c1a4fa22"><div class="ttname"><a href="classsimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1object.html#af3bc324a43ce68aed4d096d4c1a4fa22">simdjson::SIMDJSON_IMPLEMENTATION::ondemand::object::object</a></div><div class="ttdeci">simdjson_really_inline object() noexcept=default</div><div class="ttdoc">Create a new invalid object.</div></div>

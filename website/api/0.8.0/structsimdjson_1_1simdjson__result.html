@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logotiny.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">simdjson
-   &#160;<span id="projectnumber">0.7.0</span>
+   &#160;<span id="projectnumber">0.8.0</span>
    </div>
    <div id="projectbrief">Ridiculously Fast JSON</div>
   </td>
@@ -109,6 +109,12 @@ simdjson_really_inline error_code&#160;</td><td class="memItemRight" valign="bot
 <tr class="memitem:a46c21406b4346746a15ce683e38a9a6e"><td class="memItemLeft" align="right" valign="top">simdjson_really_inline&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimdjson_1_1simdjson__result.html#a46c21406b4346746a15ce683e38a9a6e">operator T&amp;&amp;</a> () &amp;&amp;noexcept(false)</td></tr>
 <tr class="memdesc:a46c21406b4346746a15ce683e38a9a6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cast to the value (will throw on error).  <a href="structsimdjson_1_1simdjson__result.html#a46c21406b4346746a15ce683e38a9a6e">More...</a><br /></td></tr>
 <tr class="separator:a46c21406b4346746a15ce683e38a9a6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b76f9a9ea4f6cb4ab784b1549881f7c"><td class="memItemLeft" align="right" valign="top">simdjson_really_inline const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimdjson_1_1simdjson__result.html#a7b76f9a9ea4f6cb4ab784b1549881f7c">value_unsafe</a> () const &amp;noexcept</td></tr>
+<tr class="memdesc:a7b76f9a9ea4f6cb4ab784b1549881f7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the result value.  <a href="structsimdjson_1_1simdjson__result.html#a7b76f9a9ea4f6cb4ab784b1549881f7c">More...</a><br /></td></tr>
+<tr class="separator:a7b76f9a9ea4f6cb4ab784b1549881f7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d284a226ed6e526e4bc3af39912d88a"><td class="memItemLeft" align="right" valign="top">simdjson_really_inline T &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimdjson_1_1simdjson__result.html#a0d284a226ed6e526e4bc3af39912d88a">value_unsafe</a> () &amp;&amp;noexcept</td></tr>
+<tr class="memdesc:a0d284a226ed6e526e4bc3af39912d88a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Take the result value (move it).  <a href="structsimdjson_1_1simdjson__result.html#a0d284a226ed6e526e4bc3af39912d88a">More...</a><br /></td></tr>
+<tr class="separator:a0d284a226ed6e526e4bc3af39912d88a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T&gt;<br />
@@ -117,7 +123,7 @@ struct simdjson::simdjson_result&lt; T &gt;</h3>
 <p>The result of a simdjson operation that could fail. </p>
 <p>Gives the option of reading error codes, or throwing an exception by casting to the desired result. </p>
 
-<p class="definition">Definition at line <a class="el" href="error_8h_source.html#l00183">183</a> of file <a class="el" href="error_8h_source.html">error.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="error_8h_source.html#l00195">195</a> of file <a class="el" href="error_8h_source.html">error.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a3cdfb805f5d8d1a3d77befd8e3469a06"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3cdfb805f5d8d1a3d77befd8e3469a06">&#9670;&nbsp;</a></span>get()</h2>
@@ -153,7 +159,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="error-inl_8h_source.html#l00120">120</a> of file <a class="el" href="error-inl_8h_source.html">error-inl.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="error-inl_8h_source.html#l00130">130</a> of file <a class="el" href="error-inl_8h_source.html">error-inl.h</a>.</p>
 
 </div>
 </div>
@@ -190,7 +196,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="error-inl_8h_source.html#l00147">147</a> of file <a class="el" href="error-inl_8h_source.html">error-inl.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="error-inl_8h_source.html#l00157">157</a> of file <a class="el" href="error-inl_8h_source.html">error-inl.h</a>.</p>
 
 </div>
 </div>
@@ -227,7 +233,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="error-inl_8h_source.html#l00142">142</a> of file <a class="el" href="error-inl_8h_source.html">error-inl.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="error-inl_8h_source.html#l00152">152</a> of file <a class="el" href="error-inl_8h_source.html">error-inl.h</a>.</p>
 
 </div>
 </div>
@@ -277,7 +283,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="error-inl_8h_source.html#l00115">115</a> of file <a class="el" href="error-inl_8h_source.html">error-inl.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="error-inl_8h_source.html#l00125">125</a> of file <a class="el" href="error-inl_8h_source.html">error-inl.h</a>.</p>
 
 </div>
 </div>
@@ -348,6 +354,66 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a0d284a226ed6e526e4bc3af39912d88a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d284a226ed6e526e4bc3af39912d88a">&#9670;&nbsp;</a></span>value_unsafe() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">simdjson_really_inline T&amp;&amp; <a class="el" href="structsimdjson_1_1simdjson__result.html">simdjson::simdjson_result</a>&lt; T &gt;::value_unsafe </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> &amp;&amp;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Take the result value (move it). </p>
+<p>This function is safe if and only the <a class="el" href="structsimdjson_1_1simdjson__result.html#aff7145b2d591b35bc0208cb778122748" title="The error.">error()</a> method returns a value that evoluates to false. </p>
+
+</div>
+</div>
+<a id="a7b76f9a9ea4f6cb4ab784b1549881f7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b76f9a9ea4f6cb4ab784b1549881f7c">&#9670;&nbsp;</a></span>value_unsafe() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">simdjson_really_inline const T&amp; <a class="el" href="structsimdjson_1_1simdjson__result.html">simdjson::simdjson_result</a>&lt; T &gt;::value_unsafe </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const &amp;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the result value. </p>
+<p>This function is safe if and only the <a class="el" href="structsimdjson_1_1simdjson__result.html#aff7145b2d591b35bc0208cb778122748" title="The error.">error()</a> method returns a value that evoluates to false. </p>
 
 </div>
 </div>

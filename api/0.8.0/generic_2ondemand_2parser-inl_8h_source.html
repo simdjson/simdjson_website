@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logotiny.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">simdjson
-   &#160;<span id="projectnumber">0.7.0</span>
+   &#160;<span id="projectnumber">0.8.0</span>
    </div>
    <div id="projectbrief">Ridiculously Fast JSON</div>
   </td>
@@ -84,50 +84,63 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  _max_depth = 0;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <span class="keywordtype">size_t</span> string_capacity = SIMDJSON_ROUNDUP_N(5 * new_capacity / 3 + SIMDJSON_PADDING, 64);</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  string_buf.reset(<span class="keyword">new</span> (std::nothrow) uint8_t[string_capacity]);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  SIMDJSON_TRY( dom_parser.set_capacity(new_capacity) );</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  SIMDJSON_TRY( dom_parser.set_max_depth(DEFAULT_MAX_DEPTH) );</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  _capacity = new_capacity;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  _max_depth = new_max_depth;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordflow">return</span> SUCCESS;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classsimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1parser.html#a84fc68e18dee858e30059c36015047db">   20</a></span>&#160;simdjson_warn_unused simdjson_really_inline <a class="code" href="structsimdjson_1_1simdjson__result.html">simdjson_result&lt;document&gt;</a> <a class="code" href="classsimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1parser.html#a84fc68e18dee858e30059c36015047db">parser::iterate</a>(<span class="keyword">const</span> <a class="code" href="structsimdjson_1_1padded__string.html">padded_string</a> &amp;buf) &amp; noexcept {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="comment">// Allocate if needed</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordflow">if</span> (_capacity &lt; buf.size() || !string_buf) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    SIMDJSON_TRY( allocate(buf.size(), _max_depth) );</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="comment">// Run stage 1.</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  SIMDJSON_TRY( dom_parser.stage1((<span class="keyword">const</span> uint8_t *)buf.data(), buf.size(), <span class="keyword">false</span>) );</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordflow">return</span> document::start(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;simdjson_warn_unused simdjson_really_inline <a class="code" href="structsimdjson_1_1simdjson__result.html">simdjson_result&lt;json_iterator&gt;</a> parser::iterate_raw(<span class="keyword">const</span> <a class="code" href="structsimdjson_1_1padded__string.html">padded_string</a> &amp;buf) &amp; noexcept {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="comment">// Allocate if needed</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordflow">if</span> (_capacity &lt; buf.size()) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    SIMDJSON_TRY( allocate(buf.size(), _max_depth) );</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="comment">// Run stage 1.</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  SIMDJSON_TRY( dom_parser.stage1((<span class="keyword">const</span> uint8_t *)buf.data(), buf.size(), <span class="keyword">false</span>) );</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">return</span> json_iterator(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keywordflow">if</span> (dom_parser) {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    SIMDJSON_TRY( dom_parser-&gt;set_capacity(new_capacity) );</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    SIMDJSON_TRY( dom_parser-&gt;set_max_depth(new_max_depth) );</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    SIMDJSON_TRY( simdjson::active_implementation-&gt;create_dom_parser_implementation(new_capacity, new_max_depth, dom_parser) );</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  _capacity = new_capacity;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  _max_depth = new_max_depth;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordflow">return</span> SUCCESS;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classsimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1parser.html#a84fc68e18dee858e30059c36015047db">   24</a></span>&#160;simdjson_warn_unused simdjson_really_inline <a class="code" href="structsimdjson_1_1simdjson__result.html">simdjson_result&lt;document&gt;</a> <a class="code" href="classsimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1parser.html#a84fc68e18dee858e30059c36015047db">parser::iterate</a>(<span class="keyword">const</span> <a class="code" href="structsimdjson_1_1padded__string.html">padded_string</a> &amp;buf) &amp; noexcept {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="comment">// Allocate if needed</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordflow">if</span> (_capacity &lt; buf.size() || !string_buf) {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    SIMDJSON_TRY( allocate(buf.size(), _max_depth) );</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="comment">// Run stage 1.</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  SIMDJSON_TRY( dom_parser-&gt;stage1((<span class="keyword">const</span> uint8_t *)buf.data(), buf.size(), <span class="keyword">false</span>) );</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordflow">return</span> document::start({ (<span class="keyword">const</span> uint8_t *)buf.data(), <span class="keyword">this</span> });</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;simdjson_warn_unused simdjson_really_inline <a class="code" href="structsimdjson_1_1simdjson__result.html">simdjson_result&lt;document&gt;</a> <a class="code" href="classsimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1parser.html#a84fc68e18dee858e30059c36015047db">parser::iterate</a>(<span class="keyword">const</span> <a class="code" href="structsimdjson_1_1simdjson__result.html">simdjson_result&lt;padded_string&gt;</a> &amp;result) &amp; noexcept {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="comment">// We don&#39;t presently have a way to temporarily get a const T&amp; from a simdjson_result&lt;T&gt; without throwing an exception</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  SIMDJSON_TRY( result.error() );</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keyword">const</span> <a class="code" href="structsimdjson_1_1padded__string.html">padded_string</a> &amp;buf = result.value_unsafe();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">return</span> iterate(buf);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;} <span class="comment">// namespace ondemand</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;} <span class="comment">// namespace SIMDJSON_IMPLEMENTATION</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;} <span class="comment">// namespace simdjson</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">namespace </span>simdjson {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;simdjson_warn_unused simdjson_really_inline <a class="code" href="structsimdjson_1_1simdjson__result.html">simdjson_result&lt;json_iterator&gt;</a> parser::iterate_raw(<span class="keyword">const</span> <a class="code" href="structsimdjson_1_1padded__string.html">padded_string</a> &amp;buf) &amp; noexcept {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="comment">// Allocate if needed</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordflow">if</span> (_capacity &lt; buf.<a class="code" href="structsimdjson_1_1padded__string.html#a07d50795f042119ab848c37cb8911db4">size</a>()) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    SIMDJSON_TRY( allocate(buf.<a class="code" href="structsimdjson_1_1padded__string.html#a07d50795f042119ab848c37cb8911db4">size</a>(), _max_depth) );</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  }</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;simdjson_really_inline simdjson_result&lt;SIMDJSON_IMPLEMENTATION::ondemand::parser&gt;::simdjson_result(SIMDJSON_IMPLEMENTATION::ondemand::parser &amp;&amp;value) noexcept</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    : implementation_simdjson_result_base&lt;SIMDJSON_IMPLEMENTATION::ondemand::parser&gt;(std::forward&lt;SIMDJSON_IMPLEMENTATION::ondemand::parser&gt;(value)) {}</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;simdjson_really_inline simdjson_result&lt;SIMDJSON_IMPLEMENTATION::ondemand::parser&gt;::simdjson_result(error_code error) noexcept</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    : implementation_simdjson_result_base&lt;SIMDJSON_IMPLEMENTATION::ondemand::parser&gt;(error) {}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="comment">// Run stage 1.</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  SIMDJSON_TRY( dom_parser-&gt;stage1((<span class="keyword">const</span> uint8_t *)buf.<a class="code" href="structsimdjson_1_1padded__string.html#aadd3bb268cbba43012c5d17a8c1ab7ef">data</a>(), buf.<a class="code" href="structsimdjson_1_1padded__string.html#a07d50795f042119ab848c37cb8911db4">size</a>(), <span class="keyword">false</span>) );</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">return</span> json_iterator((<span class="keyword">const</span> uint8_t *)buf.<a class="code" href="structsimdjson_1_1padded__string.html#aadd3bb268cbba43012c5d17a8c1ab7ef">data</a>(), <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;} <span class="comment">// namespace simdjson</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;} <span class="comment">// namespace ondemand</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;} <span class="comment">// namespace SIMDJSON_IMPLEMENTATION</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;} <span class="comment">// namespace simdjson</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">namespace </span>simdjson {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;simdjson_really_inline simdjson_result&lt;SIMDJSON_IMPLEMENTATION::ondemand::parser&gt;::simdjson_result(SIMDJSON_IMPLEMENTATION::ondemand::parser &amp;&amp;value) noexcept</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    : implementation_simdjson_result_base&lt;SIMDJSON_IMPLEMENTATION::ondemand::parser&gt;(std::forward&lt;SIMDJSON_IMPLEMENTATION::ondemand::parser&gt;(value)) {}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;simdjson_really_inline simdjson_result&lt;SIMDJSON_IMPLEMENTATION::ondemand::parser&gt;::simdjson_result(error_code error) noexcept</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    : implementation_simdjson_result_base&lt;SIMDJSON_IMPLEMENTATION::ondemand::parser&gt;(error) {}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <span class="comment">// namespace simdjson</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclasssimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1parser_html_a84fc68e18dee858e30059c36015047db"><div class="ttname"><a href="classsimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1parser.html#a84fc68e18dee858e30059c36015047db">simdjson::SIMDJSON_IMPLEMENTATION::ondemand::parser::iterate</a></div><div class="ttdeci">simdjson_warn_unused simdjson_result&lt; document &gt; iterate(const padded_string &amp;json) &amp;noexcept</div><div class="ttdoc">Start iterating an on-demand JSON document.</div><div class="ttdef"><b>Definition:</b> <a href="generic_2ondemand_2parser-inl_8h_source.html#l00020">parser-inl.h:20</a></div></div>
-<div class="ttc" id="astructsimdjson_1_1simdjson__result_html"><div class="ttname"><a href="structsimdjson_1_1simdjson__result.html">simdjson::simdjson_result</a></div><div class="ttdoc">The result of a simdjson operation that could fail.</div><div class="ttdef"><b>Definition:</b> <a href="error_8h_source.html#l00183">error.h:183</a></div></div>
+<div class="ttc" id="aclasssimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1parser_html_a84fc68e18dee858e30059c36015047db"><div class="ttname"><a href="classsimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1parser.html#a84fc68e18dee858e30059c36015047db">simdjson::SIMDJSON_IMPLEMENTATION::ondemand::parser::iterate</a></div><div class="ttdeci">simdjson_warn_unused simdjson_result&lt; document &gt; iterate(const padded_string &amp;json) &amp;noexcept</div><div class="ttdoc">Start iterating an on-demand JSON document.</div><div class="ttdef"><b>Definition:</b> <a href="generic_2ondemand_2parser-inl_8h_source.html#l00024">parser-inl.h:24</a></div></div>
+<div class="ttc" id="astructsimdjson_1_1padded__string_html_aadd3bb268cbba43012c5d17a8c1ab7ef"><div class="ttname"><a href="structsimdjson_1_1padded__string.html#aadd3bb268cbba43012c5d17a8c1ab7ef">simdjson::padded_string::data</a></div><div class="ttdeci">const char * data() const noexcept</div><div class="ttdoc">The string data.</div><div class="ttdef"><b>Definition:</b> <a href="padded__string-inl_8h_source.html#l00108">padded_string-inl.h:108</a></div></div>
+<div class="ttc" id="astructsimdjson_1_1simdjson__result_html"><div class="ttname"><a href="structsimdjson_1_1simdjson__result.html">simdjson::simdjson_result</a></div><div class="ttdoc">The result of a simdjson operation that could fail.</div><div class="ttdef"><b>Definition:</b> <a href="error_8h_source.html#l00195">error.h:195</a></div></div>
+<div class="ttc" id="astructsimdjson_1_1padded__string_html_a07d50795f042119ab848c37cb8911db4"><div class="ttname"><a href="structsimdjson_1_1padded__string.html#a07d50795f042119ab848c37cb8911db4">simdjson::padded_string::size</a></div><div class="ttdeci">size_t size() const noexcept</div><div class="ttdoc">The length of the string.</div><div class="ttdef"><b>Definition:</b> <a href="padded__string-inl_8h_source.html#l00104">padded_string-inl.h:104</a></div></div>
 <div class="ttc" id="astructsimdjson_1_1padded__string_html"><div class="ttname"><a href="structsimdjson_1_1padded__string.html">simdjson::padded_string</a></div><div class="ttdoc">String with extra allocation for ease of use with parser::parse()</div><div class="ttdef"><b>Definition:</b> <a href="padded__string_8h_source.html#l00020">padded_string.h:20</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

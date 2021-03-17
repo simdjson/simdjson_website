@@ -7,5 +7,5 @@ var searchData=
   ['at_5fkey_4',['at_key',['../classsimdjson_1_1dom_1_1element.html#a686a21f39c755dcbf95116757d2193bd',1,'simdjson::dom::element::at_key()'],['../classsimdjson_1_1dom_1_1object.html#a4fb3e04e0ea591132da90341bf9ed819',1,'simdjson::dom::object::at_key()']]],
   ['at_5fkey_5fcase_5finsensitive_5',['at_key_case_insensitive',['../classsimdjson_1_1dom_1_1element.html#a5185447e6bf8949e7c5e9c22711e8764',1,'simdjson::dom::element::at_key_case_insensitive()'],['../classsimdjson_1_1dom_1_1object.html#ab075da9eb7678f6321cecf4cbd196039',1,'simdjson::dom::object::at_key_case_insensitive()']]],
   ['at_5fpointer_6',['at_pointer',['../classsimdjson_1_1dom_1_1array.html#a8141c7d98672bc3ab69fea7b63afcfb2',1,'simdjson::dom::array::at_pointer()'],['../classsimdjson_1_1dom_1_1element.html#a3777fed88f37555f2d090aeb604a117c',1,'simdjson::dom::element::at_pointer()'],['../classsimdjson_1_1dom_1_1object.html#ace84581be0fee46d5128c49710522aba',1,'simdjson::dom::object::at_pointer()']]],
-  ['a_20better_20way_20to_20parse_20documents_3f_7',['A Better Way to Parse Documents?',['../md_doc_ondemand.html',1,'']]]
+  ['a_20better_20way_20to_20parse_20documents_3f_7',['A Better Way to Parse Documents?',['../md_doc_ondemand_design.html',1,'']]]
 ];

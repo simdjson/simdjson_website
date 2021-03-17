@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['parse_5fmany_344',['parse_many',['../md_doc_parse_many.html',1,'']]],
-  ['performance_20notes_345',['Performance Notes',['../md_doc_performance.html',1,'']]]
+  ['on_20demand_20basics_347',['On Demand Basics',['../md_doc_ondemand.html',1,'']]]
 ];

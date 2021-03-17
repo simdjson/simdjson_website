@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logotiny.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">simdjson
-   &#160;<span id="projectnumber">0.7.0</span>
+   &#160;<span id="projectnumber">0.8.0</span>
    </div>
    <div id="projectbrief">Ridiculously Fast JSON</div>
   </td>
@@ -106,7 +106,6 @@ Including simdjson</h1>
 <div class="fragment"><div class="line">c++ myproject.cpp simdjson.cpp</div>
 </div><!-- fragment --><p>Note:</p><ul>
 <li>Users on macOS and other platforms were default compilers do not provide C++11 compliant by default should request it with the appropriate flag (e.g., <code>c++ -std=c++17 myproject.cpp simdjson.cpp</code>).</li>
-<li>Visual Studio users should compile with the <code>_CRT_SECURE_NO_WARNINGS</code> flag to avoid warnings with respect to our use of standard C functions such as <code>fopen</code>.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Using simdjson with package managers</h1>
@@ -173,6 +172,8 @@ Using the Parsed JSON</h1>
 <li><b>Checking an Element Type:</b> You can check an element's type with <code>element.type()</code>. It returns an <code>element_type</code> with values such as <code>simdjson::dom::element_type::ARRAY</code>, <code>simdjson::dom::element_type::OBJECT</code>, <code>simdjson::dom::element_type::INT64</code>, <code>simdjson::dom::element_type::UINT64</code>,<code>simdjson::dom::element_type::DOUBLE</code>, <code>simdjson::dom::element_type::BOOL</code> or, <code>simdjson::dom::element_type::NULL_VALUE</code>.</li>
 <li><b>Output to streams and strings:</b> Given a document or an element (or node) out of a JSON document, you can output a minified string version using the C++ stream idiom (<code>out &lt;&lt; element</code>). You can also request the construction of a minified string version (<code>simdjson::minify(element)</code>).</li>
 </ul>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Examples</h2>
 <p>The following code illustrates all of the above:</p>
 <div class="fragment"><div class="line"> {c++}</div>
 <div class="line">auto cars_json = R&quot;( [</div>
@@ -228,13 +229,13 @@ Using the Parsed JSON</h1>
 <div class="line"> dom::parser parser;</div>
 <div class="line"> double v = parser.parse(abstract_json)[&quot;str&quot;][&quot;123&quot;][&quot;abc&quot;];</div>
 <div class="line"> cout &lt;&lt; &quot;number: &quot; &lt;&lt; v &lt;&lt; endl;</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md7"></a>
 C++11 Support and string_view</h1>
 <p>The simdjson library builds on compilers supporting the <a href="https://en.wikipedia.org/wiki/C%2B%2B11">C++11 standard</a>. It is also a strict requirement: we have no plan to support older C++ compilers.</p>
 <p>We represent parsed strings in simdjson using the <code>std::string_view</code> class. It avoids the need to copy the data, as would be necessary with the <code>std::string</code> class. It also avoids the pitfalls of null-terminated C strings.</p>
 <p>The <code>std::string_view</code> class has become standard as part of C++17 but it is not always available on compilers which only supports C++11. When we detect that <code>string_view</code> is natively available, we define the macro <code>SIMDJSON_HAS_STRING_VIEW</code>.</p>
 <p>When we detect that it is unavailable, we use <a href="https://github.com/martinmoene/string-view-lite">string-view-lite</a> as a substitute. In such cases, we use the type alias <code>using string_view = nonstd::string_view;</code> to offer the same API, irrespective of the compiler and standard library. The macro <code>SIMDJSON_HAS_STRING_VIEW</code> will be <em>undefined</em> to indicate that we emulate <code>string_view</code>.</p>
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md8"></a>
 C++17 Support</h1>
 <p>While the simdjson library can be used in any project using C++ 11 and above, field iteration has special support C++ 17's destructuring syntax. For example:</p>
 <div class="fragment"><div class="line"> {c++}</div>
@@ -257,7 +258,7 @@ C++17 Support</h1>
 <div class="line">for (dom::key_value_pair field : object) {</div>
 <div class="line">  cout &lt;&lt; field.key &lt;&lt; &quot; = &quot; &lt;&lt; field.value &lt;&lt; endl;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md9"></a>
 Minifying JSON strings without parsing</h1>
 <p>In some cases, you may have valid JSON strings that you do not wish to parse but that you wish to minify. That is, you wish to remove all unnecessary spaces. We have a fast function for this purpose (<code>simdjson::minify(const char * input, size_t length, const char * output, size_t&amp; new_length)</code>). This function does not validate your content, and it does not parse it. It is much faster than parsing the string and re-serializing it in minified form (<code>simdjson::minify(parser.parse())</code>). Usage is relatively simple. You must pass an input pointer with a length parameter, as well as an output pointer and an output length parameter (by reference). The output length parameter is not read, but written to. The output pointer should point to a valid memory region that is as large as the original string length. The input pointer and input length are read, but not written to.</p>
 <div class="fragment"><div class="line">{C++}</div>
@@ -271,7 +272,7 @@ Minifying JSON strings without parsing</h1>
 <div class="line"> auto error = simdjson::minify(some_string, length, buffer.get(), new_length);</div>
 <div class="line"> // The buffer variable now has &quot;[1,2,3,4]&quot; and new_length has value 9.</div>
 </div><!-- fragment --><p>Though it does not validate the JSON input, it will detect when the document ends with an unterminated string. E.g., it would refuse to minify the string <code>"this string is not terminated</code> because of the missing final quote.</p>
-<h1><a class="anchor" id="autotoc_md9"></a>
+<h1><a class="anchor" id="autotoc_md10"></a>
 UTF-8 validation (alone)</h1>
 <p>The simdjson library has fast functions to validate UTF-8 strings. They are many times faster than most functions commonly found in libraries. You can use our fast functions, even if you do not care about JSON.</p>
 <div class="fragment"><div class="line">{C++}</div>
@@ -280,7 +281,7 @@ UTF-8 validation (alone)</h1>
 <div class="line"> bool is_ok = simdjson::validate_utf8(some_string, length);</div>
 </div><!-- fragment --><p>The UTF-8 validation function merely checks that the input is valid UTF-8: it works with strings in general, not just JSON strings.</p>
 <p>Your input string does not need any padding. Any string will do. The <code>validate_utf8</code> function does not do any memory allocation on the heap, and it does not throw exceptions.</p>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md11"></a>
 JSON Pointer</h1>
 <p>The simdjson library also supports <a href="https://tools.ietf.org/html/rfc6901">JSON pointer</a> through the <code>at_pointer()</code> method, letting you reach further down into the document in a single call:</p>
 <div class="fragment"><div class="line"> {c++}</div>
@@ -311,7 +312,7 @@ JSON Pointer</h1>
 <div class="line">    double x = car.at_pointer(&quot;/tire_pressure/1&quot;);</div>
 <div class="line">    cout &lt;&lt; x &lt;&lt; endl; // Prints 39.9, 31 and 30</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md11"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md12"></a>
 Error Handling</h1>
 <p>All simdjson APIs that can fail return <code>simdjson_result&lt;T&gt;</code>, which is a &lt;value, error_code&gt; pair. You can retrieve the value with .get(), like so:</p>
 <div class="fragment"><div class="line"> {c++}</div>
@@ -370,7 +371,7 @@ Error Handling</h1>
 <div class="line">  std::cout &lt;&lt; identifier &lt;&lt; std::endl;</div>
 <div class="line">  return EXIT_SUCCESS;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md12"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
 Error Handling Example</h2>
 <p>This is how the example in "Using the Parsed JSON" could be written using only error code checking:</p>
 <div class="fragment"><div class="line"> {c++}</div>
@@ -477,7 +478,7 @@ Error Handling Example</h2>
 <div class="line">  s.assign(answer.data(), answer.size());</div>
 <div class="line">  return true;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
 Exceptions</h2>
 <p>Users more comfortable with an exception flow may choose to directly cast the <code>simdjson_result&lt;T&gt;</code> to the desired type:</p>
 <div class="fragment"><div class="line"> {c++}</div>
@@ -493,7 +494,7 @@ Exceptions</h2>
 <div class="line">  std::cout &lt;&lt; &quot;ID: &quot; &lt;&lt; tweets[&quot;statuses&quot;].at(0)[&quot;id&quot;] &lt;&lt; std::endl;</div>
 <div class="line">  return EXIT_SUCCESS;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md14"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md15"></a>
 Tree Walking and JSON Element Types</h1>
 <p>Sometimes you don't necessarily have a document with a known type, and are trying to generically inspect or walk over JSON elements. To do that, you can use iterators and the type() method. For example, here's a quick and dirty recursive function that verbosely prints the JSON document as JSON (* ignoring nuances like trailing commas and escaping strings, for brevity's sake):</p>
 <div class="fragment"><div class="line"> {c++}</div>
@@ -540,7 +541,7 @@ Tree Walking and JSON Element Types</h1>
 <div class="line">  dom::parser parser;</div>
 <div class="line">  print_json(parser.load(&quot;twitter.json&quot;));</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md15"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md16"></a>
 Newline-Delimited JSON (ndjson) and JSON lines</h1>
 <p>The simdjson library also support multithreaded JSON streaming through a large file containing many smaller JSON documents in either <a href="http://ndjson.org">ndjson</a> or <a href="http://jsonlines.org">JSON lines</a> format. If your JSON documents all contain arrays or objects, we even support direct file concatenation without whitespace. The concatenated file has no size restrictions (including larger than 4GB), though each individual document must be no larger than 4 GB.</p>
 <p>Here is a simple example, given <code>x.json</code> with this content:</p>
@@ -573,13 +574,13 @@ Newline-Delimited JSON (ndjson) and JSON lines</h1>
 <p>Both <code>load_many</code> and <code>parse_many</code> take an optional parameter <code>size_t batch_size</code> which defines the window processing size. It is set by default to a large value (<code>1000000</code> corresponding to 1 MB). None of your JSON documents should exceed this window size, or else you will get the error <code>simdjson::CAPACITY</code>. You cannot set this window size larger than 4 GB: you will get the error <code>simdjson::CAPACITY</code>. The smaller the window size is, the less memory the function will use. Setting the window size too small (e.g., less than 100 kB) may also impact performance negatively. Leaving it to 1 MB is expected to be a good choice, unless you have some larger documents.</p>
 <p>If your documents are large (e.g., larger than a megabyte), then the <code>load_many</code> and <code>parse_many</code> functions are maybe ill-suited. They are really meant to support reading efficiently streams of relatively small documents (e.g., a few kilobytes each). If you have larger documents, you should use other functions like <code>parse</code>.</p>
 <p>See <a class="el" href="md_doc_parse_many.html">parse_many.md</a> for detailed information and design.</p>
-<h1><a class="anchor" id="autotoc_md16"></a>
+<h1><a class="anchor" id="autotoc_md17"></a>
 Thread Safety</h1>
 <p>We built simdjson with thread safety in mind.</p>
 <p>The simdjson library is single-threaded except for <a class="el" href="md_doc_parse_many.html">`parse_many`</a> which may use secondary threads under its control when the library is compiled with thread support.</p>
 <p>We recommend using one <code>dom::parser</code> object per thread in which case the library is thread-safe. It is unsafe to reuse a <code>dom::parser</code> object between different threads. The parsed results (<code>dom::document</code>, <code>dom::element</code>, <code>array</code>, <code>object</code>) depend on the <code>dom::parser</code>, etc. therefore it is also potentially unsafe to use the result of the parsing between different threads.</p>
 <p>The CPU detection, which runs the first time parsing is attempted and switches to the fastest parser for your CPU, is transparent and thread-safe.</p>
-<h1><a class="anchor" id="autotoc_md17"></a>
+<h1><a class="anchor" id="autotoc_md18"></a>
 Standard Compliance</h1>
 <p>The simdjson library is fully compliant with the <a href="https://www.tbray.org/ongoing/When/201x/2017/12/14/rfc8259.html">RFC 8259</a> JSON specification.</p>
 <ul>
@@ -597,7 +598,7 @@ Standard Compliance</h1>
 <li>The specification states that an implementation may set limits on the size of texts that it accepts. The simdjson library limits single JSON documents to 4 GiB. It will refuse to parse a JSON document larger than 4294967295 bytes. (This limitation does not apply to streams of JSON documents, only to single JSON documents.)</li>
 <li>The specification states that an implementation may set limits on the maximum depth of nesting. By default, the simdjson will refuse to parse documents with a depth exceeding 1024.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md18"></a>
+<h1><a class="anchor" id="autotoc_md19"></a>
 Backwards Compatibility</h1>
 <p>The only header file supported by simdjson is <code>simdjson.h</code>. Older versions of simdjson published a number of other include files such as <code>document.h</code> or <code>ParsedJson.h</code> alongside <code>simdjson.h</code>; these headers may be moved or removed in future versions. </p>
 </div></div><!-- contents -->
