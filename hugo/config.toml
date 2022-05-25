@@ -19,28 +19,28 @@ keywords = "open source, JSON, C++"
 herotitle = "Parsing gigabytes of JSON per second"
 herodiscription = "JSON is everywhere on the Internet. Servers spend a <strong>lot</strong> of time parsing it. The simdjson library uses commonly available SIMD instructions and microparallel algorithms to break speed records. "
 btnblue = "Browse the API"
-btnblueurl = "https://simdjson.org/api/1.0.0/index.html"
+btnblueurl = "https://simdjson.org/api/2.0.0/index.html"
 btngreen = "The simdjson library on GitHub"
 btngreenurl = "https://github.com/simdjson/simdjson"
 [params.main]
 contentOneTitle = "Highlights"
 contentTwoTitle = "Features"
-PostColumn = "![gigabytes per second on a skylake processor, GNU GCC](rome.png)"
+PostColumn = ''''''
 contentOneBody = """
-* **Fast:** Over 4x  faster than RapidJSON and 25x faster than JSON for Modern C++.
+* **Fast:** Over 4x faster than RapidJSON and 25x faster than JSON for Modern C++.
 * **Easy:** First-class, easy to use and carefully documented APIs.
 * **Strict:** Full JSON and UTF-8 validation, lossless parsing. Performance with no compromises.
 * **Automatic:** Selects a CPU-tailored parser at runtime. No configuration needed.
 * **Reliable:** From memory allocation to error handling, simdjson's design avoids surprises.
 * **Peer Reviewed:** Our research appears in venues like VLDB Journal, Software: Practice and Experience.
-* **Widely used:** Used by [Yandex](https://github.com/ClickHouse/ClickHouse), [Microsoft](https://github.com/microsoft/FishStore) and [Shopify](https://github.com/Shopify/heap-profiler). A dozen of ports and bindings have been published in Python, R, Ruby, PHP, C#, Rust, Swift, Go, etc.
+* **Widely used:** Used by [ClickHouse](https://github.com/ClickHouse/ClickHouse), [Microsoft](https://github.com/microsoft/FishStore) and [Shopify](https://github.com/Shopify/heap-profiler). A dozen of ports and bindings have been published in Python, R, Ruby, PHP, C#, Rust, Swift, Go, etc.
 
 This library is part of the [Awesome Modern C++](https://awesomecpp.com).
  """
 
 contentTwoBody = """
-* **On Demand API** to reach massive speeds (4 GB/s). We think it is a better way to parse JSON documents.
-* [**Minify JSON**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#minifying-json-strings-without-parsing)   at 6 GB/s
+* **On Demand API** to reach massive speeds (7 GB/s). We think it is a better way to parse JSON documents.
+* [**Minify JSON**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#minifying-json-strings-without-parsing)   at 12 GB/s
 * [**Standalone UTF8 Validation**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#utf-8-validation-alone) at 30 GB/s
 * [**Multithreaded processing**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#newline-delimited-json-ndjson-and-json-lines)  of gigantic Newline-Delimited JSON (ndjson) and related formats at 3.5 GB/s
 * [**JSON Pointer**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#json-pointer) support so that you can query your document at high speed

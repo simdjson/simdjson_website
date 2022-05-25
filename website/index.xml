@@ -12,8 +12,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://simdjson.org/about/</guid>
-      <description>To our knowledge, simdjson is the first fully-validating JSON parser to run at gigabytes per second on commodity processors. It can parse millions of JSON documents per second on a single core. It takes advantage of modern microarchitectures, parallelizing with SIMD vector instructions, reducing branch misprediction, and reducing data dependency to take advantage of each CPU&amp;rsquo;s multiple execution cores.
-You may use simdjson for more than just parsing JSON. It offers functions to minify JSON documents at 6 GB/s or validate UTF-8 strings at 13 GB/s.</description>
+      <description>To our knowledge, simdjson is the first fully-validating JSON parser to run at gigabytes per second on commodity processors. It can parse millions of JSON documents per second on a single core. It takes advantage of modern microarchitectures, parallelizing with SIMD vector instructions, reducing branch misprediction, and reducing data dependency to take advantage of each CPU&amp;rsquo;s multiple execution cores. We support ARM NEON, SSSE3, AVX2, AVX-512 and POWER instructions, among others.</description>
     </item>
     
     <item>
@@ -31,7 +30,7 @@ You may use simdjson for more than just parsing JSON. It offers functions to min
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://simdjson.org/software/</guid>
-      <description>The library is part of major linux distributions like Ubuntu and Debian and as a FreeBSD package. It is in Microsoft vpkg. It is available as an MSYS2 package, from brew and from conan. We publish it as single-header library as well as a CMake build from theGitHub repository. We have a simdjson organization on GitHub.
+      <description>The library is part of major linux distributions like Ubuntu and Debian and as a FreeBSD package. It is in Microsoft vcpkg. It is available as an MSYS2 package, from brew and from conan. We publish it as single-header library as well as a CMake build from theGitHub repository. We have a simdjson organization on GitHub.
 Quick Start Prerequisites: g++ (version 7 or better) or clang++(version 6 or better), and a 64-bit system (e.</description>
     </item>
     

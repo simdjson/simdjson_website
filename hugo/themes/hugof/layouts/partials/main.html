@@ -12,5 +12,38 @@
 	</div>
 	<div  class="wrapper row">
 		<p>{{ .Site.Params.main.PostColumn | markdownify }}</p>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script><script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["parser", "speed", { role: "style" } ],
+        ["simdjson", 7.4, "#b87333"],
+        ["yyjson", 2.0, "silver"],
+        ["RapidJSON", 0.5, "gold"],
+        ["JSON for Modern C++", 0.1, "color: #e5e4e2"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "find_tweet benchmark (twitter) in GB/s",
+        width: 600,
+        height: 300,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+  }
+  </script>
+<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
 	</div>
 </section> {{ "<!-- END MAIN CONTENT -->" | safeHTML }}
