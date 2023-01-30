@@ -21,7 +21,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://simdjson.org/publications/</guid>
-      <description>Academic Publications  Geoff Langdale, Daniel Lemire, Parsing Gigabytes of JSON per Second, VLDB Journal 28 (6), 2019. John Keiser, Daniel Lemire, Validating UTF-8 In Less Than One Instruction Per Byte, Software: Practice &amp;amp; Experience 51 (5), 2021. Daniel Lemire, Number Parsing at a Gigabyte per Second, Software: Practice and Experience 51 (8), 2021.  Online articles  Daniel Lemire, Making Your Code Faster by Taming Branches, InfoQ, March 2020.  Blog posts  Geoff Langdale, Paper: Parsing Gigabytes of JSON per Second, February 2019.</description>
+      <description>Academic Publications Geoff Langdale, Daniel Lemire, Parsing Gigabytes of JSON per Second, VLDB Journal 28 (6), 2019. John Keiser, Daniel Lemire, Validating UTF-8 In Less Than One Instruction Per Byte, Software: Practice &amp;amp; Experience 51 (5), 2021. Daniel Lemire, Number Parsing at a Gigabyte per Second, Software: Practice and Experience 51 (8), 2021. Online articles Daniel Lemire, Making Your Code Faster by Taming Branches, InfoQ, March 2020. Blog posts Geoff Langdale, Paper: Parsing Gigabytes of JSON per Second, February 2019.</description>
     </item>
     
     <item>
@@ -40,8 +40,7 @@ Quick Start Prerequisites: g++ (version 7 or better) or clang++(version 6 or bet
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://simdjson.org/talks/</guid>
-      <description>Best Voted talk at QCon San Francisco 2019 
-Performance Summit III (2020)</description>
+      <description>Best Voted talk at QCon San Francisco 2019 Performance Summit III (2020) </description>
     </item>
     
   </channel>

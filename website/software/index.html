@@ -77,7 +77,7 @@
 		<h1>Parsing gigabytes of JSON per second</h1>
 		<p>JSON is everywhere on the Internet. Servers spend a <!-- raw HTML omitted -->lot<!-- raw HTML omitted --> of time parsing it. The simdjson library uses commonly available SIMD instructions and microparallel algorithms to break speed records.</p>
 
-		<a href="https://simdjson.org/api/2.0.0/index.html" class="button primary">Browse the API</a>
+		<a href="https://simdjson.github.io/simdjson/" class="button primary">Browse the API</a>
 		<a href="https://github.com/simdjson/simdjson" class="button secondary">The simdjson library on GitHub</a>
 
 	</div>
@@ -95,26 +95,25 @@ We have a <a href="https://github.com/simdjson">simdjson organization on GitHub<
 <p>Prerequisites: <code>g++</code> (version 7 or better)  or <code>clang++</code>(version 6 or better), and a 64-bit system (e.g., linux, Windows, FreeBSD, macOS).</p>
 <ol>
 <li>Pull <code>simdjson.h</code> and <code>simdjson.cpp</code> from our singleheader directory into a directory of your choice, along with the sample file twitter.json from our jsonexamples repository..
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   wget https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.h https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.cpp https://raw.githubusercontent.com/simdjson/simdjson/master/jsonexamples/twitter.json</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>   wget https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.h https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.cpp https://raw.githubusercontent.com/simdjson/simdjson/master/jsonexamples/twitter.json</span></span></code></pre></div></li>
 <li>Create <code>quickstart.cpp</code>:</li>
 </ol>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">   <span style="color:#999;font-weight:bold;font-style:italic">#include</span> <span style="color:#999;font-weight:bold;font-style:italic">&#34;simdjson.h&#34;</span><span style="color:#999;font-weight:bold;font-style:italic">
-</span><span style="color:#999;font-weight:bold;font-style:italic"></span>   <span style="color:#000;font-weight:bold">using</span> <span style="color:#000;font-weight:bold">namespace</span> simdjson;
-   <span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">main</span>(<span style="color:#458;font-weight:bold">void</span>) {
-      ondemand<span style="color:#000;font-weight:bold">::</span>parser parser;
-      padded_string json <span style="color:#000;font-weight:bold">=</span> padded_string<span style="color:#000;font-weight:bold">::</span>load(<span style="color:#d14">&#34;twitter.json&#34;</span>);
-      ondemand<span style="color:#000;font-weight:bold">::</span>document tweets <span style="color:#000;font-weight:bold">=</span> parser.iterate(json);
-      std<span style="color:#000;font-weight:bold">::</span>cout <span style="color:#000;font-weight:bold">&lt;&lt;</span> <span style="color:#458;font-weight:bold">uint64_t</span>(tweets[<span style="color:#d14">&#34;search_metadata&#34;</span>][<span style="color:#d14">&#34;count&#34;</span>]) <span style="color:#000;font-weight:bold">&lt;&lt;</span> <span style="color:#d14">&#34; results.&#34;</span> <span style="color:#000;font-weight:bold">&lt;&lt;</span> std<span style="color:#000;font-weight:bold">::</span>endl;
-   }
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>   <span style="color:#999;font-weight:bold;font-style:italic">#include</span> <span style="color:#999;font-weight:bold;font-style:italic">&#34;simdjson.h&#34;</span><span style="color:#999;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic"></span>   <span style="color:#000;font-weight:bold">using</span> <span style="color:#000;font-weight:bold">namespace</span> simdjson;
+</span></span><span style="display:flex;"><span>   <span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">main</span>(<span style="color:#458;font-weight:bold">void</span>) {
+</span></span><span style="display:flex;"><span>      ondemand<span style="color:#000;font-weight:bold">::</span>parser parser;
+</span></span><span style="display:flex;"><span>      padded_string json <span style="color:#000;font-weight:bold">=</span> padded_string<span style="color:#000;font-weight:bold">::</span>load(<span style="color:#d14">&#34;twitter.json&#34;</span>);
+</span></span><span style="display:flex;"><span>      ondemand<span style="color:#000;font-weight:bold">::</span>document tweets <span style="color:#000;font-weight:bold">=</span> parser.iterate(json);
+</span></span><span style="display:flex;"><span>      std<span style="color:#000;font-weight:bold">::</span>cout <span style="color:#000;font-weight:bold">&lt;&lt;</span> <span style="color:#458;font-weight:bold">uint64_t</span>(tweets[<span style="color:#d14">&#34;search_metadata&#34;</span>][<span style="color:#d14">&#34;count&#34;</span>]) <span style="color:#000;font-weight:bold">&lt;&lt;</span> <span style="color:#d14">&#34; results.&#34;</span> <span style="color:#000;font-weight:bold">&lt;&lt;</span> std<span style="color:#000;font-weight:bold">::</span>endl;
+</span></span><span style="display:flex;"><span>   }</span></span></code></pre></div>
 <ul>
 <li>
 <p>Compile:
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   c++ -o quickstart quickstart.cpp simdjson.cpp -std<span style="color:#000;font-weight:bold">=</span>c++17</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>   c++ -o quickstart quickstart.cpp simdjson.cpp -std<span style="color:#000;font-weight:bold">=</span>c++17</span></span></code></pre></div></p>
 </li>
 <li>
 <p>Run:
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   ./quickstart</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>   ./quickstart</span></span></code></pre></div></p>
 </li>
 </ul>
 <h3 id="documentation">Documentation</h3>
