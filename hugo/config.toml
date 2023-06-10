@@ -47,7 +47,7 @@ contentTwoBody = """
 * [**Support both conventional error handling (exceptions) as well as an error-code approach**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#error-handling): you can compile your C++ code with or without exception support.
 * [**Runtime dispatch**](https://github.com/simdjson/simdjson/blob/master/doc/implementation-selection.md): the library automatically detects the features supported by the processor. The library runs on all 64-bit systems, but it automagically benefits from advanced processors.
 
-It is found on [Ubuntu](https://packages.ubuntu.com/source/eoan/simdjson) and [Debian](https://packages.debian.org/unstable/source/simdjson), FreeBSD, [MSYS2](https://github.com/simdjson/simdjson/wiki/MSYS2), brew, conan and [vcpkg](https://github.com/simdjson/simdjson/wiki/vcpkg).
+It is found on [Ubuntu](https://packages.ubuntu.com/source/jammy/simdjson) and [Debian](https://packages.debian.org/unstable/source/simdjson), FreeBSD, [MSYS2](https://github.com/simdjson/simdjson/wiki/MSYS2), brew, conan and [vcpkg](https://github.com/simdjson/simdjson/wiki/vcpkg).
 """
 
 
