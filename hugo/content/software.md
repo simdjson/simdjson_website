@@ -52,10 +52,23 @@ Usage documentation is available:
 
 ###  Real-world usage
 
-- [Microsoft FishStore](https://github.com/microsoft/FishStore)
-- [Yandex ClickHouse](https://github.com/yandex/ClickHouse)
+- [ClickHouse](https://github.com/ClickHouse/ClickHouse)
+- [Meta Velox](https://velox-lib.io)
+- [Google Pax](https://github.com/google/paxml)
+- [milvus](https://github.com/milvus-io/milvus)
 - [Clang Build Analyzer](https://github.com/aras-p/ClangBuildAnalyzer)
 - [Shopify HeapProfiler](https://github.com/Shopify/heap-profiler)
+- [StarRocks](https://github.com/StarRocks/starrocks)
+- [Microsoft FishStore](https://github.com/microsoft/FishStore)
+- [Intel PCM](https://github.com/intel/pcm)
+- [WatermelonDB](https://github.com/Nozbe/WatermelonDB)
+- [Apache Doris](https://github.com/apache/doris)
+- [Dgraph](https://github.com/dgraph-io/dgraph)
+- [UJRPC](https://github.com/unum-cloud/ujrpc)
+- [fastgltf](https://github.com/spnda/fastgltf)
+- [vast](https://github.com/tenzir/vast)
+- [ada-url](https://github.com/ada-url/ada)
+- [fastgron](https://github.com/adamritter/fastgron)
 
 If you are planning to use simdjson in a product, please work from one of our releases.
 
