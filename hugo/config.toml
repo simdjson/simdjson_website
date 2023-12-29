@@ -33,7 +33,7 @@ contentOneBody = """
 * **Automatic:** Selects a CPU-tailored parser at runtime. No configuration needed.
 * **Reliable:** From memory allocation to error handling, simdjson's design avoids surprises.
 * **Peer Reviewed:** Our research appears in venues like VLDB Journal, Software: Practice and Experience.
-* **Widely used:** Used by [ClickHouse](https://github.com/ClickHouse/ClickHouse), [Microsoft](https://github.com/microsoft/FishStore), [Shopify](https://github.com/Shopify/heap-profiler), [Intel](https://github.com/intel/pcm), [Apache Doris](https://github.com/apache/doris), [Dgraph](https://github.com/dgraph-io/dgraph), [StarRocks](https://github.com/StarRocks/starrocks), [Meta Velox](https://velox-lib.io), [Google Pax](https://github.com/google/paxml), [WatermelonDB](https://github.com/Nozbe/WatermelonDB), and many others. A dozen of ports and bindings have been published in Python, R, Ruby, PHP, C#, Rust, Swift, Go, etc.
+* **Widely used:** Used by [ClickHouse](https://github.com/ClickHouse/ClickHouse), [Microsoft](https://github.com/microsoft/FishStore), [Shopify](https://github.com/Shopify/heap-profiler), [Intel](https://github.com/intel/pcm), [Apache Doris](https://github.com/apache/doris), [Dgraph](https://github.com/dgraph-io/dgraph), [StarRocks](https://github.com/StarRocks/starrocks), [Meta Velox](https://velox-lib.io), [Google Pax](https://github.com/google/paxml), [WatermelonDB](https://github.com/Nozbe/WatermelonDB), the Node.js runtime, and many others. A dozen of ports and bindings have been published in Python, R, Ruby, PHP, C#, Rust, Swift, Go, etc.
 
 
 This library is part of the [Awesome Modern C++](https://awesomecpp.com).
