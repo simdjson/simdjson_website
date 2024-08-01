@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['on_20demand_20basics_87',['On Demand Basics',['../md_doc_ondemand.html',1,'']]],
+  ['on_20demand_20basics_87',['On-Demand Basics',['../md_doc_ondemand.html',1,'']]],
   ['object_88',['object',['../classsimdjson_1_1dom_1_1object.html',1,'simdjson::dom::object'],['../classsimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1object.html',1,'simdjson::SIMDJSON_IMPLEMENTATION::ondemand::object'],['../classsimdjson_1_1dom_1_1object.html#a3fe7e51ab9e8eccaee4f795c58ed13a2',1,'simdjson::dom::object::object()'],['../classsimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1object.html#af3bc324a43ce68aed4d096d4c1a4fa22',1,'simdjson::SIMDJSON_IMPLEMENTATION::ondemand::object::object()'],['../group__object.html',1,'(Global Namespace)']]],
   ['object_5fiterator_89',['object_iterator',['../classsimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1object__iterator.html',1,'simdjson::SIMDJSON_IMPLEMENTATION::ondemand::object_iterator'],['../classsimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1ondemand_1_1object__iterator.html#a1c0f071249cb5e953e35896a1f07e29e',1,'simdjson::SIMDJSON_IMPLEMENTATION::ondemand::object_iterator::object_iterator()']]],
   ['open_5fcontainer_90',['open_container',['../structsimdjson_1_1_s_i_m_d_j_s_o_n___i_m_p_l_e_m_e_n_t_a_t_i_o_n_1_1open__container.html',1,'simdjson::SIMDJSON_IMPLEMENTATION']]],

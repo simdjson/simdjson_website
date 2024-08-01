@@ -21,7 +21,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://simdjson.org/publications/</guid>
-      <description>Academic Publications John Keiser, Daniel Lemire, On-Demand JSON: A Better Way to Parse Documents?, Software: Practice and Experience (to appear) Geoff Langdale, Daniel Lemire, Parsing Gigabytes of JSON per Second, VLDB Journal 28 (6), 2019. John Keiser, Daniel Lemire, Validating UTF-8 In Less Than One Instruction Per Byte, Software: Practice &amp;amp; Experience 51 (5), 2021. Daniel Lemire, Number Parsing at a Gigabyte per Second, Software: Practice and Experience 51 (8), 2021.</description>
+      <description>Academic Publications John Keiser, Daniel Lemire, On-Demand JSON: A Better Way to Parse Documents?, Software: Practice and Experience 54 (6), 2024. Geoff Langdale, Daniel Lemire, Parsing Gigabytes of JSON per Second, VLDB Journal 28 (6), 2019. John Keiser, Daniel Lemire, Validating UTF-8 In Less Than One Instruction Per Byte, Software: Practice &amp;amp; Experience 51 (5), 2021. Daniel Lemire, Number Parsing at a Gigabyte per Second, Software: Practice and Experience 51 (8), 2021.</description>
     </item>
     
     <item>

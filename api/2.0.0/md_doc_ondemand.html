@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>simdjson: On Demand Basics</title>
+<title>simdjson: On-Demand Basics</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -65,17 +65,17 @@ $(function() {
 </div><!-- top -->
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">On Demand Basics </div>  </div>
+<div class="title">On-Demand Basics </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>On Demand is a new, faster simdjson API with all the ease-of-use you are used to. While it provides a familiar DOM interface, under the hood it is different: it is parsing values <em>as you use them.</em> With On Demand, you do not waste time parsing JSON you do not use, and you do not pay the cost of generating an intermediate DOM tree.</p>
-<p>We provide an overview of what you need to know to use the simdjson On Demand API, with examples.</p>
+<div class="textblock"><p>On-Demand is a new, faster simdjson API with all the ease-of-use you are used to. While it provides a familiar DOM interface, under the hood it is different: it is parsing values <em>as you use them.</em> With On-Demand, you do not waste time parsing JSON you do not use, and you do not pay the cost of generating an intermediate DOM tree.</p>
+<p>We provide an overview of what you need to know to use the simdjson On-Demand API, with examples.</p>
 <ul>
 <li><a href="#including-on-demand">Including ondemand</a></li>
 <li><a href="#the-basics-loading-and-parsing-json-documents">The Basics: Loading and Parsing JSON Documents</a></li>
 <li><a href="#using-the-parsed-json">Using the Parsed JSON</a></li>
 </ul>
-<p>The On Demand API supports the same JSON standards and C++ compilers as simdjson's DOM API. Refer to the DOM docs for more information:</p>
+<p>The On-Demand API supports the same JSON standards and C++ compilers as simdjson's DOM API. Refer to the DOM docs for more information:</p>
 <ul>
 <li><a href="basics.md##requirements">Requirements</a></li>
 <li><a href="#using-simdjson-as-a-cmake-dependency">Using simdjson as a CMake dependency</a></li>
@@ -90,9 +90,9 @@ $(function() {
 <li><a href="basics.md#c17-support">C++17 Support</a></li>
 <li><a href="basics.md#backwards-compatibility">Backwards Compatibility</a></li>
 </ul>
-<p>For deeper information about the design and implementation of the simdjson On Demand API, refer to the <a class="el" href="md_doc_ondemand.html">design document</a>.</p>
+<p>For deeper information about the design and implementation of the simdjson On-Demand API, refer to the <a class="el" href="md_doc_ondemand.html">design document</a>.</p>
 <h1><a class="anchor" id="autotoc_md44"></a>
-Including On Demand</h1>
+Including On-Demand</h1>
 <p>To include simdjson, copy <a href="/singleheader/simdjson.h">simdjson.h</a> and <a href="/singleheader/simdjson.cpp">simdjson.cpp</a> into your project. Then include it in your project with:</p>
 <div class="fragment"><div class="line"> {c++}</div>
 <div class="line">#include &quot;simdjson.h&quot;</div>
@@ -116,7 +116,7 @@ The Basics: Loading and Parsing JSON Documents</h1>
 <div class="line">ondemand::document doc = parser.iterate(json); // parse a string</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md46"></a>
 Documents Are Iterators</h1>
-<p>A <code>document</code> is <em>not</em> a fully-parsed JSON value; rather, it is an <b>iterator</b> over the JSON text. This means that while you iterate an array, or search for a field in an object, it is actually walking through the original JSON text, merrily reading commas and colons and brackets to make sure you get where you are going. This is the key to On Demand's performance: since it's just an iterator, it lets you parse values as you use them. And particularly, it lets you <em>skip</em> values you do not want to use.</p>
+<p>A <code>document</code> is <em>not</em> a fully-parsed JSON value; rather, it is an <b>iterator</b> over the JSON text. This means that while you iterate an array, or search for a field in an object, it is actually walking through the original JSON text, merrily reading commas and colons and brackets to make sure you get where you are going. This is the key to On-Demand's performance: since it's just an iterator, it lets you parse values as you use them. And particularly, it lets you <em>skip</em> values you do not want to use.</p>
 <h2><a class="anchor" id="autotoc_md47"></a>
 Parser, Document and JSON Scope</h2>
 <p>Because a document is an iterator over the JSON text, both the JSON text and the parser must remain alive (in scope) while you are using it. Further, a <code>parser</code> may have at most one document open at a time, since it holds allocated memory used for the parsing.</p>
