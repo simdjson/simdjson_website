@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
 	<head>
-	<meta name="generator" content="Hugo 0.110.0">
+	<meta name="generator" content="Hugo 0.147.8">
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,7 +76,7 @@
 <section class="hero-panel">
 	<div class="wrapper">
 		<h1>Parsing gigabytes of JSON per second</h1>
-		<p>JSON is everywhere on the Internet. Servers spend a <!-- raw HTML omitted -->lot<!-- raw HTML omitted --> of time parsing it. The simdjson library uses commonly available SIMD instructions and microparallel algorithms to break speed records.</p>
+		<p>JSON is everywhere on the Internet. Servers spend a <!-- raw HTML omitted -->lot<!-- raw HTML omitted --> of time parsing it. We need a fresh approach.</p>
 
 		<a href="https://simdjson.github.io/simdjson/" class="button primary">Browse the API</a>
 		<a href="https://github.com/simdjson/simdjson" class="button secondary">The simdjson library on GitHub</a>
@@ -87,6 +87,11 @@
 		
 					<!-- BEGIN MAIN CONTENT -->
 <section class="main-content">
+	
+	<div class="hero-image">
+		<img src="/perf_with_simdjson_parsing.png" alt="Performance benchmarks showing SIMDJSON parsing speeds" style="width: 40%; max-width: 800px;  display: block; margin: 1em auto 4em;">
+	</div>
+	
 	<div class="wrapper row">
 		<div class="small-12 medium-6 column content-one">
 			<h1>Highlights</h1>
@@ -98,59 +103,32 @@
 <li><strong>Reliable:</strong> From memory allocation to error handling, simdjson&rsquo;s design avoids surprises.</li>
 <li><strong>Peer Reviewed:</strong> Our research appears in venues like VLDB Journal, Software: Practice and Experience.</li>
 <li><strong>Widely used:</strong> Used by <a href="https://github.com/ClickHouse/ClickHouse">ClickHouse</a>, <a href="https://github.com/microsoft/FishStore">Microsoft</a>, <a href="https://github.com/Shopify/heap-profiler">Shopify</a>, <a href="https://github.com/intel/pcm">Intel</a>, <a href="https://github.com/apache/doris">Apache Doris</a>, <a href="https://github.com/dgraph-io/dgraph">Dgraph</a>, <a href="https://github.com/StarRocks/starrocks">StarRocks</a>, <a href="https://velox-lib.io">Meta Velox</a>, <a href="https://github.com/google/paxml">Google Pax</a>, <a href="https://github.com/Nozbe/WatermelonDB">WatermelonDB</a>, the Node.js runtime, and many others. A dozen of ports and bindings have been published in Python, R, Ruby, PHP, C#, Rust, Swift, Go, etc.</li>
+<li><strong>Widely distributed</strong>: It is found on Ubuntu, Alpine, Arch Linux, Fedora and Debian, FreeBSD, MSYS2, brew, Raspbian, conan and vcpkg.</li>
+<li><strong>Paid support available</strong>: <a href="mailto:daniel@lemire.me?subject=Inquiry%20about%20paid%20support">Get in touch!</a></li>
 </ul>
-<p>This library is part of the <a href="https://awesomecpp.com">Awesome Modern C++</a>.</p>
+<p>This library is part of the <a href="https://awesomecpp.com">Awesome Modern C++</a>.</p></p>
 		</div>
 		<div class="small-12 medium-6 column content-two">
 			<h1>Features</h1>
 			<p><ul>
 <li><strong>On-Demand API</strong> to reach massive speeds (7 GB/s). We think it is a better way to parse JSON documents.</li>
+<li><a href="https://github.com/simdjson/simdjson/blob/master/doc/builder.md"><strong>Build JSON strings</strong></a>: Generate JSON strings at gigabytes per second!</li>
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#minifying-json-strings-without-parsing"><strong>Minify JSON</strong></a>   at 12 GB/s</li>
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#utf-8-validation-alone"><strong>Standalone UTF8 Validation</strong></a> at 30 GB/s</li>
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#newline-delimited-json-ndjson-and-json-lines"><strong>Multithreaded processing</strong></a>  of gigantic Newline-Delimited JSON (ndjson) and related formats at 3.5 GB/s</li>
-<li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#json-pointer"><strong>JSON Pointer</strong></a> support so that you can query your document at high speed</li>
+<li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#json-pointer"><strong>JSON Pointer</strong></a> and <a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#jsonpath"><strong>JSONPath</strong></a> support so that you can query your document at high speed</li>
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#error-handling"><strong>Support both conventional error handling (exceptions) as well as an error-code approach</strong></a>: you can compile your C++ code with or without exception support.</li>
 <li><a href="https://github.com/simdjson/simdjson/blob/master/doc/implementation-selection.md"><strong>Runtime dispatch</strong></a>: the library automatically detects the features supported by the processor. The library runs on all 64-bit systems, but it automagically benefits from advanced processors.</li>
+<li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#2-use-tag_invoke-for-custom-types-c20"><strong>Customize for your own types</strong></a>: add support for you own data types</li>
+<li><a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#3-using-static-reflection-c26"><strong>C++26 reflection</strong></a>: get automatic support for your own types</li>
+<li><strong>Broad hardware support</strong>: Optimized kernels for x64 (including AVX-512), 64-bit ARM, RISC-V, Loongarch, and so forth.</li>
 </ul>
-<p>It is found on <a href="https://packages.ubuntu.com/source/jammy/simdjson">Ubuntu</a> and <a href="https://tracker.debian.org/pkg/simdjson">Debian</a>, FreeBSD, <a href="https://github.com/simdjson/simdjson/wiki/MSYS2">MSYS2</a>, brew, conan and <a href="https://github.com/simdjson/simdjson/wiki/vcpkg">vcpkg</a>.</p>
+</p>
 		</div>
 	</div>
 	<div  class="wrapper row">
 		<p></p>
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script><script type="text/javascript">
-    google.charts.load("current", {packages:['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-        ["parser", "speed", { role: "style" } ],
-        ["simdjson", 7.4, "#b87333"],
-        ["yyjson", 2.0, "silver"],
-        ["RapidJSON", 0.5, "gold"],
-        ["JSON for Modern C++", 0.1, "color: #e5e4e2"]
-      ]);
-
-      var view = new google.visualization.DataView(data);
-      view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" },
-                       2]);
-
-      var options = {
-        title: "find_tweet benchmark (twitter) in GB/s",
-        width: 600,
-        height: 300,
-        bar: {groupWidth: "95%"},
-        legend: { position: "none" },
-      };
-      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-      chart.draw(view, options);
-  }
-  </script>
-<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
-	</div>
 </section> <!-- END MAIN CONTENT -->
 
 							
@@ -163,7 +141,7 @@
 		
                         
 			
-			<a href="mailto:lemire@gmail.com">Get in touch</a>
+			<a href="mailto:daniel@lemire.me">Get in touch</a>
 			
 		</div>
 		
@@ -190,6 +168,8 @@
 			<a class="nav-item" href="http://github.com/simdjson/simdjson">Github</a>
 			
 			<a class="nav-item" href="https://groups.google.com/forum/#!forum/the-simdjson-library">Google Groups</a>
+			
+			<a class="nav-item" href="https://github.com/sponsors/lemire">Sponsor</a>
 			
 		</div>
                        
