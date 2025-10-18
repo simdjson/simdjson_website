@@ -3,20 +3,26 @@ title = "Software"
 layout = "single-para"
 +++
 
- The library is part of major linux distributions like [Ubuntu](https://packages.ubuntu.com/source/jammy/simdjson) and [Debian](https://packages.debian.org/unstable/source/simdjson) and as a FreeBSD package. It is in [Microsoft vcpkg](https://github.com/simdjson/simdjson/wiki/vcpkg). It is available as an [MSYS2 package](https://github.com/simdjson/simdjson/wiki/MSYS2), from [brew](https://formulae.brew.sh/formula/simdjson) and from conan. We publish it as single-header library as well as a CMake build from the[GitHub repository](https://github.com/simdjson/simdjson).
+ The library is part of major linux distributions like [Ubuntu](https://packages.ubuntu.com/source/jammy/simdjson), [Debian](https://packages.debian.org/unstable/source/simdjson), Arch Linux, Fedora, Alpine and as a FreeBSD package. It is in [Microsoft vcpkg](https://github.com/simdjson/simdjson/wiki/vcpkg). It is available as an [MSYS2 package](https://github.com/simdjson/simdjson/wiki/MSYS2), from [brew](https://formulae.brew.sh/formula/simdjson) and from conan. We publish it as single-header library as well as a CMake build from the [GitHub repository](https://github.com/simdjson/simdjson).
 We have a [simdjson organization on GitHub](https://github.com/simdjson).
 
 
 ### Quick Start
 
-Prerequisites: `g++` (version 7 or better)  or `clang++`(version 6 or better), and a 64-bit system (e.g., linux, Windows, FreeBSD, macOS).
+Prerequisites: a recent C++ compiler.
 
 
 
-1.  Pull `simdjson.h` and `simdjson.cpp` from our singleheader directory into a directory of your choice, along with the sample file twitter.json from our jsonexamples repository..
+1.  Pull `simdjson.h` and `simdjson.cpp` from our singleheader directory into a directory of your choice, along with the sample file twitter.json from our jsonexamples repository.
+
 {{< highlight bash "">}}
-   wget https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.h https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/simdjson.cpp https://raw.githubusercontent.com/simdjson/simdjson/master/jsonexamples/twitter.json
+SIMDJSON_BASE="https://raw.githubusercontent.com/simdjson/simdjson/master/"
+
+wget "${SIMDJSON_BASE}singleheader/simdjson.h" \
+     "${SIMDJSON_BASE}singleheader/simdjson.cpp" \
+     "${SIMDJSON_BASE}jsonexamples/twitter.json"
 {{< / highlight >}}
+
 2. Create `quickstart.cpp`:
 
 {{< highlight cpp "">}}
@@ -26,16 +32,17 @@ Prerequisites: `g++` (version 7 or better)  or `clang++`(version 6 or better), a
       ondemand::parser parser;
       padded_string json = padded_string::load("twitter.json");
       ondemand::document tweets = parser.iterate(json);
-      std::cout << uint64_t(tweets["search_metadata"]["count"]) << " results." << std::endl;
+      std::cout << uint64_t(tweets["search_metadata"]["count"]) 
+        << " results." << std::endl;
    }
-
 {{< / highlight >}}
-- Compile:
+
+3. Compile:
 {{< highlight bash "">}}
    c++ -o quickstart quickstart.cpp simdjson.cpp -std=c++17
 {{< / highlight >}}
 
-- Run:
+4. Run:
 {{< highlight bash "">}}
    ./quickstart
 {{< / highlight >}}
@@ -46,9 +53,10 @@ Prerequisites: `g++` (version 7 or better)  or `clang++`(version 6 or better), a
 Usage documentation is available:
 
 * [Basics](https://github.com/simdjson/simdjson/blob/master/doc/basics.md) is an overview of how to use simdjson and its APIs.
+* [Builder](https://github.com/simdjson/simdjson/blob/master/doc/builder.md) is an overview of how to efficiently write JSON strings using simdjson.
 * [Performance](https://github.com/simdjson/simdjson/blob/master/doc/performance.md) shows some more advanced scenarios and how to tune for them.
-* [Implementation Selection](https://github.com/simdjson/simdjson/blob/master/doc/implementation-selection.md) describes runtime CPU detection and
-  how you can work with it.
+* [Implementation Selection](https://github.com/simdjson/simdjson/blob/master/doc/implementation-selection.md) Selection describes runtime CPU detection and how you can work with it.
+
 
 ###  Real-world usage
 

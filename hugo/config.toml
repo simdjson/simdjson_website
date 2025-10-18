@@ -4,7 +4,7 @@ title = "The simdjson library"
 languageCode = "en-us"
 theme = "hugof"
 enableRobotsTXT = true
-SectionPagesMenu = ["main", "social"]
+SectionPagesMenu = "main"
 
 [params.image]
 ImageURL = "simdjsonlogo.png"
@@ -17,7 +17,7 @@ keywords = "open source, JSON, C++"
 
 [params.hero]
 herotitle = "Parsing gigabytes of JSON per second"
-herodiscription = "JSON is everywhere on the Internet. Servers spend a <strong>lot</strong> of time parsing it. The simdjson library uses commonly available SIMD instructions and microparallel algorithms to break speed records. "
+herodiscription = "JSON is everywhere on the Internet. Servers spend a <strong>lot</strong> of time parsing it. We need a fresh approach."
 btnblue = "Browse the API"
 btnblueurl = "https://simdjson.github.io/simdjson/"
 btngreen = "The simdjson library on GitHub"
@@ -26,6 +26,8 @@ btngreenurl = "https://github.com/simdjson/simdjson"
 contentOneTitle = "Highlights"
 contentTwoTitle = "Features"
 PostColumn = ''''''
+heroImage = "perf_with_simdjson_parsing.png"
+heroImageAlt = "Performance benchmarks showing SIMDJSON parsing speeds"
 contentOneBody = """
 * **Fast:** Over 4x faster than RapidJSON and 25x faster than JSON for Modern C++.
 * **Easy:** First-class, easy to use and carefully documented APIs.
@@ -34,28 +36,32 @@ contentOneBody = """
 * **Reliable:** From memory allocation to error handling, simdjson's design avoids surprises.
 * **Peer Reviewed:** Our research appears in venues like VLDB Journal, Software: Practice and Experience.
 * **Widely used:** Used by [ClickHouse](https://github.com/ClickHouse/ClickHouse), [Microsoft](https://github.com/microsoft/FishStore), [Shopify](https://github.com/Shopify/heap-profiler), [Intel](https://github.com/intel/pcm), [Apache Doris](https://github.com/apache/doris), [Dgraph](https://github.com/dgraph-io/dgraph), [StarRocks](https://github.com/StarRocks/starrocks), [Meta Velox](https://velox-lib.io), [Google Pax](https://github.com/google/paxml), [WatermelonDB](https://github.com/Nozbe/WatermelonDB), the Node.js runtime, and many others. A dozen of ports and bindings have been published in Python, R, Ruby, PHP, C#, Rust, Swift, Go, etc.
-
+* **Widely distributed**: It is found on Ubuntu, Alpine, Arch Linux, Fedora and Debian, FreeBSD, MSYS2, brew, Raspbian, conan and vcpkg.
+* **Paid support available**: [Get in touch!](mailto:daniel@lemire.me?subject=Inquiry%20about%20paid%20support)
 
 This library is part of the [Awesome Modern C++](https://awesomecpp.com).
  """
 
 contentTwoBody = """
 * **On-Demand API** to reach massive speeds (7 GB/s). We think it is a better way to parse JSON documents.
+* [**Build JSON strings**](https://github.com/simdjson/simdjson/blob/master/doc/builder.md): Generate JSON strings at gigabytes per second!
 * [**Minify JSON**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#minifying-json-strings-without-parsing)   at 12 GB/s
 * [**Standalone UTF8 Validation**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#utf-8-validation-alone) at 30 GB/s
 * [**Multithreaded processing**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#newline-delimited-json-ndjson-and-json-lines)  of gigantic Newline-Delimited JSON (ndjson) and related formats at 3.5 GB/s
-* [**JSON Pointer**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#json-pointer) support so that you can query your document at high speed
+* [**JSON Pointer**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#json-pointer) and [**JSONPath**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#jsonpath) support so that you can query your document at high speed
 * [**Support both conventional error handling (exceptions) as well as an error-code approach**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#error-handling): you can compile your C++ code with or without exception support.
 * [**Runtime dispatch**](https://github.com/simdjson/simdjson/blob/master/doc/implementation-selection.md): the library automatically detects the features supported by the processor. The library runs on all 64-bit systems, but it automagically benefits from advanced processors.
+* [**Customize for your own types**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#2-use-tag_invoke-for-custom-types-c20): add support for you own data types
+* [**C++26 reflection**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#3-using-static-reflection-c26): get automatic support for your own types
+* **Broad hardware support**: Optimized kernels for x64 (including AVX-512), 64-bit ARM, RISC-V, Loongarch, and so forth.
 
-It is found on [Ubuntu](https://packages.ubuntu.com/source/jammy/simdjson) and [Debian](https://tracker.debian.org/pkg/simdjson), FreeBSD, [MSYS2](https://github.com/simdjson/simdjson/wiki/MSYS2), brew, conan and [vcpkg](https://github.com/simdjson/simdjson/wiki/vcpkg).
 """
 
 
 
 [params.footer]
 emailtext = "Get in touch"
-email = "lemire@gmail.com"
+email = "daniel@lemire.me"
 [[menu.main]]
 name = "About"
 url = "/about"
@@ -80,6 +86,11 @@ url = "https://groups.google.com/forum/#!forum/the-simdjson-library"
 [[menu.social]]
 name = "Github"
 url = "http://github.com/simdjson/simdjson"
+
+[[menu.social]]
+name = "Sponsor"
+url = "https://github.com/sponsors/lemire"
+
 
 [markup]
   [markup.highlight]
