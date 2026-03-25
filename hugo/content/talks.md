@@ -6,6 +6,13 @@ layout = "single-para"
 
 
 
+#### CppCon 2025
+
+[![simdjson at CppCon 2025](http://img.youtube.com/vi/Mcgk3CxHYMs/0.jpg)](http://www.youtube.com/watch?v=Mcgk3CxHYMs)
+
+- [slides](https://simdjson.github.io/simdjson_talks/cppcon2025/cppcon_2025_slides.html)
+
+---
 
 #### Utah Cpp Programmers 2024
 
@@ -26,11 +33,3 @@ layout = "single-para"
 ---
 
 
-
-#### CPPCON 2025
-
-Video soon!
-
-- [slides](https://simdjson.github.io/simdjson_talks/cppcon2025/cppcon_2025_slides.html)
-
----
