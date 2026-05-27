@@ -2,7 +2,7 @@ baseurl = "https://simdjson.org/"
 author = "Daniel Lemire"
 title = "The simdjson library"
 languageCode = "en-us"
-theme = "hugof"
+theme = "simdjson-modern"
 enableRobotsTXT = true
 SectionPagesMenu = "main"
 
@@ -101,5 +101,5 @@ url = "https://github.com/sponsors/lemire"
     lineNos = false
     lineNumbersInTable = true
     noClasses = true
-    style = "github"
+    style = "github-dark"
     tabWidth = 4

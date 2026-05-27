@@ -1,0 +1,51 @@
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+  </div>
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        Parsing JSON at the speed of memory
+      </div>
+      <h1 class="hero-title">
+        {{ .Site.Params.hero.herotitle | default "Parsing gigabytes of JSON per second" }}
+      </h1>
+      <p class="hero-sub">
+        {{ .Site.Params.hero.herodiscription | default "JSON is everywhere. Servers spend a <strong>lot</strong> of time parsing it. <strong>simdjson</strong> rethinks the problem with SIMD." | safeHTML }}
+      </p>
+      <div class="hero-actions">
+        <a href="{{ .Site.Params.hero.btnblueurl | default "https://simdjson.github.io/simdjson/" }}" class="btn btn-primary">
+          {{ .Site.Params.hero.btnblue | default "Browse the API" }}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="{{ .Site.Params.hero.btngreenurl | default "https://github.com/simdjson/simdjson" }}" class="btn btn-ghost">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.4-5.3 5.7.4.3.8 1 .8 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.6 18.4.5 12 .5z"/></svg>
+          Star on GitHub
+        </a>
+      </div>
+      <div class="hero-install">
+        <code><span class="prompt">$</span> brew install simdjson <span class="muted">&nbsp;·&nbsp;</span> apt install libsimdjson-dev <span class="muted">&nbsp;·&nbsp;</span> vcpkg install simdjson</code>
+      </div>
+    </div>
+    <div class="hero-code">
+      <div class="code-window">
+        <div class="code-titlebar">
+          <span class="dotr"></span><span class="doty"></span><span class="dotg"></span>
+          <span class="code-filename">quickstart.cpp</span>
+        </div>
+        <pre class="code-body"><code><span class="kw">#include</span> <span class="str">"simdjson.h"</span>
+<span class="kw">using namespace</span> simdjson;
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+  ondemand::parser parser;
+  padded_string json = padded_string::load(<span class="str">"twitter.json"</span>);
+  ondemand::document tweets = parser.iterate(json);
+  std::cout &lt;&lt; <span class="kw">uint64_t</span>(tweets[<span class="str">"search_metadata"</span>][<span class="str">"count"</span>])
+            &lt;&lt; <span class="str">" results."</span> &lt;&lt; std::endl;
+}</code></pre>
+      </div>
+    </div>
+  </div>
+</section>

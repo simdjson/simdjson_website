@@ -1,0 +1,3 @@
+{{- $lang := .Get 0 -}}
+{{- $opts := .Get 1 | default "" -}}
+{{- highlight (trim .Inner "\n") $lang $opts -}}

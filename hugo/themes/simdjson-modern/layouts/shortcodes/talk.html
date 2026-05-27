@@ -1,0 +1,34 @@
+{{- $id := .Get "id" -}}
+{{- $title := .Get "title" -}}
+{{- $event := .Get "event" -}}
+{{- $date := .Get "date" -}}
+{{- $slides := .Get "slides" -}}
+{{- $note := .Get "note" -}}
+{{- $url := printf "https://www.youtube.com/watch?v=%s" $id -}}
+{{- $thumb := printf "https://i.ytimg.com/vi/%s/maxresdefault.jpg" $id -}}
+{{- $thumbFallback := printf "https://i.ytimg.com/vi/%s/hqdefault.jpg" $id -}}
+<article class="talk-card">
+  <a class="talk-thumb" href="{{ $url }}" target="_blank" rel="noopener" aria-label="Watch on YouTube: {{ $title }}">
+    <img src="{{ $thumb }}" onerror="this.onerror=null;this.src='{{ $thumbFallback }}';" alt="{{ $title }}" loading="lazy">
+    <span class="talk-play" aria-hidden="true">
+      <svg viewBox="0 0 68 48" width="68" height="48">
+        <path class="talk-play-bg" d="M66.52 7.74a8 8 0 0 0-5.64-5.66C55.93 1 34 1 34 1S12.08 1 7.12 2.08A8 8 0 0 0 1.48 7.74 84.5 84.5 0 0 0 0 24a84.5 84.5 0 0 0 1.48 16.26 8 8 0 0 0 5.64 5.66C12.08 47 34 47 34 47s21.93 0 26.88-1.08a8 8 0 0 0 5.64-5.66A84.5 84.5 0 0 0 68 24a84.5 84.5 0 0 0-1.48-16.26z"/>
+        <path d="M45 24 27 14v20" fill="#fff"/>
+      </svg>
+    </span>
+    <span class="talk-badge">YouTube</span>
+  </a>
+  <div class="talk-body">
+    {{ with $event }}<div class="talk-event">{{ . }}{{ with $date }} · {{ . }}{{ end }}</div>{{ end }}
+    <h3 class="talk-title"><a href="{{ $url }}" target="_blank" rel="noopener">{{ $title }}</a></h3>
+    {{ with $note }}<p class="talk-note">{{ . | safeHTML }}</p>{{ end }}
+    {{ with $slides }}
+    <p class="talk-links">
+      <a href="{{ . }}" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+        Slides
+      </a>
+    </p>
+    {{ end }}
+  </div>
+</article>

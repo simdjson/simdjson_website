@@ -1,174 +1,124 @@
 <!doctype html>
-<html class="no-js" lang="en" dir="ltr">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title> The simdjson library -  </title>
-		<link rel="icon" href="/simdjsonlogo.png">
-                <link rel="stylesheet" href="https://simdjson.org/css/foundation.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="https://simdjson.org/css/styles.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="https://simdjson.org/css/syntax.css" type="text/css" media="screen">
-	</head>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> · The simdjson library</title>
+<meta name="description" content="The simdjson library">
+<meta name="keywords" content="open source, JSON, C&#43;&#43;">
 
-	<body>
-		<div class="off-canvas-wrapper"> <!-- Definition of global off canvas wrapper -->
-				<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>	<!-- Definition of inner off canvas wrapper -->
-				
-				<!-- Menu -->
-				<div class="off-canvas position-left" id="mobile-menu" data-off-canvas>
-        			<ul>
-						
-						
-          				<li><a class="nav-item" href="/about">About</a></li>
-						
-          				<li><a class="nav-item" href="/publications">Publications</a></li>
-						
-          				<li><a class="nav-item" href="/software">Software</a></li>
-						
-          				<li><a class="nav-item" href="/talks">Talks</a></li>
-						
-        			</ul>
-				</div>	
-						
-				<!-- Page Content -->
-      			<div class="off-canvas-content" data-off-canvas-content>
-					
-					<!-- Foundation Mobile Menu -->
-					
-					<div class="titlebar show-for-small-only">
-						<div class="title-bar left">
-							<button class="menu-icon" type="button" data-open="mobile-menu"></button>
-							<span class="title-bar-title">MENU</span>
-						</div>
-					</div>
+<meta property="og:title" content=" · The simdjson library">
+<meta property="og:description" content="The simdjson library">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://simdjson.org/about/">
+<meta property="og:image" content="https://simdjson.org/simdjsonlogo.png">
 
-					<!-- Partials that make up the site -->
-		  			<!-- BEGIN NAV BAR DESKTOP -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=" · The simdjson library">
+<meta name="twitter:description" content="The simdjson library">
+<meta name="twitter:image" content="https://simdjson.org/simdjsonlogo.png">
 
-<nav class="top-bar nav-desktop " style="background-repeat: no-repeat; background-position:  1% 1%; background-size: contain; background-image: url(/simdjsonlogo.png);">
-	<div class="wrapper">
-		<div class="top-bar-left" >
-			<a href="https://simdjson.org/"><h3 class="site-logo">The simdjson library </h3></a>
-			
-		</div>
-  		<div class="top-bar-right">
-        	<ul class="menu horizontal menu-desktop">
-				
-			
-          	<li><a class="nav-item" href="/about">About</a></li>
-			
-          	<li><a class="nav-item" href="/publications">Publications</a></li>
-			
-          	<li><a class="nav-item" href="/software">Software</a></li>
-			
-          	<li><a class="nav-item" href="/talks">Talks</a></li>
-			
-			</ul>
-			</div>
-	</div>
-</nav> <!-- END NAV BAR DESKTOP -->
+<link rel="icon" href="/simdjsonlogo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
 
-		
-					<!-- BEGIN HERO PANEL -->
+</head>
+<body>
+  <header class="site-nav">
+  <div class="container nav-inner">
+    <a href="/" class="brand">
+      <img src="/simdjsonlogo.png" alt="simdjson logo" class="brand-logo">
+      <span class="brand-name">simdjson</span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="nav-links">
+      
+      
+        <a class="nav-link" href="/about">About</a>
+      
+        <a class="nav-link" href="/publications">Publications</a>
+      
+        <a class="nav-link" href="/software">Software</a>
+      
+        <a class="nav-link" href="/talks">Talks</a>
+      
+      <a class="nav-link nav-cta" href="https://github.com/simdjson/simdjson" aria-label="GitHub repository">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.4-5.3 5.7.4.3.8 1 .8 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.6 18.4.5 12 .5z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </nav>
+  </div>
+</header>
 
-<section class="hero-panel">
-	<div class="wrapper">
-		<h1>Parsing gigabytes of JSON per second</h1>
-		<p>JSON is everywhere on the Internet. Servers spend a <!-- raw HTML omitted -->lot<!-- raw HTML omitted --> of time parsing it. We need a fresh approach.</p>
-
-		<a href="https://simdjson.github.io/simdjson/" class="button primary">Browse the API</a>
-		<a href="https://github.com/simdjson/simdjson" class="button secondary">The simdjson library on GitHub</a>
-
-	</div>
-</section> <!-- END HERO PANEL -->
-
-						
-					
-					<section class="main-content">
-						<div class="wrapper row">
-							<div class="small-12 medium-12 column content-one">
-								<h1></h1>
-								<p> <p>To our knowledge, simdjson is the first fully-validating JSON parser
+  <main>
+    
+<section class="page">
+  <div class="container narrow">
+    
+    <article class="prose">
+      <p>To our knowledge, simdjson is the first fully-validating JSON parser
 to run at gigabytes per second on commodity processors. It can parse millions of JSON documents
 per second on a single core.
 It takes advantage of modern microarchitectures, parallelizing with SIMD vector
 instructions, reducing branch misprediction, and reducing data dependency to take advantage of each
 CPU&rsquo;s multiple execution cores. We support ARM NEON, SSSE3, AVX2, AVX-512, RISC-V, Loongarch, and POWER instructions.</p>
-<p>You may use simdjson for more than just parsing JSON. It offers functions to
+<p>You may use simdjson for more than just parsing and serializing (writing) JSON. It offers functions to
 minify JSON documents at 12 GB/s.
 The simdjson library offers high speed whether it processes tiny files (e.g., 300 bytes)
 or larger files (e.g., 3MB). You can also generate JSON strings at gigabytes per second.
 For Newline-Delimited JSON files, we can exceed 3 GB/s with <a href="https://github.com/simdjson/simdjson/blob/master/doc/iterate_many.md">our  multithreaded parsing functions</a>.</p>
 <h4 id="license">License</h4>
 <p>This code is made available under the Apache License 2.0.</p>
- </p>
-							</div>
-						</div>
-					</section>
-							
-					<!-- BEGIN FOOTER -->
-<footer>
-<div class="wrapper row small-up-1 medium-up-3">
-		
-		<div class="column">
-		
-		
-                        
-			
-			<a href="mailto:daniel@lemire.me">Get in touch</a>
-			
-		</div>
-		
-		<div class="column">
-			<h4>Links</h4>
-			<hr>
-			
-			
-			<a class="nav-item" href="/about">About</a>
-			
-			<a class="nav-item" href="/publications">Publications</a>
-			
-			<a class="nav-item" href="/software">Software</a>
-			
-			<a class="nav-item" href="/talks">Talks</a>
-			
-		</div>
-		
-		<div class="column">
-			<h4>Social</h4>
-			<hr>
-			
-			
-			<a class="nav-item" href="http://github.com/simdjson/simdjson">Github</a>
-			
-			<a class="nav-item" href="https://groups.google.com/forum/#!forum/the-simdjson-library">Google Groups</a>
-			
-			<a class="nav-item" href="https://github.com/sponsors/lemire">Sponsor</a>
-			
-		</div>
-                       
-		<iframe style="float:right;margin:20px" src="https://ghbtns.com/github-btn.html?user=simdjson&repo=simdjson&type=star&count=true" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
-	</div>
-</footer> <!-- END FOOTER -->
-	
 
-				</div> <!-- End page content menu wrapper -->
-		
-			</div> <!-- End of global off canvas inner wrapper -->
-		</div> <!-- End of global off canvas wrapper -->
-		
-		
-		<!-- JS includes -->
-		
-		<script src="https://simdjson.org/js/jquery.js"></script>
-		<script src="https://simdjson.org/js/what-input.js"></script>
-		<script src="https://simdjson.org/js/foundation.js"></script>
-		<script src="https://simdjson.org/js/app.js"></script>
-		
-	</body>
+    </article>
+  </div>
+</section>
+
+  </main>
+  <footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="/simdjsonlogo.png" alt="simdjson" class="footer-logo">
+      <p class="footer-tag">Parsing gigabytes of JSON per second.</p>
+      <p class="muted small">© 2026 The simdjson contributors · Apache License 2.0</p>
+    </div>
+    <div class="footer-col">
+      <h4>Project</h4>
+      
+        <a href="/about">About</a>
+      
+        <a href="/publications">Publications</a>
+      
+        <a href="/software">Software</a>
+      
+        <a href="/talks">Talks</a>
+      
+    </div>
+    <div class="footer-col">
+      <h4>Community</h4>
+      
+        <a href="http://github.com/simdjson/simdjson">Github</a>
+      
+        <a href="https://groups.google.com/forum/#!forum/the-simdjson-library">Google Groups</a>
+      
+        <a href="https://github.com/sponsors/lemire">Sponsor</a>
+      
+      
+        <a href="mailto:daniel@lemire.me">Get in touch</a>
+      
+    </div>
+    <div class="footer-col">
+      <h4>GitHub</h4>
+      <iframe class="gh-star" src="https://ghbtns.com/github-btn.html?user=simdjson&repo=simdjson&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="Star simdjson on GitHub"></iframe>
+    </div>
+  </div>
+</footer>
+
+  <script src="/js/site.js" defer></script>
+</body>
 </html>
-  
-  
-  
-  

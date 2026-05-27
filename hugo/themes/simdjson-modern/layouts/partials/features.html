@@ -1,0 +1,69 @@
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Features</span>
+      <h2>{{ .Site.Params.main.contentTwoTitle | default "More than a parser" }}</h2>
+    </div>
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="feature-tag">25 GB/s</div>
+        <h3>On-Demand API</h3>
+        <p>A radically new approach to parsing JSON documents at memory speed.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-tag">build</div>
+        <h3>Build JSON</h3>
+        <p>Generate JSON strings at gigabytes per second.
+          <a href="https://github.com/simdjson/simdjson/blob/master/doc/builder.md">Read more →</a>
+        </p>
+      </div>
+      <div class="feature">
+        <div class="feature-tag">12 GB/s</div>
+        <h3>Minify</h3>
+        <p>Strip whitespace from JSON streams without parsing.
+          <a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#minifying-json-strings-without-parsing">Read more →</a>
+        </p>
+      </div>
+      <div class="feature">
+        <div class="feature-tag">30 GB/s</div>
+        <h3>UTF-8 Validation</h3>
+        <p>Standalone validation that's faster than memcpy on some workloads.
+          <a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#utf-8-validation-alone">Read more →</a>
+        </p>
+      </div>
+      <div class="feature">
+        <div class="feature-tag">3.5 GB/s</div>
+        <h3>Multithreaded NDJSON</h3>
+        <p>Crunch gigantic newline-delimited JSON streams at multi-GB/s.
+          <a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#newline-delimited-json-ndjson-and-json-lines">Read more →</a>
+        </p>
+      </div>
+      <div class="feature">
+        <div class="feature-tag">query</div>
+        <h3>JSON Pointer &amp; JSONPath</h3>
+        <p>Drill into a document by path without unboxing the whole thing.
+          <a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#json-pointer">Read more →</a>
+        </p>
+      </div>
+      <div class="feature">
+        <div class="feature-tag">safe</div>
+        <h3>Errors, your way</h3>
+        <p>Pick exceptions <em>or</em> error codes. Compile with or without exceptions.
+          <a href="https://github.com/simdjson/simdjson/blob/master/doc/basics.md#error-handling">Read more →</a>
+        </p>
+      </div>
+      <div class="feature">
+        <div class="feature-tag">auto</div>
+        <h3>Runtime dispatch</h3>
+        <p>Detects AVX-512, AVX2, NEON, RISC-V, Loongarch, POWER &mdash; ships one binary.
+          <a href="https://github.com/simdjson/simdjson/blob/master/doc/implementation-selection.md">Read more →</a>
+        </p>
+      </div>
+      <div class="feature">
+        <div class="feature-tag">C++26</div>
+        <h3>Reflection &amp; custom types</h3>
+        <p>Plug in your own data types via <code>tag_invoke</code> or C++26 static reflection.</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -10,7 +10,7 @@ It takes advantage of modern microarchitectures, parallelizing with SIMD vector
 instructions, reducing branch misprediction, and reducing data dependency to take advantage of each
 CPU's multiple execution cores. We support ARM NEON, SSSE3, AVX2, AVX-512, RISC-V, Loongarch, and POWER instructions.
 
-You may use simdjson for more than just parsing JSON. It offers functions to
+You may use simdjson for more than just parsing and serializing (writing) JSON. It offers functions to
 minify JSON documents at 12 GB/s.
 The simdjson library offers high speed whether it processes tiny files (e.g., 300 bytes)
 or larger files (e.g., 3MB). You can also generate JSON strings at gigabytes per second.

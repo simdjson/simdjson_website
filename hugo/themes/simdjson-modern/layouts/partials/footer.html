@@ -1,0 +1,28 @@
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="{{ printf "/%s" (.Site.Params.image.IconURL | default "simdjsonlogo.png") | relURL }}" alt="simdjson" class="footer-logo">
+      <p class="footer-tag">Parsing gigabytes of JSON per second.</p>
+      <p class="muted small">© {{ now.Year }} {{ .Site.Params.author | default "The simdjson contributors" }} · Apache License 2.0</p>
+    </div>
+    <div class="footer-col">
+      <h4>Project</h4>
+      {{ range .Site.Menus.main }}
+        <a href="{{ .URL }}">{{ .Name }}</a>
+      {{ end }}
+    </div>
+    <div class="footer-col">
+      <h4>Community</h4>
+      {{ range .Site.Menus.social }}
+        <a href="{{ .URL }}">{{ .Name }}</a>
+      {{ end }}
+      {{ if .Site.Params.footer.email }}
+        <a href="mailto:{{ .Site.Params.footer.email }}">{{ .Site.Params.footer.emailtext | default "Email" }}</a>
+      {{ end }}
+    </div>
+    <div class="footer-col">
+      <h4>GitHub</h4>
+      <iframe class="gh-star" src="https://ghbtns.com/github-btn.html?user=simdjson&repo=simdjson&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="Star simdjson on GitHub"></iframe>
+    </div>
+  </div>
+</footer>

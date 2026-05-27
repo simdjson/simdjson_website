@@ -1,0 +1,12 @@
+name = "simdjson-modern"
+license = "MIT"
+licenselink = ""
+description = "Modern theme for the simdjson library website"
+homepage = "https://simdjson.org"
+tags = ["simdjson", "modern", "open-source"]
+features = ["modern", "dark", "responsive"]
+min_version = "0.100.0"
+
+[author]
+  name = "simdjson contributors"
+  homepage = "https://simdjson.org"
