@@ -39,6 +39,7 @@
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+body { overflow-x: clip; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 body {
@@ -224,6 +225,8 @@ code, pre, .mono {
   align-items: center;
 }
 .hero-content { min-width: 0; }
+.hero-code { min-width: 0; }
+.hero-code .code-window { max-width: 100%; }
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
