@@ -270,19 +270,22 @@ code, pre, .mono {
 .hero-sub strong { color: #fff; font-weight: 600; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
 .hero-install {
-  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
   max-width: 100%;
-  overflow-x: auto;
   padding: 10px 14px;
   border-radius: 10px;
   border: 1px solid rgba(255,255,255,0.08);
   background: rgba(0,0,0,0.3);
+  font-family: 'JetBrains Mono', monospace;
   font-size: .9rem;
   color: var(--code-text);
 }
-.hero-install code { font-family: 'JetBrains Mono', monospace; }
-.hero-install .prompt { color: var(--brand-3); }
-.hero-install .muted { color: var(--text-invert-muted); }
+.hero-install .cmd { white-space: nowrap; }
+.hero-install .prompt { color: var(--brand-3); margin-right: 4px; }
+.hero-install .sep { color: var(--text-invert-muted); }
 
 /* Code window */
 .code-window {
@@ -679,10 +682,19 @@ code, pre, .mono {
 }
 
 @media (max-width: 720px) {
-  .hero-title { font-size: clamp(2rem, 8vw, 2.6rem); }
+  .hero { padding: 56px 0 64px; }
+  .hero-title { font-size: clamp(1.75rem, 7vw, 2.4rem); }
   .hero-sub { font-size: 1rem; }
-  .hero-install { width: 100%; }
-  .hero-install code { white-space: nowrap; }
+  .hero-install {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    width: 100%;
+    font-size: .82rem;
+  }
+  .hero-install .sep { display: none; }
+  .code-body { font-size: .78rem; padding: 14px 14px; }
+  .code-filename { font-size: .76rem; }
   .nav-toggle { display: block; }
   .nav-links {
     position: absolute;
