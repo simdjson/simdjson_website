@@ -395,6 +395,13 @@ code, pre, .mono {
   gap: 56px;
   align-items: center;
 }
+/* Let grid children shrink so long code lines scroll inside the
+   code box instead of pushing the page wider on mobile. */
+.two-col > * { min-width: 0; }
+.two-col .code-window { max-width: 100%; }
+/* Long URLs in the install note must wrap, not overflow, on mobile. */
+.install-note { margin-top: 1rem; }
+.install-note code { overflow-wrap: anywhere; word-break: break-word; }
 
 /* Card grid (highlights) */
 .card-grid {
