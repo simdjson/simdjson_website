@@ -1,0 +1,14 @@
+# leftovers from the hugo-fresh theme experiment and Hugo build output
+/hugo-fresh/
+/hugo/themes/hugo-fresh/
+/hugo/public/
+/hugo/resources/
+/hugo/.hugo_build.lock
+/hugo/go.mod
+/hugo/go.sum
+/website/fonts/
+/website/images/
+/website/css/icons.css
+/website/css/style.min.*.css
+/website/js/fresh.js
+/website/js/jquery.panelslider.min.js
