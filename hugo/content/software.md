@@ -48,6 +48,65 @@ wget "${SIMDJSON_BASE}singleheader/simdjson.h" \
 {{< / highlight >}}
 
 
+### Quick Start in Python
+
+Prerequisites: Python 3.10 or newer. Our official Python binding, [fastsimdjson](https://github.com/simdjson/fastpysimdjson), has wheels for Linux, macOS and Windows, including free-threaded Python 3.14 and 3.15.
+
+1. Install it, and download the sample file twitter.json:
+
+{{< highlight bash "">}}
+pip install fastsimdjson     # or: uv pip install fastsimdjson
+wget https://raw.githubusercontent.com/simdjson/simdjson/master/jsonexamples/twitter.json
+{{< / highlight >}}
+
+2. Use it as a drop-in replacement for the `json` module. `loads`, `load`, `dumps` and `dump` return the same values and strings as their `json` counterparts:
+
+{{< highlight python "">}}
+import fastsimdjson
+
+doc = fastsimdjson.loads(b'{"a": [1, 2.5, "x", true, null]}')
+# {'a': [1, 2.5, 'x', True, None]}
+fastsimdjson.dumps(doc)              # '{"a": [1, 2.5, "x", true, null]}'
+fastsimdjson.dumpb(doc)              # b'{"a":[1,2.5,"x",true,null]}', like orjson.dumps
+{{< / highlight >}}
+
+3. When you need only part of a document, `parse` returns lazy views that convert values only when you access them:
+
+{{< highlight python "">}}
+doc = fastsimdjson.parse_file("twitter.json")
+print(doc["search_metadata"]["count"], "results.")
+names = [s["user"]["screen_name"] for s in doc["statuses"]]
+doc.at_pointer("/statuses/0/user/name")   # JSON Pointer (RFC 6901)
+{{< / highlight >}}
+
+4. Read streams of documents (NDJSON, JSON Lines). With free-threaded Python, `threads=N` parses on many threads; `fields=` extracts only the values you need:
+
+{{< highlight python "">}}
+data = open("log.ndjson", "rb").read()
+for record in fastsimdjson.loads_many(data):
+    ...
+docs = fastsimdjson.loads_many(data, threads=16)        # a list, in order
+pairs = fastsimdjson.loads_many(data, fields=["/type", "/payload/action"])
+{{< / highlight >}}
+
+5. Convert NDJSON to [Apache Arrow](https://arrow.apache.org/) tables and back, for pyarrow, polars or DuckDB, on many threads:
+
+{{< highlight python "">}}
+import pyarrow as pa
+table = pa.table(fastsimdjson.loads_arrow(data))         # schema inferred
+data = fastsimdjson.dumpb_arrow(table, threads=8)        # NDJSON bytes
+{{< / highlight >}}
+
+6. Convert JSON to [MessagePack](https://msgpack.org/) and back, without building Python objects:
+
+{{< highlight python "">}}
+packed = fastsimdjson.json_to_msgpack(b'{"id": 1, "tags": ["a", "b"]}')
+fastsimdjson.msgpack_to_json(packed)     # b'{"id":1,"tags":["a","b"]}'
+{{< / highlight >}}
+
+See the [fastsimdjson README](https://github.com/simdjson/fastpysimdjson) for the full API.
+
+
 ### Documentation
 
 Usage documentation is available:

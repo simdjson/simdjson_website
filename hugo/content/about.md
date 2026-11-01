@@ -16,6 +16,14 @@ The simdjson library offers high speed whether it processes tiny files (e.g., 30
 or larger files (e.g., 3MB). You can also generate JSON strings at gigabytes per second.
 For Newline-Delimited JSON files, we can exceed 3 GB/s with [our  multithreaded parsing functions](https://github.com/simdjson/simdjson/blob/master/doc/iterate_many.md).
 
+Beyond JSON itself, our companion libraries bring the same speed to other formats:
+[simdjson_arrow](https://github.com/simdjson/simdjson_arrow) reads newline-delimited JSON into [Apache Arrow](https://arrow.apache.org/) record batches and writes Arrow data back as JSON, several times faster than Arrow's own JSON reader,
+while [simdjson_msgpack](https://github.com/simdjson/simdjson_msgpack) converts JSON to [MessagePack](https://msgpack.org/) and back. Both run on many threads.
+
+Python users can use simdjson through [fastsimdjson](https://github.com/simdjson/fastpysimdjson), our official Python binding (`pip install fastsimdjson`).
+It is a drop-in replacement for the `json` module, over 3 times faster than the standard library, and it supports lazy parsing, multithreaded NDJSON with free-threaded Python, and conversion to Apache Arrow and MessagePack.
+See the [Python quick start](/software/#quick-start-in-python).
+
 #### License
 
 This code is made available under the Apache License 2.0.
