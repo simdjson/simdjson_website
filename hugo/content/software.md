@@ -81,11 +81,20 @@ Usage documentation is available:
 
 If you are planning to use simdjson in a product, please work from one of our releases.
 
+### Official companion libraries
+
+The simdjson organization publishes libraries built on simdjson:
+
+- [fastsimdjson](https://github.com/simdjson/fastpysimdjson): our official Python binding (`pip install fastsimdjson`). A drop-in replacement for the `json` module's `loads`, `load`, `dumps` and `dump`, over 3 times faster than the standard library. It also offers lazy parsing, multithreaded NDJSON with free-threaded Python, and conversion to Apache Arrow and MessagePack. Available on [PyPI](https://pypi.org/project/fastsimdjson/).
+- [simdjson_arrow](https://github.com/simdjson/simdjson_arrow): reads newline-delimited JSON into [Apache Arrow](https://arrow.apache.org/) record batches, and writes Arrow record batches as JSON, on one thread or many. Several times faster than Arrow C++'s own JSON reader.
+- [simdjson_msgpack](https://github.com/simdjson/simdjson_msgpack): converts JSON to [MessagePack](https://msgpack.org/) and back, one document or many, on many threads.
+
 ###  Bindings and Ports of simdjson
 
 We distinguish between "bindings" (which just wrap the C++ code) and a port to another programming language (which reimplements everything).
 
 - [ZippyJSON](https://github.com/michaeleisel/zippyjson): Swift bindings for the simdjson project.
+- [fastsimdjson](https://github.com/simdjson/fastpysimdjson): our official Python bindings.
 - [libpy_simdjson](https://github.com/gerrymanoim/libpy_simdjson/): high-speed Python bindings for simdjson using [libpy](https://github.com/quantopian/libpy).
 - [pysimdjson](https://github.com/TkTech/pysimdjson): Python bindings for the simdjson project.
 - [cysimdjson](https://github.com/TeskaLabs/cysimdjson): high-speed Python bindings for the simdjson project.

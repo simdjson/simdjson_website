@@ -224,6 +224,86 @@
 
   <section class="section section-alt">
   <div class="container">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow">Python</span>
+        <h2>fastsimdjson: simdjson for Python</h2>
+        <p class="lead">
+          Our official Python binding is a drop-in replacement for the <code>json</code> module's
+          <code>loads</code>, <code>load</code>, <code>dumps</code> and <code>dump</code>, and it can be
+          over 3&times; faster than the standard library.
+        </p>
+        <ul>
+          <li>Lazy <code>parse</code> when you need only part of a document, with JSON Pointer.</li>
+          <li>NDJSON streams, on many threads with free-threaded Python.</li>
+          <li><code>dumpb</code> writes the same bytes as <code>orjson.dumps</code>, as fast as orjson.</li>
+          <li>NDJSON to Apache Arrow tables and back, for pyarrow, polars or DuckDB.</li>
+          <li>JSON to MessagePack and back, 3 to 4&times; as fast as orjson with ormsgpack.</li>
+        </ul>
+        <p class="small muted">
+          Wheels for Linux, macOS and Windows, Python 3.10 to 3.15, including free-threaded Python.
+        </p>
+        <p>
+          <a class="btn btn-primary" href="https://github.com/simdjson/fastpysimdjson">fastsimdjson on GitHub
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://pypi.org/project/fastsimdjson/">PyPI</a>
+        </p>
+      </div>
+      <div>
+        <div class="code-window">
+          <div class="code-titlebar">
+            <span class="dotr"></span><span class="doty"></span><span class="dotg"></span>
+            <span class="code-filename">example.py</span>
+          </div>
+          <pre class="code-body"><code><span class="comment"># pip install fastsimdjson</span>
+<span class="kw">import</span> fastsimdjson
+
+fastsimdjson.<span class="fn">loads</span>(<span class="str">b'{"a": [1, 2.5, "x", true, null]}'</span>)
+<span class="comment"># {'a': [1, 2.5, 'x', True, None]}</span>
+
+doc = fastsimdjson.<span class="fn">parse</span>(<span class="fn">open</span>(<span class="str">"twitter.json"</span>, <span class="str">"rb"</span>).<span class="fn">read</span>())
+doc.<span class="fn">at_pointer</span>(<span class="str">"/statuses/0/user/name"</span>)</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">The simdjson family</span>
+      <h2>JSON to Arrow and MessagePack</h2>
+      <p class="lead">
+        Two new C++17 libraries built on simdjson. Like simdjson, each is one header and one source file,
+        with a C interface too.
+      </p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="feature-tag">Arrow</div>
+        <h3>simdjson_arrow</h3>
+        <p>Reads newline-delimited JSON into <a href="https://arrow.apache.org/">Apache Arrow</a> record batches,
+          and writes them back, on one thread or many. Several times faster than Arrow C++'s own JSON reader.
+          Results are Arrow C Data Interface structures, usable without a copy by Arrow C++, nanoarrow or DuckDB.
+          <a href="https://github.com/simdjson/simdjson_arrow">Read more →</a>
+        </p>
+      </div>
+      <div class="feature">
+        <div class="feature-tag">MessagePack</div>
+        <h3>simdjson_msgpack</h3>
+        <p>Converts JSON to the most compact <a href="https://msgpack.org/">MessagePack</a> and back, one document
+          or NDJSON streams on many threads. Faster than the usual ways of doing it in C and C++
+          (yyjson, RapidJSON with mpack, nlohmann::json).
+          <a href="https://github.com/simdjson/simdjson_msgpack">Read more →</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="section section-alt">
+  <div class="container">
     <div class="section-head">
       <span class="eyebrow">Features</span>
       <h2>Features</h2>
@@ -330,7 +410,8 @@
       to speed up its JSON parsing.
     </p>
     <p class="usedby-foot muted">
-      And a dozen ports &amp; bindings — Python, R, Ruby, PHP, C#, Rust, Swift, Go, Erlang, Lua, Haskell.
+      Official Python bindings: <a href="https://github.com/simdjson/fastpysimdjson">fastsimdjson</a>.
+      And a dozen more ports &amp; bindings — Python, R, Ruby, PHP, C#, Rust, Swift, Go, Erlang, Lua, Haskell.
       <a href="/software/">See them all →</a>
     </p>
   </div>
