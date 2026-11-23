@@ -45,6 +45,7 @@ This library is part of the [Awesome Modern C++](https://awesomecpp.com).
 contentTwoBody = """
 * **On-Demand API** to reach massive speeds (7 GB/s). We think it is a better way to parse JSON documents.
 * [**Build JSON strings**](https://github.com/simdjson/simdjson/blob/master/doc/builder.md): Generate JSON strings at gigabytes per second!
+* [**sjq**](/sjq/): a jq-compatible command-line tool, ten to a hundred times faster than jq on large inputs
 * [**Minify JSON**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#minifying-json-strings-without-parsing)   at 12 GB/s
 * [**Standalone UTF8 Validation**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#utf-8-validation-alone) at 30 GB/s
 * [**Multithreaded processing**](https://github.com/simdjson/simdjson/blob/master/doc/basics.md#newline-delimited-json-ndjson-and-json-lines)  of gigantic Newline-Delimited JSON (ndjson) and related formats at 3.5 GB/s
@@ -69,6 +70,10 @@ url = "/about"
 [[menu.main]]
 name = "Software"
 url = "/software"
+
+[[menu.main]]
+name = "sjq"
+url = "/sjq"
 
 [[menu.main]]
 name = "Publications"

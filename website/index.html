@@ -31,8 +31,7 @@
   <header class="site-nav">
   <div class="container nav-inner">
     <a href="/" class="brand">
-      <img src="/simdjsonlogo.png" alt="simdjson logo" class="brand-logo">
-      <span class="brand-name">simdjson</span>
+      <img src="/simdjson-logo-white.svg" alt="simdjson" class="brand-logo">
     </a>
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -43,6 +42,8 @@
         <a class="nav-link" href="/about">About</a>
       
         <a class="nav-link" href="/publications">Publications</a>
+      
+        <a class="nav-link" href="/sjq">sjq</a>
       
         <a class="nav-link" href="/software">Software</a>
       
@@ -271,6 +272,50 @@ doc.<span class="fn">at_pointer</span>(<span class="str">"/statuses/0/user/name"
 </section>
 <section class="section">
   <div class="container">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow">Command line</span>
+        <h2>sjq: simdjson on the command line</h2>
+        <p class="lead">
+          A command-line JSON processor that reads the <a href="https://jqlang.org/manual/">jq language</a>.
+          The filters you write for jq work with sjq, and on large inputs they run ten to a hundred times faster.
+        </p>
+        <ul>
+          <li>11.5&nbsp;GB/s extracting a field from 1&nbsp;GB of NDJSON, 123&times; as fast as jq 1.8.</li>
+          <li>Parses only what a filter needs, maps files in memory, uses every core on large NDJSON files.</li>
+          <li>The jq 1.8 language: <code>def</code>, <code>reduce</code>, string interpolation, <code>@csv</code>,
+            assignments, regular expressions, dates, <code>--arg</code>, <code>--slurp</code>.</li>
+          <li>Passes 728 of the 781 tests of jq's own test suite.</li>
+        </ul>
+        <p class="small muted">
+          Static binaries for Linux (x64, ARM64), macOS and Windows (x64, ARM64).
+        </p>
+        <p>
+          <a class="btn btn-primary" href="/sjq/">About sjq
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://github.com/simdjson/sjq">GitHub</a>
+        </p>
+      </div>
+      <div>
+        <div class="code-window">
+          <div class="code-titlebar">
+            <span class="dotr"></span><span class="doty"></span><span class="dotg"></span>
+            <span class="code-filename">terminal</span>
+          </div>
+          <pre class="code-body"><code><span class="comment"># Linux and macOS</span>
+curl -fsSL https://raw.githubusercontent.com/simdjson/sjq/main/install.sh | sh
+
+sjq <span class="str">'.statuses[] | {id, name: .user.name}'</span> twitter.json
+sjq -r <span class="str">'.user.screen_name'</span> tweets.ndjson
+sjq -c <span class="str">'select(.status == 404) | {ip, url}'</span> access.ndjson</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
     <div class="section-head">
       <span class="eyebrow">The simdjson family</span>
       <h2>JSON to Arrow and MessagePack</h2>
@@ -429,6 +474,8 @@ doc.<span class="fn">at_pointer</span>(<span class="str">"/statuses/0/user/name"
         <a href="/about">About</a>
       
         <a href="/publications">Publications</a>
+      
+        <a href="/sjq">sjq</a>
       
         <a href="/software">Software</a>
       

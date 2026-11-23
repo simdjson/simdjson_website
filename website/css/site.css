@@ -141,7 +141,7 @@ code, pre, .mono {
   font-size: 1.08rem;
 }
 .brand:hover { text-decoration: none; color: var(--text-invert); }
-.brand-logo { width: 28px; height: 28px; }
+.brand-logo { height: 52px; width: auto; display: block; }
 .brand-name { color: #fff; }
 .nav-links {
   display: flex;
