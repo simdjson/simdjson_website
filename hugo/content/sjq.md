@@ -54,12 +54,13 @@ default, which filters large newline-delimited files on all cores;
 | 1 GB NDJSON | select and build objects | 11.5 s | 0.28 s | 0.09 s |
 | 1 GB NDJSON | string interpolation | 11.7 s | 0.35 s | 0.10 s |
 | 1 GB NDJSON | regular expression | 25.2 s | 0.61 s | 0.61 s |
-| 840 MB document | count elements | 12.5 s | 0.69 s | 0.80 s |
-| 840 MB document | minify (`-c .`) | 16.5 s | 1.32 s | 1.39 s |
-| 840 MB document | `group_by` | 12.4 s | 0.95 s | 1.00 s |
+| 840 MB document | count elements | 11.7 s | 0.66 s | 0.66 s |
+| 840 MB document | minify (`-c .`) | 16.5 s | 1.33 s | 1.33 s |
+| 840 MB document | `group_by` | 12.1 s | 0.97 s | 0.95 s |
 
 Mean wall time on a dual Intel Xeon Gold 6548N server (Linux, GCC 16), with
-jq's official static binary and hyperfine.
+jq's official static binary and hyperfine. The single-document runs of all
+three tools are pinned to the same socket.
 
 ### How
 
@@ -68,6 +69,22 @@ runs it with simdjson's On-Demand API, which parses only what the filter reads
 and copies the output from the input. Files are mapped in memory instead of
 being copied, and large newline-delimited files are filtered on all cores,
 with the results written in order.
+
+### FracturedJson output
+
+sjq can also write JSON in the [FracturedJson](https://github.com/j-brooke/FracturedJson)
+layout, with simdjson's formatter: short arrays and objects stay on one line,
+and arrays of similar records become aligned tables.
+
+{{< highlight bash "">}}
+$ sjq --fractured '.statuses[:4] | map({id, lang, rt: .retweet_count, user: .user.screen_name})' twitter.json
+[
+  {"id": 505874924095815681, "lang": "ja", "rt": 0 , "user": "ayuu0123"   },
+  {"id": 505874922023837696, "lang": "ja", "rt": 82, "user": "yuttari1998"},
+  {"id": 505874920140591104, "lang": "ja", "rt": 0 , "user": "ttm_protect"},
+  {"id": 505874919020699648, "lang": "ja", "rt": 58, "user": "chibu4267"  }
+]
+{{< / highlight >}}
 
 ### Compatibility
 

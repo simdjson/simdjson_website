@@ -143,34 +143,46 @@ default, which filters large newline-delimited files on all cores;
 			<tr>
 					<td>840 MB document</td>
 					<td>count elements</td>
-					<td style="text-align: right">12.5 s</td>
-					<td style="text-align: right">0.69 s</td>
-					<td style="text-align: right">0.80 s</td>
+					<td style="text-align: right">11.7 s</td>
+					<td style="text-align: right">0.66 s</td>
+					<td style="text-align: right">0.66 s</td>
 			</tr>
 			<tr>
 					<td>840 MB document</td>
 					<td>minify (<code>-c .</code>)</td>
 					<td style="text-align: right">16.5 s</td>
-					<td style="text-align: right">1.32 s</td>
-					<td style="text-align: right">1.39 s</td>
+					<td style="text-align: right">1.33 s</td>
+					<td style="text-align: right">1.33 s</td>
 			</tr>
 			<tr>
 					<td>840 MB document</td>
 					<td><code>group_by</code></td>
-					<td style="text-align: right">12.4 s</td>
+					<td style="text-align: right">12.1 s</td>
+					<td style="text-align: right">0.97 s</td>
 					<td style="text-align: right">0.95 s</td>
-					<td style="text-align: right">1.00 s</td>
 			</tr>
 	</tbody>
 </table>
 <p>Mean wall time on a dual Intel Xeon Gold 6548N server (Linux, GCC 16), with
-jq&rsquo;s official static binary and hyperfine.</p>
+jq&rsquo;s official static binary and hyperfine. The single-document runs of all
+three tools are pinned to the same socket.</p>
 <h3 id="how">How</h3>
 <p>sjq parses JSON with simdjson. When a filter only navigates and selects, sjq
 runs it with simdjson&rsquo;s On-Demand API, which parses only what the filter reads
 and copies the output from the input. Files are mapped in memory instead of
 being copied, and large newline-delimited files are filtered on all cores,
 with the results written in order.</p>
+<h3 id="fracturedjson-output">FracturedJson output</h3>
+<p>sjq can also write JSON in the <a href="https://github.com/j-brooke/FracturedJson">FracturedJson</a>
+layout, with simdjson&rsquo;s formatter: short arrays and objects stay on one line,
+and arrays of similar records become aligned tables.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sjq --fractured <span style="color:#a5d6ff">&#39;.statuses[:4] | map({id, lang, rt: .retweet_count, user: .user.screen_name})&#39;</span> twitter.json
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff7b72;font-weight:bold">{</span><span style="color:#a5d6ff">&#34;id&#34;</span>: 505874924095815681, <span style="color:#a5d6ff">&#34;lang&#34;</span>: <span style="color:#a5d6ff">&#34;ja&#34;</span>, <span style="color:#a5d6ff">&#34;rt&#34;</span>: <span style="color:#a5d6ff">0</span> , <span style="color:#a5d6ff">&#34;user&#34;</span>: <span style="color:#a5d6ff">&#34;ayuu0123&#34;</span>   <span style="color:#ff7b72;font-weight:bold">}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff7b72;font-weight:bold">{</span><span style="color:#a5d6ff">&#34;id&#34;</span>: 505874922023837696, <span style="color:#a5d6ff">&#34;lang&#34;</span>: <span style="color:#a5d6ff">&#34;ja&#34;</span>, <span style="color:#a5d6ff">&#34;rt&#34;</span>: 82, <span style="color:#a5d6ff">&#34;user&#34;</span>: <span style="color:#a5d6ff">&#34;yuttari1998&#34;</span><span style="color:#ff7b72;font-weight:bold">}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff7b72;font-weight:bold">{</span><span style="color:#a5d6ff">&#34;id&#34;</span>: 505874920140591104, <span style="color:#a5d6ff">&#34;lang&#34;</span>: <span style="color:#a5d6ff">&#34;ja&#34;</span>, <span style="color:#a5d6ff">&#34;rt&#34;</span>: <span style="color:#a5d6ff">0</span> , <span style="color:#a5d6ff">&#34;user&#34;</span>: <span style="color:#a5d6ff">&#34;ttm_protect&#34;</span><span style="color:#ff7b72;font-weight:bold">}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff7b72;font-weight:bold">{</span><span style="color:#a5d6ff">&#34;id&#34;</span>: 505874919020699648, <span style="color:#a5d6ff">&#34;lang&#34;</span>: <span style="color:#a5d6ff">&#34;ja&#34;</span>, <span style="color:#a5d6ff">&#34;rt&#34;</span>: 58, <span style="color:#a5d6ff">&#34;user&#34;</span>: <span style="color:#a5d6ff">&#34;chibu4267&#34;</span>  <span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">]</span></span></span></code></pre></div>
 <h3 id="compatibility">Compatibility</h3>
 <p>sjq implements the jq 1.8 language: paths, <code>select</code>, <code>map</code>, <code>reduce</code>,
 <code>foreach</code>, function definitions, string interpolation and formats such as
