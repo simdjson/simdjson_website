@@ -5,7 +5,8 @@ layout = "single-para"
 
 [sjq](https://github.com/simdjson/sjq) is a command-line JSON processor that
 reads the [jq language](https://jqlang.org/manual/). The filters you write for
-jq work with sjq, and on large inputs they run ten to a hundred times faster.
+jq work with sjq, and on large inputs they run ten to almost two hundred times
+faster.
 
 {{< highlight bash "">}}
 sjq '.statuses[] | {id, name: .user.name}' twitter.json
@@ -25,6 +26,14 @@ Windows (PowerShell):
 
 {{< highlight powershell "">}}
 irm https://raw.githubusercontent.com/simdjson/sjq/main/install.ps1 | iex
+{{< / highlight >}}
+
+With Homebrew (macOS, Linux) or Scoop (Windows):
+
+{{< highlight bash "">}}
+brew install simdjson/tap/sjq
+scoop bucket add sjq https://github.com/simdjson/sjq
+scoop install sjq/sjq
 {{< / highlight >}}
 
 The scripts download the binary for your system from the
@@ -48,19 +57,19 @@ default, which filters large newline-delimited files on all cores;
 
 | Input | Workload | jq 1.8.2 | sjq, one thread | sjq |
 |---|---|---:|---:|---:|
-| 1 GB NDJSON | minify (`-c .`) | 22.3 s | 1.24 s | 0.16 s |
-| 1 GB NDJSON | pretty-print (`.`) | 24.5 s | 1.49 s | 0.18 s |
-| 1 GB NDJSON | extract a field | 11.5 s | 0.28 s | 0.09 s |
-| 1 GB NDJSON | select and build objects | 11.5 s | 0.28 s | 0.09 s |
-| 1 GB NDJSON | string interpolation | 11.7 s | 0.35 s | 0.10 s |
-| 1 GB NDJSON | regular expression | 25.2 s | 0.61 s | 0.61 s |
-| 840 MB document | count elements | 11.7 s | 0.66 s | 0.66 s |
-| 840 MB document | minify (`-c .`) | 16.5 s | 1.33 s | 1.33 s |
-| 840 MB document | `group_by` | 12.1 s | 0.97 s | 0.95 s |
+| 1 GB NDJSON | minify (`-c .`) | 24.4 s | 1.24 s | 0.14 s |
+| 1 GB NDJSON | pretty-print (`.`) | 24.5 s | 1.50 s | 0.18 s |
+| 1 GB NDJSON | extract a field | 11.5 s | 0.30 s | 0.06 s |
+| 1 GB NDJSON | select and build objects | 11.4 s | 0.29 s | 0.06 s |
+| 1 GB NDJSON | string interpolation | 11.6 s | 0.35 s | 0.07 s |
+| 1 GB NDJSON | regular expression | 25.2 s | 0.59 s | 0.59 s |
+| 840 MB document | count elements | 11.8 s | 0.67 s | 0.67 s |
+| 840 MB document | minify (`-c .`) | 16.7 s | 1.33 s | 1.33 s |
+| 840 MB document | `group_by` | 12.2 s | 0.96 s | 0.96 s |
 
-Mean wall time on a dual Intel Xeon Gold 6548N server (Linux, GCC 16), with
-jq's official static binary and hyperfine. The single-document runs of all
-three tools are pinned to the same socket.
+Mean wall time with sjq 0.3.0 on a dual Intel Xeon Gold 6548N server (Linux,
+GCC 16), with jq's official static binary and hyperfine. Every run on one
+thread is pinned to the same socket.
 
 ### How
 

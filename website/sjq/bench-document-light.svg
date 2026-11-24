@@ -17,24 +17,24 @@
 <text x="730.0" y="332" font-size="11" fill="#898781" text-anchor="middle" style="font-variant-numeric: tabular-nums">20</text>
 <line x1="210" y1="96" x2="210" y2="314" stroke="#c3c2b7" stroke-width="1"/>
 <text x="198" y="131.0" font-size="13" fill="#0b0b0b" text-anchor="end">count elements</text>
-<path d="M210,104 h13.08 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-13.08 z" fill="#2a78d6"><title>sjq: 0.66 s (sd 0.002 s)</title></path>
-<text x="233.1" y="115" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">0.66 s  (18x faster)</text>
-<path d="M210,120 h13.05 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-13.05 z" fill="#eb6834"><title>sjq --threads 1: 0.66 s (sd 0.003 s)</title></path>
-<text x="233.1" y="131" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">0.66 s  (18x faster)</text>
-<path d="M210,136 h300.61 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-300.61 z" fill="#1baf7a"><title>jq 1.8.2: 11.7 s (sd 0.021 s)</title></path>
-<text x="520.6" y="147" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">11.7 s</text>
+<path d="M210,104 h13.38 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-13.38 z" fill="#2a78d6"><title>sjq: 0.67 s (sd 0.004 s)</title></path>
+<text x="233.4" y="115" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">0.67 s  (18x faster)</text>
+<path d="M210,120 h13.37 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-13.37 z" fill="#eb6834"><title>sjq --threads 1: 0.67 s (sd 0.002 s)</title></path>
+<text x="233.4" y="131" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">0.67 s  (18x faster)</text>
+<path d="M210,136 h303.28 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-303.28 z" fill="#1baf7a"><title>jq 1.8.2: 11.8 s (sd 0.008 s)</title></path>
+<text x="523.3" y="147" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">11.8 s</text>
 <text x="198" y="199.0" font-size="13" fill="#0b0b0b" text-anchor="end">minify (-c .)</text>
-<path d="M210,172 h30.53 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-30.53 z" fill="#2a78d6"><title>sjq: 1.33 s (sd 0.004 s)</title></path>
-<text x="250.5" y="183" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">1.33 s  (12x faster)</text>
-<path d="M210,188 h30.54 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-30.54 z" fill="#eb6834"><title>sjq --threads 1: 1.33 s (sd 0.009 s)</title></path>
-<text x="250.5" y="199" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">1.33 s  (12x faster)</text>
-<path d="M210,204 h425.41 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-425.41 z" fill="#1baf7a"><title>jq 1.8.2: 16.5 s (sd 0.014 s)</title></path>
-<text x="645.4" y="215" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">16.5 s</text>
+<path d="M210,172 h30.65 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-30.65 z" fill="#2a78d6"><title>sjq: 1.33 s (sd 0.008 s)</title></path>
+<text x="250.7" y="183" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">1.33 s  (13x faster)</text>
+<path d="M210,188 h30.63 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-30.63 z" fill="#eb6834"><title>sjq --threads 1: 1.33 s (sd 0.003 s)</title></path>
+<text x="250.6" y="199" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">1.33 s  (13x faster)</text>
+<path d="M210,204 h429.27 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-429.27 z" fill="#1baf7a"><title>jq 1.8.2: 16.7 s (sd 0.026 s)</title></path>
+<text x="649.3" y="215" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">16.7 s</text>
 <text x="198" y="267.0" font-size="13" fill="#0b0b0b" text-anchor="end">group_by</text>
-<path d="M210,240 h20.71 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-20.71 z" fill="#2a78d6"><title>sjq: 0.95 s (sd 0.005 s)</title></path>
-<text x="240.7" y="251" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">0.95 s  (13x faster)</text>
-<path d="M210,256 h21.16 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-21.16 z" fill="#eb6834"><title>sjq --threads 1: 0.97 s (sd 0.010 s)</title></path>
-<text x="241.2" y="267" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">0.97 s  (13x faster)</text>
-<path d="M210,272 h310.66 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-310.66 z" fill="#1baf7a"><title>jq 1.8.2: 12.1 s (sd 0.048 s)</title></path>
-<text x="530.7" y="283" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">12.1 s</text>
+<path d="M210,240 h20.91 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-20.91 z" fill="#2a78d6"><title>sjq: 0.96 s (sd 0.008 s)</title></path>
+<text x="240.9" y="251" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">0.96 s  (13x faster)</text>
+<path d="M210,256 h21.07 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-21.07 z" fill="#eb6834"><title>sjq --threads 1: 0.96 s (sd 0.007 s)</title></path>
+<text x="241.1" y="267" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">0.96 s  (13x faster)</text>
+<path d="M210,272 h313.07 a4.0,4.0 0 0 1 4.0,4.0 v6.0 a4.0,4.0 0 0 1 -4.0,4.0 h-313.07 z" fill="#1baf7a"><title>jq 1.8.2: 12.2 s (sd 0.030 s)</title></path>
+<text x="533.1" y="283" font-size="11" fill="#52514e" style="font-variant-numeric: tabular-nums">12.2 s</text>
 </svg>

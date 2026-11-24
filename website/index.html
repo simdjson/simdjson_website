@@ -278,17 +278,17 @@ doc.<span class="fn">at_pointer</span>(<span class="str">"/statuses/0/user/name"
         <h2>sjq: simdjson on the command line</h2>
         <p class="lead">
           A command-line JSON processor that reads the <a href="https://jqlang.org/manual/">jq language</a>.
-          The filters you write for jq work with sjq, and on large inputs they run ten to a hundred times faster.
+          The filters you write for jq work with sjq, and on large inputs they run ten to almost two hundred times faster.
         </p>
         <ul>
-          <li>11.5&nbsp;GB/s extracting a field from 1&nbsp;GB of NDJSON, 123&times; as fast as jq 1.8.</li>
+          <li>17&nbsp;GB/s extracting a field from 1&nbsp;GB of NDJSON, 181&times; as fast as jq 1.8.</li>
           <li>Parses only what a filter needs, maps files in memory, uses every core on large NDJSON files.</li>
           <li>The jq 1.8 language: <code>def</code>, <code>reduce</code>, string interpolation, <code>@csv</code>,
             assignments, regular expressions, dates, <code>--arg</code>, <code>--slurp</code>.</li>
           <li>Passes 728 of the 781 tests of jq's own test suite.</li>
         </ul>
         <p class="small muted">
-          Static binaries for Linux (x64, ARM64), macOS and Windows (x64, ARM64).
+          Static binaries for Linux (x64, ARM64), macOS and Windows (x64, ARM64); Homebrew and Scoop.
         </p>
         <p>
           <a class="btn btn-primary" href="/sjq/">About sjq
